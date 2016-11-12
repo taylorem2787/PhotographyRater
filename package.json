@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/tatianaalcocer/PhotographyRater/issues"
   },
-  "homepage": "https://github.com/tatianaalcocer/PhotographyRater#readme"
+  "homepage": "https://github.com/tatianaalcocer/PhotographyRater#readme",
+  "dependencies": {
+    "mysql": "^2.12.0"
+  }
 }
