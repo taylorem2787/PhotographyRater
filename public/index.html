@@ -9,8 +9,6 @@
 		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 		  crossorigin="anonymous"></script>
 
-		<!-- STYLE SHEETS -->
-		<link rel="stylesheet" href="/css/style.css">
 
 		<!--Import Google Icon Font-->
 		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,13 +19,20 @@
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-		 <!-- Compiled and minified CSS -->
+		<!-- Compiled and minified CSS -->
 	  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	  	
+		<!-- STYLE SHEETS -->
+		<link rel="stylesheet" href="css/style.css">
 
 	 	<!-- Compiled and minified JavaScript -->
 	 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
-	 	 <!-- JS files -->
+	 	<!-- JQuery Web Pop-over -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
+        <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
+
+	 	<!-- JS files -->
 		<script src="../app/app.js"></script>
 
 	    
@@ -36,21 +41,101 @@
 
 
 <body>
+
+	<!-- Nav Bar -->
 	<nav>
 		<div class="nav-wrapper">
 			<a href="#" class="brand-logo">ProjectName</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="profile.html">Profile</a></li>
-					<li><a href="collapsible.html">Login</a></li>
+					<li><a id="home" href="index.html">Home</a></li>
+					<li><a id="profile" href="profile.html">Profile</a></li>
+					<li><a id="login" href="collapsible.html">Login</a></li>
 				</ul>
 		</div>
 	</nav>
 
+	<!-- Login -->
+    <div id="login-form" class="webui-popover-content center-align">
+      <form class="login-form" onsubmit="return false">
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">person outline</i>
+            <input class="validate" id="email" type="email">
+            <label for="email" data-error="wrong" data-success="right" class="center-align">Email</label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock outline</i>
+            <input id="password" type="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">          
+          <div class="input-field col s12 m12 l12  login-text">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Remember me</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <button type="submit" class="btn waves-effect waves-light col s12 indigo">Sign In</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small"><a href="#" id="register">Register Now!</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
+          </div>          
+        </div>
+
+      </form>
+    </div>
+
     
 	<div class="parallax-container">
-		<div class="parallax"><img class="parallax-img" src="img/parallax1.jpg"></div>
-	</div>
+		<div class="parallax"><img class="parallax-img" src="http://lorempixel.com/900/500"></div>
+
+		<div class="container">
+			<!-- SEARCH BAR -->
+	        <div class="row">
+	            <div class="col s12"></div>
+	            <nav>
+	                <div class="nav-wrapper main-search">
+	                    <form id="search-bar" onsubmit="return false">
+	                <div class="nav-wrapper main-search">
+	                    <form id="search-bar" novalidate>
+	                        <div class="input-field">
+	                            <input id="search" type="search" required>
+	                            <label for="search"><i class="material-icons">search</i></label>
+	                            <i class="material-icons done" id="submit-button">done</i>
+	                        </div>
+	                    </form>
+	                </div>
+	           </nav>
+	        </div> <!-- End of search bar -->
+
+	        <!-- MAIN INTRO -->
+	        <div class="row">
+	        	<div class="col s12">
+	        		<div class="card main-intro">
+			            <div class="card-content black-text">
+			              <span class="card-title">Welcome to ProjectName!</span>
+			              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore aut deserunt molestias natus, molestiae necessitatibus iste cupiditate debitis cumque distinctio velit aliquid, adipisci accusamus perferendis! Perferendis reiciendis quis, recusandae quo.</p>
+			            </div>
+			            <div class="card-action">
+			              <a id="registration" href="#">Click here to register!</a>
+			            </div>
+			        </div>
+	        	</div>
+	        </div>
+
+
+		</div> <!-- End of search container --> 
+
+	</div> <!-- End of top parallax container -->
 
 	<div class="section white">
 		<div class="row container">
@@ -60,7 +145,7 @@
 	</div>
 
 	<div class="parallax-container">
-		<div class="parallax"><img class="parallax-img" src="img/parallax2.jpg"></div>
+		<div class="parallax"><img class="parallax-img" src="http://lorempixel.com/900/500"></div>
 	</div>
 
 
