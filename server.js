@@ -50,65 +50,67 @@ app.get('/', function(req,res) {
 
 
 
-
-
-
 //Match algorithm
 //==============================================
 app.get('/match', function(req, res){
-	res.send(processData(req, res));
+	connection.query(`SELECT * FROM photos;`, function(err, data){
+		if (err) throw err;
+		// res.send(processData(req, res, data));
+		res.json(processData(req, res, data));
+	}); //END connection.query (mysql query)
 }); //END '/match' route
 
-
-function processData(req, res){
-	var bestMatch;
+function processData(req, res, data){
 	//query mysql db
-	connection.query(`SELECT * FROM photos;`, function(err, data){
-		//test case
-		var testObj = {
-			//ansel adams
-			url: 'https://s-media-cache-ak0.pinimg.com/originals/cc/a6/f0/cca6f04bad3e6079190bcb908106b770.jpg',
-			bw: 1,
-			photofilter: 0,
-			humor: 0,
-			tagword: 'nature'
-		};
+	var bestMatch;
 
-		//best match returned by this function
-		bestMatch = {
-			url: '',
-			bw: undefined,
-			photofilter: undefined,
-			humor: undefined,
-			differential: 1000
-		};
+	//test case
+	var testObj = {
+		//ansel adams
+		url: 'http://www.fullredneck.com/wp-content/uploads/2016/06/Funny-Trump-Snapchat-Filter-15.jpg',
+		bw: 0,
+		photofilter: 0,
+		humor: 0,
+		tagword: 'trump'
+	};
 
-		for (var i = 0; i < data.length; i++){
-			var sumOfDff = 0;
-			
-			var bwDiff = Math.abs(testObj.bw - data[i].bw);
-			var photofilterDiff = Math.abs(testObj.photofilter - data[i].photofilter);
-			var humorDiff = Math.abs(testObj.humor - data[i].humor);
+	//best match returned by this function
+	bestMatch = {
+		url: '',
+		bw: '',
+		photofilter: '',
+		humor: '',
+		differential: 1000
+	};
 
-			sumOfDff = sumOfDff + bwDiff + photofilterDiff + humorDiff;
-			if (sumOfDff < bestMatch.differential){
-				bestMatch['url'] = data[i].url;
-				bestMatch['bw'] = data[i].bw;
-				bestMatch['photofilter'] = data[i].photofilter;
-				bestMatch['humor'] = data[i].humor;
-				bestMatch['differential'] = sumOfDff;
-			}
-		}//END for loop
-	}); //END connection.query (mysql query)
-	
+	// var differential = 1000;
 
+	for (var i = 0; i < data.length; i++){
+		var sumOfDff = 0;
+		
+		var bwDiff = Math.abs(testObj.bw - data[i].bw);
+		var photofilterDiff = Math.abs(testObj.photofilter - data[i].photofilter);
+		var humorDiff = Math.abs(testObj.humor - data[i].humor);
+
+		sumOfDff = sumOfDff + bwDiff + photofilterDiff + humorDiff;
+		if (sumOfDff < bestMatch.differential){
+			bestMatch['url'] = data[i].url;
+			bestMatch['bw'] = data[i].bw;
+			bestMatch['photofilter'] = data[i].photofilter;
+			bestMatch['humor'] = data[i].humor;
+			bestMatch['differential'] = sumOfDff;
+			// bestMatch = i;
+			// differential = bestMatch;
+		}
+	// console.log(data[bestMatch]);		
+	}//END for loop
 	return bestMatch;
 }//END processData()
 
 
-app.post('/upload', function(req, res){
-	connection.query('INSERT INTO photos (url, ')
-});
+// app.post('/upload', function(req, res){
+// 	connection.query('INSERT INTO photos (url, ')
+// });
 
 
 
