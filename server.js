@@ -106,6 +106,10 @@ function processData(req, res){
 }//END processData()
 
 
+app.post('/upload', function(req, res){
+	connection.query('INSERT INTO photos (url, ')
+});
+
 
 
 // //post route -> back to home
