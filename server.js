@@ -41,12 +41,15 @@ app.get('/', function(req,res) {
     });
 });
 
+app.post('/upload', function(req, res){
+	connection.query('INSERT INTO photos (url, ')
+});
 
 
 // //post route -> back to home
 // app.post('/create', function(req, res) {
 
-//     //test it
+//     //test ift
 //     //console.log('You sent, ' + req.body.wish);
 
 //     //test it
