@@ -1,3 +1,11 @@
+body {
+    width: 100%;
+    padding: 0px;
+    margin: 0 auto;
+    overflow: auto;
+    line-height: 25px;
+    background-color: black;
+}
 * {
 	position: relative;
 	box-sizing: border-box;
@@ -5,4 +13,28 @@
 
 .parallax-img {
 	width: 100%;
+}
+
+.modal {
+	border-radius: 3px;
+	background: rgb(105, 105, 105);
+    background: rgba(105, 105, 105, .5) !important;  
+    /*background-color: red; */
+}
+
+#logo {
+	width: 100px;
+	height: 90px;
+}
+
+.nav-wrapper {
+	background: rgb(105, 105, 105);
+	background: rgba(105, 105, 105, .5) !important;
+	border-bottom-color: 2px solid snow;
+}
+
+#idBtn {
+		background: rgb(105, 105, 105);
+	background: rgba(105, 105, 105, .5) !important;
+
 }

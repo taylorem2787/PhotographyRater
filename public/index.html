@@ -10,7 +10,7 @@
 		  crossorigin="anonymous"></script>
 
 		<!-- STYLE SHEETS -->
-		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="css/style.css">
 
 		<!--Import Google Icon Font-->
 		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -29,43 +29,91 @@
 
 	 	 <!-- JS files -->
 		<script src="../app/app.js"></script>
-
-	    
     </head>
-
-
-
 <body>
+	 <div class="navbar-fixed">
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="brand-logo">ProjectName</a>
+			<a href="#" class="brand-logo"><img id="logo" src="img/iris.png"></a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="profile.html">Profile</a></li>
 					<li><a href="collapsible.html">Login</a></li>
+					<!-- Modal Trigger -->
+					<li><a class="waves-effect waves-light btn" id="idBtn" href="#modal1">Register</a></li>
 				</ul>
 		</div>
 	</nav>
-
-    
-	<div class="parallax-container">
-		<div class="parallax"><img class="parallax-img" src="img/parallax1.jpg"></div>
 	</div>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      	<h4>Welcome to Iris</h4>
+      	<p>Let's get started!</p>
+	      	<div class="input-field col s12 m6">
+    		<select class="icons">
+      			<option value="" disabled selected>Choose your option</option>
+      			<option value="" data-icon="images/sample-1.jpg" class="circle">example 1</option>
+      			<option value="" data-icon="images/office.jpg" class="circle">example 2</option>
+      			<option value="" data-icon="images/yuna.jpg" class="circle">example 1</option>
+    		</select>
+    <label>Images in select</label>
+  </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
 
+
+ <!-- PARALLAX START -->
+	<div class="parallax-container">
+		<!-- PARALLAX SECTION 1 -->
+		<div class="parallax"><img class="parallax-img" src="img/nyc.jpg"></div>
+	</div>
+	<div class="section white">
+		<div class="row container">
+			<h2 class="header">Iris is a photography rating app</h2>
+				<p class="grey-text text-darken-3 lighten-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur facilis sit sunt officiis quisquam magni, vero eveniet animi ducimus, asperiores, maiores ratione debitis totam consequatur numquam fugiat corrupti aliquid omnis!</p>
+		</div>
+	</div>
+	<!-- PARALLAX SECTION 2 -->
+	<div class="parallax-container">
+		<div class="parallax"><img class="parallax-img" src="img/model.png"></div>
+	</div>
+		<div class="section white">
+		<div class="row container">
+			<h2 class="header">Strictly Professional Photograpy.</h2>
+				<p class="grey-text text-darken-3 lighten-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur facilis sit sunt officiis quisquam magni, vero eveniet animi ducimus, asperiores, maiores ratione debitis totam consequatur numquam fugiat corrupti aliquid omnis!</p>
+		</div>
+	</div>
+	<!-- PARALLAX SECTION 3 -->
+	<div class="parallax-container">
+	<div class="parallax"><img class="parallax-img" src="img/italy.jpg"></div>
+	</div>
 	<div class="section white">
 		<div class="row container">
 			<h2 class="header">Photography Rating App</h2>
 				<p class="grey-text text-darken-3 lighten-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur facilis sit sunt officiis quisquam magni, vero eveniet animi ducimus, asperiores, maiores ratione debitis totam consequatur numquam fugiat corrupti aliquid omnis!</p>
 		</div>
 	</div>
-
+	<!-- PARALLAX SECTION 4 -->
 	<div class="parallax-container">
-		<div class="parallax"><img class="parallax-img" src="img/parallax2.jpg"></div>
+		<div class="parallax"><img class="parallax-img" src="img/nyc.jpg"></div>
 	</div>
+	<div class="section white">
+		<div class="row container">
+			<!-- <h2 class="header">Photography Rating App</h2> -->
+				<p class="grey-text text-darken-3 lighten-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur facilis sit sunt officiis quisquam magni, vero eveniet animi ducimus, asperiores, maiores ratione debitis totam consequatur numquam fugiat corrupti aliquid omnis!</p>
+		</div>
+	</div>
+
+<!-- PARALLAX END -->
+
 
 
 </body>
-
+</html>
 <!-- App -->
 <script type="text/javascript" src="../app/app.js"></script>
 
