@@ -36,7 +36,6 @@ app.get('/', function(req,res) {
 
     connection.query('SELECT * FROM photos;', function(err, data) {
       if (err) throw err;
-
       res.send(data);
     });
 });
