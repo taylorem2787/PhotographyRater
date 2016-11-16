@@ -3,7 +3,7 @@
 	box-sizing: border-box;
 }
 body {
-	background-color: black;
+	background-color: #fff;
 }
 
 .parallax-img img {
@@ -33,7 +33,7 @@ body {
     background-color: rgba(255,255,255,0.3);
 }
 
-nav, footer {
+nav, footer, .btn-large, .btn {
 	background-color: turquoise !important;
 	
 }
