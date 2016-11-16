@@ -2,6 +2,9 @@
 	position: relative;
 	box-sizing: border-box;
 }
+body {
+	background-color: black;
+}
 
 .parallax-img img {
 	position: absolute;
@@ -20,8 +23,9 @@
 
 .main-search {
 	margin-top: 50px;
-	background-color: #fff;
-    background-color: rgba(255,255,255,0.5);
+
+    /*background-color: rgba(255,255,255,0.5);*/
+    border-radius: 10px;
 }
 
 .main-intro {
@@ -29,6 +33,10 @@
     background-color: rgba(255,255,255,0.5);
 }
 
+nav {
+	background-color: turquoise !important;
+	
+}
 #navbar {
 	position: fixed;
 	width: 100%;
@@ -36,7 +44,8 @@
 	top: 0;
 	z-index: 100;
 	border-top: 0;
-	background-color: #c62828;
+	/*background: rgb(105, 105, 105);*/
+	background: rgba(105, 105, 105, .5) !important;
 	width: 100%;
 	height: 56px;
 }
