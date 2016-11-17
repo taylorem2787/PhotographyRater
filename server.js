@@ -114,12 +114,21 @@ function processData(req, res, data){
 //'colorCallback', which uses dominant-color npm package to identify rgb values of the dominant color in a photo
 //'colorCallback' is function 'queryForDominantColor()'
 
+// 'https://images.pexels.com/photos/12064/pexels-photo-12064.jpeg?h=350&auto=compress',
+		
+
 function findColorUploadToDb(colorCallback){
 	var photosArray = [
-	'https://images.pexels.com/photos/173523/pexels-photo-173523.jpeg?h=350&auto=compress',
-	'https://images.pexels.com/photos/29553/pexels-photo.jpg?h=350&auto=compress',
-	'https://images.pexels.com/photos/106162/wheat-wheat-spike-wheat-field-cornfield-106162.jpeg?h=350&auto=compress&cs=tinysrgb',
-	'https://images.pexels.com/photos/5412/water-blue-ocean.jpg?h=350&auto=compress&cs=tinysrgb',
+		'https://images.pexels.com/photos/205321/pexels-photo-205321.png?h=350&auto=compress&cs=tinysrgb',
+		'https://images.pexels.com/photos/578/sea-black-and-white-ocean-boats.jpg?h=350&auto=compress',
+		'https://images.pexels.com/photos/9143/pexels-photo-9143.jpeg?h=350&auto=compress&cs=tinysrgb',
+		'https://images.pexels.com/photos/3164/sea-black-and-white-water-ocean.jpg?h=350&auto=compress',
+		'https://images.pexels.com/photos/6663/desk-white-black-header.jpg?h=350&auto=compress',
+		'https://images.pexels.com/photos/177567/pexels-photo-177567.jpeg?h=350&auto=compress',
+		'https://images.pexels.com/photos/6577/pexels-photo.jpeg?h=350&auto=compress&cs=tinysrgb',
+		'https://images.pexels.com/photos/173434/pexels-photo-173434.jpeg?h=350&auto=compress',
+		'https://images.pexels.com/photos/34490/keyboard-computer-keys-white.jpg?h=350&auto=compress',
+		'https://images.pexels.com/photos/29831/pexels-photo-29831.jpg?h=350&auto=compress'
 	 ];
 
 	for (var i = 0; i < photosArray.length; i++){
@@ -156,15 +165,22 @@ function queryForDominantColor(photoURL){
 
 	dominantColor(photoURL, {format: 'rgb'}, function(err, color){
 
-	  for (var j = 0; j < color.length; j++){
-	  	if (Number(color[j])> dominant) dominant = color[j];
+	  if ((color[0] === color[1]) && (color[1] === color[2])){
+	  	dominantC = 'bw';
+	  }
+
+	  else {
+	  	for (var j = 0; j < color.length; j++){
+	  	  if (Number(color[j])> dominant) dominant = color[j];
+		}
+		  
+	    indexOfDominant = color.indexOf(dominant);
+
+	    if (indexOfDominant == 0) dominantC = 'red';
+	    else if (indexOfDominant == 1) dominantC = 'green';
+	    else if (indexOfDominant == 2) dominantC = 'blue';
 	  }
 	  
-	  indexOfDominant = color.indexOf(dominant);
-
-	  if (indexOfDominant == 0) dominantC = 'red';
-	  else if (indexOfDominant == 1) dominantC = 'green';
-	  else if (indexOfDominant == 2) dominantC = 'blue';
 	  // console.log(indexOfDominant);
 
 	  // console.log(photoURL);
@@ -193,29 +209,6 @@ function addPhotoToDb(infoObj){
 }	
 
 //add photo entries to mysql/jaws db
-// findColorUploadToDb(queryForDominantColor, addPhotoToDb);
+findColorUploadToDb(queryForDominantColor, addPhotoToDb);
 
 
-
-
-
-
-
-
-// //post route -> back to home
-// app.post('/create', function(req, res) {
-
-//     //test ift
-//     //console.log('You sent, ' + req.body.wish);
-
-//     //test it
-//     //res.send('You sent, ' + req.body.wish)
-
-//     connection.query('INSERT INTO wishes (wish) VALUES (?)', [req.body.wish], function(err, result) {
-//       if (err) throw err;
-
-//       res.redirect('/');
-//     });
-
-
-// });
