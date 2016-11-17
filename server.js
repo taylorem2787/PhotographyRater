@@ -64,6 +64,8 @@ app.get('/match', function(req, res){
 	}); //END connection.query (mysql query)
 }); //END '/match' route
 
+
+//function written as a test to find the best match. will return to this later. not used for now.
 function processData(req, res, data){
 	//query mysql db
 	var bestMatch;
@@ -112,38 +114,20 @@ function processData(req, res, data){
 //master function that uploads new photos to the mysql db
 //this function uses a callbackfunction
 //'colorCallback', which uses dominant-color npm package to identify rgb values of the dominant color in a photo
-//'colorCallback' is function 'queryForDominantColor()'
-
-// 'https://images.pexels.com/photos/12064/pexels-photo-12064.jpeg?h=350&auto=compress',
-		
-
+//'colorCallback' argument is function 'queryForDominantColor()'
+//queryForDominantColor(), in turn, calls addPhotoToDb(), which uploads photo info to mysql db.		
 function findColorUploadToDb(colorCallback){
 	var photosArray = [
-		'https://images.pexels.com/photos/205321/pexels-photo-205321.png?h=350&auto=compress&cs=tinysrgb',
-		'https://images.pexels.com/photos/578/sea-black-and-white-ocean-boats.jpg?h=350&auto=compress',
-		'https://images.pexels.com/photos/9143/pexels-photo-9143.jpeg?h=350&auto=compress&cs=tinysrgb',
-		'https://images.pexels.com/photos/3164/sea-black-and-white-water-ocean.jpg?h=350&auto=compress',
-		'https://images.pexels.com/photos/6663/desk-white-black-header.jpg?h=350&auto=compress',
-		'https://images.pexels.com/photos/177567/pexels-photo-177567.jpeg?h=350&auto=compress',
-		'https://images.pexels.com/photos/6577/pexels-photo.jpeg?h=350&auto=compress&cs=tinysrgb',
-		'https://images.pexels.com/photos/173434/pexels-photo-173434.jpeg?h=350&auto=compress',
-		'https://images.pexels.com/photos/34490/keyboard-computer-keys-white.jpg?h=350&auto=compress',
-		'https://images.pexels.com/photos/29831/pexels-photo-29831.jpg?h=350&auto=compress'
+		
 	 ];
 
 	for (var i = 0; i < photosArray.length; i++){
+
 		//identify the dominant color in the photo, then identify which of r, g, or b is dominant in that color
 		//function call using npm package dominant-color
+
 		var photoURL= photosArray[i];
-		
-		// console.log('i is: ' + i);
-		// console.log(color) // ['91', '108', '110'] 
-		// console.log(photoURL);
-
-		
 		colorCallback(photoURL);
-		// console.log(infoObj);
-
 		
 	}//END for loop
 } //END findDominantColor()
@@ -152,33 +136,47 @@ function findColorUploadToDb(colorCallback){
 //this is a callback function: 'colorCallback' parameter in findColorUploadToDb()
 //this function 1. finds the rgb values of the dominant color in a photo, then
 //2. calls addPhotoToDb() to upload its url and color values to the mysql db.
+
+//An explanation of the color-related variables:
+//A. Every photo has a dominant color
+//B. The dominant color is broken down into its RGB components
+//C. of the RGB components, the largest value of the three is identified as 'dominantHue'
 function queryForDominantColor(photoURL){
+	//RGB values of the dominant color
 	var red;
 	var green;
 	var blue;
 
+	//default value of the dominant hue (R, G, B) of the dominant color in the photo
 	var dominant = 0;
+	//the index of the largest of the R, G, and B values
 	var indexOfDominant;
-	var dominantC;
+	//of R, G, B, the hue whose value is largest
+	var dominantHue;
 
+	//object containing the photo URL, as well as the dominant color's RGB values
 	var infoObj = {};
 
 	dominantColor(photoURL, {format: 'rgb'}, function(err, color){
-
+	  //'color' from callback function above is an array of RGB values of the dominant color
+	  //if color[0], color[1], and color[2], i.e. RGB values, are identical, it is a B&W photo
+	  //dominant color, or 'dominantC' is therefore identified as 'bw'
 	  if ((color[0] === color[1]) && (color[1] === color[2])){
 	  	dominantC = 'bw';
 	  }
 
+	  //otherwise, identify which of R, G, or B, is strongest of the dominant color
 	  else {
+	  	//loop through color array, and identify which element is largest, i.e. R, G, or B
 	  	for (var j = 0; j < color.length; j++){
 	  	  if (Number(color[j])> dominant) dominant = color[j];
 		}
-		  
+		//find the index of the largest value in the 'color' array
 	    indexOfDominant = color.indexOf(dominant);
-
-	    if (indexOfDominant == 0) dominantC = 'red';
-	    else if (indexOfDominant == 1) dominantC = 'green';
-	    else if (indexOfDominant == 2) dominantC = 'blue';
+	    //if index of largest value in the array is 0, the dominant hue is red. if 1, then green. if 2, blue.
+	    if (indexOfDominant == 0) dominantHue = 'red';
+	    else if (indexOfDominant == 1) dominantHue = 'green';
+	    else if (indexOfDominant == 2) dominantHue = 'blue';
 	  }
 	  
 	  // console.log(indexOfDominant);
@@ -188,7 +186,7 @@ function queryForDominantColor(photoURL){
 	  infoObj['red'] = color[0];
 	  infoObj['green'] = color[1];
 	  infoObj['blue'] = color[2];
-	  infoObj['dominant'] = dominantC;
+	  infoObj['dominant'] = dominantHue;
 	  // console.log(infoObj.dominant);
 	  addPhotoToDb(infoObj);
 	  
@@ -209,6 +207,6 @@ function addPhotoToDb(infoObj){
 }	
 
 //add photo entries to mysql/jaws db
-findColorUploadToDb(queryForDominantColor, addPhotoToDb);
+// findColorUploadToDb(queryForDominantColor, addPhotoToDb);
 
 
