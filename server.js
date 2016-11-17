@@ -1,8 +1,5 @@
-var faker = require('faker');
-
 //imported modules for extracting dominant color from an image
 var dominantColor   = require('dominant-color');
-
 
 var mysql = require('mysql');
 //installing npm module 'express'
@@ -125,7 +122,6 @@ function findColorUploadToDb(colorCallback){
 
 		//identify the dominant color in the photo, then identify which of r, g, or b is dominant in that color
 		//function call using npm package dominant-color
-
 		var photoURL= photosArray[i];
 		colorCallback(photoURL);
 		
@@ -162,7 +158,7 @@ function queryForDominantColor(photoURL){
 	  //if color[0], color[1], and color[2], i.e. RGB values, are identical, it is a B&W photo
 	  //dominant color, or 'dominantC' is therefore identified as 'bw'
 	  if ((color[0] === color[1]) && (color[1] === color[2])){
-	  	dominantC = 'bw';
+	  	dominantHue = 'bw';
 	  }
 
 	  //otherwise, identify which of R, G, or B, is strongest of the dominant color
@@ -182,27 +178,29 @@ function queryForDominantColor(photoURL){
 	  // console.log(indexOfDominant);
 
 	  // console.log(photoURL);
+
+	  //properties of the infoObj, which will be added to the mysql db
 	  infoObj['url'] = photoURL;
 	  infoObj['red'] = color[0];
 	  infoObj['green'] = color[1];
 	  infoObj['blue'] = color[2];
 	  infoObj['dominant'] = dominantHue;
 	  // console.log(infoObj.dominant);
-	  addPhotoToDb(infoObj);
-	  
+
+	  //this function adds entries to the 'photo' table of the mysql db
+	  addPhotoToDb(infoObj);  
 	}); //END dominantColor
-	
 }
 
 //this function is called by queryDominantColor();
 //upload info about new photos to mysql db
+//parameter 'infoObj' is obtained from queryForDominantColor()
 function addPhotoToDb(infoObj){
-	// var url = 'https://images.pexels.com/photos/173523/pexels-photo-173523.jpeg?h=350&auto=compress';
+
 	var queryString = 'INSERT INTO photos (url, red, green, blue, dominant) VALUES (?, ?, ?, ?, ?)';
 	connection.query(queryString, [infoObj.url, infoObj.red, infoObj.green, infoObj.blue, infoObj.dominant], function(err, data){
 		if (err) throw err;
 		console.log(data);
-		// console.log('success');
 	});
 }	
 
