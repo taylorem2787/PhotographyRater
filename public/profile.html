@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Photography Rating App</title>
+    <!-- jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">      
+    <!-- STYLE SHEETS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <!-- JQuery Web Pop-over -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
+    <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
+
+    <!-- JS files -->
+    <script src="../app/app.js"></script>     
+    </head>
+<body>
+
+<!-- ===============================NAV===================================== -->
+  
+    <nav class="nav-extended">
+    <div class="nav-wrapper"><img class="logo" src="img/iris.png">
+      <a href="#" class="brand-logo"></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a id="explore" href="explore.html">Explore</a></li>
+          <li><a id="profile" href="profile.html">Profile</a></li>
+          <li><a id="login" href="collapsible.html">Login</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+          <li><a id="explore" href="explore.html">Explore</a></li>
+          <li><a id="profile" href="profile.html">Profile</a></li>
+          <li><a id="login" href="collapsible.html">Login</a></li>
+      </ul>
+      <div class="extended">
+      <ul class="tabs tabs-transparent black">
+        <li class="tab"><a href="#test1">My Profile</a></li>
+        <li class="tab"><a href="#test2">Uploads</a></li>
+        <li class="tab "><a href="#test3">Disliked Photos</a></li>
+        <li class="tab"><a href="#test4">Settings</a></li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+<!--   <div id="test1" class="col s12">My Profile</div>
+  <div id="test2" class="col s12">Liked Photos</div>
+  <div id="test3" class="col s12">Disliked</div>
+  <div id="test4" class="col s12">Uploaded</div> -->
+
+  <!-- ======================Login================================= -->
+    <div id="login-form" class="webui-popover-content center-align">
+      <form class="login-form" onsubmit="return false">
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">person outline</i>
+            <input class="validate" id="email" type="email">
+            <label for="email" data-error="wrong" data-success="right" class="center-align">Email</label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock outline</i>
+            <input id="password" type="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">          
+          <div class="input-field col s12 m12 l12  login-text">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Remember me</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <button type="submit" class="btn waves-effect waves-light col s12 turquoise">Sign In</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small"><a href="#" id="register">Register Now!</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
+          </div>          
+        </div>
+
+      </form>
+    </div>
+    <!-- ======================LOGIN END================================= -->
+
+    <!-- ======================IMAGE CARDS================================= -->
+    <div class="container-profile">
+    <br>
+    <!-- ROW ONE -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="card  z-depth-8 transparent darken-5">
+            <div class="card-image"><img src="img/nyc1.jpg"></div>
+            <div class="card-action transparent">
+              <i class="material-icons" id="like">add</i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+         <div class="card transparent">
+            <div class="card-image"><img src="img/nyc1.jpg"></div>
+            <div class="card-action transparent">
+              <i class="material-icons" id="like">add</i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+         <div class="card transparent">
+            <div class="card-image"><img src="img/nyc1.jpg"></div>
+            <div class="card-action transparent">
+              <i class="material-icons" id="like">add</i>
+            </div>
+          </div>
+        </div>
+
+      <!-- ROW TWO -->
+
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="card transparent">
+            <div class="card-image"><img src="img/nyc1.jpg"></div>
+            <div class="card-action transparent">
+              <i class="material-icons" id="like">add</i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="card transparent">
+            <div class="card-image"><img src="img/nyc1.jpg"></div>
+            <div class="card-action transparent">
+              <i class="material-icons" id="like">add</i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="card transparent">
+            <div class="card-image"><img src="img/nyc1.jpg"></div>
+            <div class="card-action transparent">
+              <i class="material-icons" id="like">add</i>
+            </div>
+          </div>
+        </div> <!-- row end -->
+      
+      </div> <!-- container profile end -->
+      <!-- SEARCH BAR -->
+<!--          <div class="row">
+              <div class="col s12"></div>
+              <nav>
+                  <div class="nav-wrapper main-search">
+                      <form id="search-bar" onsubmit="return false">
+                  <div class="nav-wrapper main-search">
+                      <form id="search-bar" novalidate>
+                          <div class="input-field">
+                              <input id="search" type="search" required>
+                              <label for="search"><i class="material-icons">search</i></label>
+                              <i class="material-icons done" id="submit-button">done</i>
+                          </div>
+                      </form>
+                  </div>
+             </nav>
+          </div>  --><!-- End of search bar -->
+
+  <div class="parallax-container" id="parallax-profile">
+  <div class="section">
+    <div class="row">
+          <div class="col 12 m4">
+        <div class="parallax"><img class="parallax-img profile" src="img/fruit.jpeg"></div>
+      </div>
+      <div class="col 12 m4">
+        <div class="parallax"><img class="parallax-img profile" src="img/brick.jpeg"></div>
+      </div>
+      <div class="col 12 m4">
+        <div class="parallax"><img class="parallax-img profile" src="img/ocean.jpeg"></div>
+      </div>
+    </div>
+    </div>
+  </section>
+  </div>
+  
+<div class="section">
+      <div class="row">
+      <div class="col 12 s4">
+        <div class="parallax"><img class="parallax-img profile" src="img/paint.jpg"></div>
+      </div>
+      <div class="col 12 s4">
+        <div class="parallax"><img class="parallax-img profile" src="img/jellyfish.jpeg"></div>
+      </div>
+      <div class="col 12 s4">
+        <div class="parallax"><img class="parallax-img profile" src="img/flower-profile.jpeg"></div>
+      </div>
+      </div>
+</div>
+      </section>
+      </div> 
+
+
+      
+<!-- =================================FOOTER================================== -->
+  <!-- STICKY FOOTER -->
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Iris</h5>
+            <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus possimus optio dicta cumque harum! Blanditiis culpa obcaecati voluptatibus voluptatem tenetur aliquam quod est rerum in? Rem exercitationem officiis nisi, obcaecati?</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Developer GitHub</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Developer GitHub</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Developer GitHub</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Developer GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2016 Iris
+        <a class="grey-text text-lighten-4 right" href="#!">Project GitHub</a>
+        </div>
+        </div>
+      </div> <!-- container end -->
+    </footer>
+
+
+</body>
+
+<!-- App -->
+<script type="text/javascript" src="../app/app.js"></script>    
