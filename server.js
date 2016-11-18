@@ -139,8 +139,13 @@ app.get('/api', function(req,res) {
 	});
 });
 
-app.get('/api/nextImage', function(req, res) {
-	res.send(api.nextImage());
+app.get('/api/nextImage/:userId', function(req, res) {
+
+	const userId = req.params.userId;
+	api.nextImage(userId)
+	.then(function(data) {
+		res.send(data);
+	});
 });
 
 
