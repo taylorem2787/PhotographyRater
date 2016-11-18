@@ -1,30 +1,53 @@
 //imported modules for extracting dominant color from an image
-var dominantColor   = require('dominant-color');
+//============================================================
 
+//npm package to extract the most dominant color from a photo,
+//and break down the dominant color to RGB component values
+var dominantColor = require('dominant-color');
+//npm package for mysql queries
 var mysql = require('mysql');
-//installing npm module 'express'
+//npm server package
 var express = require('express');
+//npm package used for 
 var bodyParser = require('body-parser');
+//npm package to handle file pathways
+var path = require('path');
 
-//run express
+//npm package to store sensitive info, e.g. login parameters
+require('dotenv').config();
+
+//parameters to establish mysql connection
+var connection = mysql.createConnection({
+	host: process.env.dbhost,
+	port: 3306,
+	user: process.env.dbuser,
+	password: process.env.dbpassword,
+	database: "ija2qhszw3zfbdpc",
+});
+
+//run express app
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-//Listener
+//app listener
 app.listen(PORT, function(){
 	console.log('Listening on port: ' + PORT);
 });
 
-app.use(bodyParser.urlencoded({ extended: false }));
+//express middleware for parsing info for http POST requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 //MySql/JawsDB login info
-var connection = mysql.createConnection({
-	host: "enqhzd10cxh7hv2e.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-	port: 3306,
-	user: "f1cjhf802q0by1mk",
-	password: "cf26j9otzoa42fea",
-	database: "ija2qhszw3zfbdpc",
-});
+// var connection = mysql.createConnection({
+// 	host: "enqhzd10cxh7hv2e.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+// 	port: 3306,
+// 	user: "f1cjhf802q0by1mk",
+// 	password: "cf26j9otzoa42fea",
+// 	database: "ija2qhszw3zfbdpc",
+// });
 
 //establish connection to mysql/jawsdb
 connection.connect(function(err){
@@ -113,9 +136,9 @@ function processData(req, res, data){
 //'colorCallback', which uses dominant-color npm package to identify rgb values of the dominant color in a photo
 //'colorCallback' argument is function 'queryForDominantColor()'
 //queryForDominantColor(), in turn, calls addPhotoToDb(), which uploads photo info to mysql db.		
-function findColorUploadToDb(colorCallback){
+function findColorAndUploadToDb(colorCallback){
 	var photosArray = [
-		
+
 	 ];
 
 	for (var i = 0; i < photosArray.length; i++){
@@ -156,7 +179,7 @@ function queryForDominantColor(photoURL){
 	dominantColor(photoURL, {format: 'rgb'}, function(err, color){
 	  //'color' from callback function above is an array of RGB values of the dominant color
 	  //if color[0], color[1], and color[2], i.e. RGB values, are identical, it is a B&W photo
-	  //dominant color, or 'dominantC' is therefore identified as 'bw'
+	  //dominant color, or 'dominantHue' is therefore identified as 'bw'
 	  if ((color[0] === color[1]) && (color[1] === color[2])){
 	  	dominantHue = 'bw';
 	  }
@@ -205,6 +228,6 @@ function addPhotoToDb(infoObj){
 }	
 
 //add photo entries to mysql/jaws db
-// findColorUploadToDb(queryForDominantColor, addPhotoToDb);
+// findColorAndUploadToDb(queryForDominantColor); 
 
 
