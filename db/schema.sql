@@ -32,3 +32,16 @@ CREATE TABLE allusers
 	totalUploads int,
 	PRIMARY KEY (id)
 );
+
+INSERT INTO allusers (username, password, email) VALUES ('hanbom', 'mickey', 'tmesis3@gmail.com');
+
+
+/*
+use ija2qhszw3zfbdpc;
+
+select * from photos;
+
+delete 
+from photos
+where id >= 273 AND id <= 300;
+*/

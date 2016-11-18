@@ -3,19 +3,15 @@
 
 //npm package to extract the most dominant color from a photo,
 //and break down the dominant color to RGB component values
-var dominantColor   = require('dominant-color');
-
+var dominantColor = require('dominant-color');
 //npm package for mysql queries
 var mysql = require('mysql');
-
 //npm server package
 var express = require('express');
-
 //npm package used for 
 var bodyParser = require('body-parser');
-//express middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-
+//npm package to handle file pathways
+var path = require('path');
 
 //npm package to store sensitive info, e.g. login parameters
 require('dotenv').config();
@@ -29,7 +25,6 @@ var connection = mysql.createConnection({
 	database: "ija2qhszw3zfbdpc",
 });
 
-
 //run express app
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -39,6 +34,11 @@ app.listen(PORT, function(){
 	console.log('Listening on port: ' + PORT);
 });
 
+//express middleware for parsing info for http POST requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 //MySql/JawsDB login info
 // var connection = mysql.createConnection({
@@ -179,7 +179,7 @@ function queryForDominantColor(photoURL){
 	dominantColor(photoURL, {format: 'rgb'}, function(err, color){
 	  //'color' from callback function above is an array of RGB values of the dominant color
 	  //if color[0], color[1], and color[2], i.e. RGB values, are identical, it is a B&W photo
-	  //dominant color, or 'dominantC' is therefore identified as 'bw'
+	  //dominant color, or 'dominantHue' is therefore identified as 'bw'
 	  if ((color[0] === color[1]) && (color[1] === color[2])){
 	  	dominantHue = 'bw';
 	  }
