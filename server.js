@@ -16,6 +16,8 @@ var path = require('path');
 //npm package to store sensitive info, e.g. login parameters
 require('dotenv').config();
 
+var api = require('./api');
+
 //parameters to establish mysql connection
 var connection = mysql.createConnection({
 	host: process.env.dbhost,
@@ -57,6 +59,77 @@ connection.connect(function(err){
 	console.log('connected as ID ' + connection.threadId);
 });
 
+// Static file routes
+app.get('/', function(req,res) {
+	res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+app.get('/css/:name', function(req, res) {
+	var fileName = req.params.name;
+	var options = {
+		root: __dirname + '/public/css/',
+		dotfiles: 'deny',
+		headers: {
+		    'x-timestamp': Date.now(),
+		    'x-sent': true
+		}
+	};
+
+	res.sendFile(fileName, options, function (err) {
+		if (err) {
+			console.log(err);
+			res.status(err.status).end();
+		}
+		else {
+			console.log('Sent:', fileName);
+		}
+	});
+});
+
+app.get('/img/:name', function(req, res) {
+	var fileName = req.params.name;
+	var options = {
+		root: __dirname + '/public/img/',
+		dotfiles: 'deny',
+		headers: {
+		    'x-timestamp': Date.now(),
+		    'x-sent': true
+		}
+	};
+
+	res.sendFile(fileName, options, function (err) {
+		if (err) {
+			console.log(err);
+			res.status(err.status).end();
+		}
+		else {
+			console.log('Sent:', fileName);
+		}
+	});
+});
+
+app.get('/app/:name', function(req, res) {
+	var fileName = req.params.name;
+	var options = {
+		root: __dirname + '/app/',
+		dotfiles: 'deny',
+		headers: {
+		    'x-timestamp': Date.now(),
+		    'x-sent': true
+		}
+	};
+
+	res.sendFile(fileName, options, function (err) {
+		if (err) {
+			console.log(err);
+			res.status(err.status).end();
+		}
+		else {
+			console.log('Sent:', fileName);
+		}
+	});
+});
+
 
 //root get route. display entire api.
 app.get('/api', function(req,res) {
@@ -64,6 +137,10 @@ app.get('/api', function(req,res) {
 		if (err) throw err;
 		res.send(data);
 	});
+});
+
+app.get('/api/nextImage', function(req, res) {
+	res.send(api.nextImage());
 });
 
 
