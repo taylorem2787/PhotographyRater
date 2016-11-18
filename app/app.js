@@ -40,6 +40,17 @@ function openDisplay(id) {
 	}
 }
 
+// $('.logo').on('click', function() {
+// 	getImages();
+// })
+
+// AJAX call to the API displaying next image
+function getImages() {
+	$.get('/api/nextImage', function(result) {
+		console.log(result);
+	});
+}
+
 
 //CALLING FUNCTIONS: ==============================================================================================
 
