@@ -10,9 +10,27 @@ body {
 	position: relative;
 	box-sizing: border-box;
 }
-
-.parallax-img {
+.parallax-img img {
+	position: absolute;
+	background-position: 50% 210px !important;
 	width: 100%;
+	height: auto !important;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+.main-search {
+	margin-top: 50px;
+
+    /*background-color: rgba(255,255,255,0.5);*/
+    border-radius: 10px;
+}
+
+.main-intro {
+	background-color: #fff;
+    background-color: rgba(255,255,255,0.3);
 }
 
 .modal {
@@ -27,16 +45,16 @@ body {
 	height: 90px;
 }
 
-<<<<<<< Updated upstream
+
 .nav-wrapper {
 	background: rgb(105, 105, 105);
 	background: rgba(105, 105, 105, .5) !important;
 	border-bottom-color: 2px solid snow;
-=======
+}
 nav, footer, .btn-large, .btn {
 	background-color: turquoise !important;
-	
 }
+
 #navbar {
 	position: fixed;
 	width: 100%;
@@ -47,15 +65,26 @@ nav, footer, .btn-large, .btn {
 	background-color: turquoise !important;
 	width: 100%;
 	height: 56px;
->>>>>>> Stashed changes
 }
 
-#idBtn {
-		background: rgb(105, 105, 105);
-	background: rgba(105, 105, 105, .5) !important;
-
+#exploreBtn {
+/*	background: rgb(105, 105, 105);
+	background: rgba(105, 105, 105, .5) !important;*/
 }
 
+footer.page-footer {
+    margin-top: 0px;
+    background: rgba(105, 105, 105, .5) !important;
+}
+
+.logo{
+	width: 215px;
+	height: 75px;
+}
+.webui-popover {
+	background-color: #fff;
+    background-color: rgba(255,255,255,0.3);
+}
 /*==========================PROFILE.HTML=============================*/
 
 .tab a.active {
@@ -64,16 +93,11 @@ nav, footer, .btn-large, .btn {
 .parallax-img {
 	background: rgba(105, 105, 105, .5) !important;
 	max-width: 33%;
-	/*height: 100%;
-	max-height: 50%
-*/
+
 }
 
 .parallax-profile {
 	background: rgba(105, 105, 105, .5) !important;
-	/*max-height: : 600px;*/
-/*	height: 100%;
-	max-height: 50%*/
 }
 .extended{
 	border-top-color: 2 solid #fff !important;
@@ -81,6 +105,7 @@ nav, footer, .btn-large, .btn {
 
 .nav-extended{
 	background-image: url(../img/nav.png) !important;
+	background-size: cover;
 }
 
 #like {
