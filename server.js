@@ -13,6 +13,8 @@ var bodyParser = require('body-parser');
 //npm package to handle file pathways
 var path = require('path');
 
+var promise = require('promise');
+
 //npm package to store sensitive info, e.g. login parameters
 require('dotenv').config();
 
@@ -163,8 +165,6 @@ app.get('/match/:user', function(req, res){
 	});
 });
 
-app.post('/adduser')
-
 
 //add a new user to mysql db
 //take values from registration form
@@ -205,19 +205,19 @@ function updateUserColors(color, userID){
 
 	switch(color) {
 		case 'red':
-			queryString = `UPDATE allusers SET red=red+3, green = green-1, blue=blue-1, bw=bw-1 WHERE id=` + `'` + userID+ `;'`;
+			queryString = `UPDATE allusers SET red=red+30, green = green-10, blue=blue-10, bw=bw-10 WHERE id=` + `'` + userID+ `;'`;
 			break;
 
 		case 'green':
-			queryString = `UPDATE allusers SET green=green+3, red = red-1, blue=blue-1, bw=bw-1 WHERE id=` + `'` + userID+ `;'`;
+			queryString = `UPDATE allusers SET green=green+30, red = red-10, blue=blue-10, bw=bw-10 WHERE id=` + `'` + userID+ `;'`;
 			break;
 
 		case 'blue':
-			queryString = `UPDATE allusers SET blue=blue+3, green = green-1, red=red-1, bw=bw-1 WHERE id=` + `'` + userID+ `;'`;
+			queryString = `UPDATE allusers SET blue=blue+30, green = green-10, red=red-10, bw=bw-10 WHERE id=` + `'` + userID+ `;'`;
 			break;
 
 		case 'bw':
-			queryString = `UPDATE allusers SET bw=bw+3, green = green-1, blue=blue-1, red=red-1 WHERE id=` + `'` + userID+ `;'`;
+			queryString = `UPDATE allusers SET bw=bw+30, green = green-10, blue=blue-10, red=red-10 WHERE id=` + `'` + userID+ `;'`;
 	}
 
 	connection.query(queryString, function(err, data){
@@ -254,6 +254,7 @@ function viewUsers(){
 		});
 	});
 }
+viewUsers();
 
 //function to return photos that meet exceed a certain RGB value
 function findRed(redValue){
@@ -281,7 +282,7 @@ function resetMemberColors(){
 	});
 }
 
-resetMemberColors();
+
 
 //from thumbnail photo URL, return URL of uncompressed photo
 //callback function here is shortenURL()
@@ -294,7 +295,7 @@ function largePhotoURL(photoID, callback){
 		callback(url);		
 	});	
 } 
-//callback function in largePHotoURL()
+//callback function in largePhotoURL()
 function shortenURL(url){
 	var url = url;
 	//index of '?', which is the beginning of the URL extension for compressed photos	
@@ -305,6 +306,23 @@ function shortenURL(url){
 	console.log(uncompressedURL);
 }
 
+//return current RGB profile of the user
+//result will be displayed on the front end
+//as evolving background color
+//corresponding get route
+app.get('/userRGB/:userid', function(req, res){
+	var rgbProfile ={};
+	var userid = req.params.userid;
+	var queryString = `SELECT * FROM allusers WHERE id=?;`;
+	connection.query(queryString, [userid], function(err, data){
+		rgbProfile.red = data[0].red;
+		rgbProfile.green = data[0].green;
+		rgbProfile.blue = data[0].blue;
+		rgbProfile.bw = data[0].bw;
+		console.log(rgbProfile);
+		res.send(rgbProfile);
+	});	
+});
 
 
 //Match algorithm
