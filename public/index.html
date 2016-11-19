@@ -29,8 +29,8 @@
 <body>
 
 	<!-- Nav Bar -->
-	<nav>
-		<div class="nav-wrapper" id="navbar"><img class="logo" src="img/iris.png">
+	<nav class="teal accent-2">
+		<div class="nav-wrapper teal accent-2" id="navbar"><img class="logo" src="img/iris.png">
 			<a id="home" href="index.html" class="brand-logo"> </a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a id="explore" href="explore.html">Explore</a></li>
@@ -65,7 +65,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <button type="submit" class="btn waves-effect waves-light col s12 turquoise">Sign In</button>
+            <button type="submit" class="btn waves-effect waves-light col s12 teal accent-2">Sign In</button>
           </div>
         </div>
         <div class="row">
@@ -81,47 +81,48 @@
       </form>
     </div>
 
-	<!-- Modal -->
-  <div id="modal1" class="modal modal-fixed-footer">
-		<div class="modal-content">
- <div class="slider">
-    <ul class="slides">
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
-        <div class="caption left-align">
-          <h3>Left Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
-        <div class="caption right-align">
-          <h3>Right Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-    </ul>
-  </div>
-  			</div>
-    	</div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-    </div>
-  </div>
+				<!-- Modal -->
+		<div id="modal1" class="modal">
+			<div class="modal-content">
+			 <div class="slider">
+				<div class="row">
+					<div class="col s12 m6 l12">
+						<div class="card-panel z-depth-5">
+							<h4 class="center"> color<bold>me</bold> Registration</h4>	 
+						<div class="row">
+							<form class="col s12 m12">
+							   	<div class="row">
+							    	<div class="input-field col s12 m12">
+							        	<i class="mdi-action-account-circle prefix"></i>
+							        	<input id="icon_prefix" type="text" class="validate">
+							        	<label for="icon_prefix">Username</label>
+							      	</div>
+							      
+							      	<div class="input-field col s12 m12">
+							        	<i class="mdi-communication-email prefix"></i>
+								        <input id="icon_email" type="email" class="validate">
+							        	<label for="icon_email">Your Email</label>
+							      	</div>
+							      
+							        <div class="input-field col s12 m12">
+							        	<i class="fa fa-unlock-alt prefix"></i>
+							        	<input id="icon_password" type="password" class="validate">
+								        <label for="icon_password">Password</label>
+							      	</div>   
+							    </div>
+							</form>
+						</div><!--row-->
+						 <button class="btn waves-effect waves-light center teal accent-2" type="submit" name="action">Sign Up
+						    <i class="fa fa-sign-in right"></i>
+						  </button>
+							</div><!--card-->
+						</div><!--col-->
+					</div><!--row-->
+				</div><!--conatiner-->
+			</div> <!-- row end -->
+	  		</div> <!-- end slider -->
+	    	</div> <!-- mondal content end -->
+		</div> <!--  modal end -->
 
 
 	<div class="parallax-container">
@@ -156,7 +157,7 @@
 			            </div>
 			            <div class="card-action">
 			            <!-- Modal Link -->
-			              <a href="#modal1" id="registration-modal">Click here to register!</a>
+			              <a class="-text" href="#modal1" id="registration-modal">Click here to register!</a>
 			            </div>
 			        </div>
 	        	</div>
@@ -168,7 +169,7 @@
 		<div class="row container">
 			<h2 class="header">Photography Rating App</h2>
 				<p class="grey-text text-darken-3 lighten-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur facilis sit sunt officiis quisquam magni, vero eveniet animi ducimus, asperiores, maiores ratione debitis totam consequatur numquam fugiat corrupti aliquid omnis!</p>
-			<a class="waves-effect waves-light btn-large"><i class="material-icons left">visibility</i>Explore</a>
+			<a class="waves-effect waves-light btn-large teal accent-2"><i class="material-icons left">visibility</i>Explore</a>
 		</div>
 
 		<!-- Photos display here -->
