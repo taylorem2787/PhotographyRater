@@ -233,6 +233,17 @@ function findRed(redValue){
 
 
 
+//Reset alluser table to default value of 25 for each color
+function resetMemberColors(){
+	var queryString = `UPDATE allusers SET red=25, green=25, blue=25, bw=25 WHERE id BETWEEN 1 AND 1000000`;
+	connection.query(queryString, function(err, data){
+		if (err) throw err;
+		console.log(data);
+	});
+}
+
+
+
 //Match algorithm
 //==============================================
 app.get('/match', function(req, res){
