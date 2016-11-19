@@ -163,7 +163,17 @@ app.get('/match/:user', function(req, res){
 	});
 });
 
-app.post('/adduser')
+
+//add a new user to mysql db
+//take values from registration form
+//update mysql db using addMember()
+app.post('/adduser', function(req, res){
+	var username = req.body.username;
+	var password = req.body.password;
+	var email = req.body.email;
+
+	addMember(username, password, email);
+});
 
 
 
@@ -199,13 +209,10 @@ function updateUserColors(color, userID){
 
 
 
-function addMember(login, pwd, emailAddy){
-	var uName = login;
-	var pWord = pwd;
-	var eMail = emailAddy;
+function addMember(username, password, email){
 
 	var queryString = `INSERT INTO allusers (username, password, email) VALUES (?, ?, ?);`;
-	connection.query(queryString, [uName, pWord, eMail], function(err, data){
+	connection.query(queryString, [username, password, email], function(err, data){
 		if (err) throw err;
 
 		console.log(data);
@@ -222,7 +229,7 @@ function viewUsers(){
 	});
 }
 
-//function to return photos that meet a color criterion
+//function to return photos that meet exceed a certain RGB value
 function findRed(redValue){
 	app.get('/red', function(req,res) {
 		connection.query(`SELECT * FROM photos;`, function(err, data){
@@ -269,6 +276,22 @@ function shortenURL(url){
 	console.log(uncompressedURL);
 }
 
+
+//default function to display photos randomly
+function displayPhotos(callback){
+	var queryString = `SELECT * FROM photos;`;
+	connection.query(queryString, function(err, data){
+		var photoCount = data.length;
+		for (var i = 0; i < 9; i++){
+			var random = Math.floor((Math.random() * photoCount));
+			var url = data[random].url
+			console.log(url);
+			// shortenURL(url);
+		}
+	});
+}
+
+displayPhotos();
 
 //Match algorithm
 //==============================================
