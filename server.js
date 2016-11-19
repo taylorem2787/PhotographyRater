@@ -192,7 +192,7 @@ function updateUserColors(color, userID){
 	});
 }
 
-updateUserColors('bw', 1);
+// updateUserColors('bw', 1);
 
 function addMember(login, pwd, emailAddy){
 	var uName = login;
@@ -217,7 +217,19 @@ function viewUsers(){
 	});
 }
 
-
+//function to return photos that meet a color criterion
+function findRed(redValue){
+	app.get('/red', function(req,res) {
+		connection.query(`SELECT * FROM photos;`, function(err, data){
+			if (err) throw err;
+			for (var i = 0; i < data.length; i++){
+				if (data[i].red > redValue){
+					res.write(data[i].url);
+				}	
+			}	//END for loop
+		}); //END mysql query
+	}); //END route
+}  //END findRed()
 
 
 
