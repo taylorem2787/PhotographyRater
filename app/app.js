@@ -9,11 +9,10 @@ $(document).ready(function(){
 	// Displays pop-over for username and password
 	$('#login').webuiPopover({url:'#login-form'});
 
-  // Enlarges liked pictures
+  // Material Box - Enlarges liked pictures
   $('.materialboxed').materialbox();
 
-
-
+  $('.slider').slider();
 
 }); // End of document.ready function
 
@@ -25,9 +24,9 @@ function openDisplay(id) {
 
 	switch(id) {
 
-		case 'registration':
+		case 'registration-modal':
 			console.log("opening registration modal");
-			$('#registration-modal').openModal();
+			$('#registration-modal').modal();
 
 			// After registration modal is closed, run calibration function
 			// $('#registration-modal').on("click", ".close-registration", function() {
@@ -44,6 +43,18 @@ function openDisplay(id) {
 			console.log('oops!');
 	}
 }
+ // Modal 
+$('.modal').modal();
+$('.modal-trigger').leanModal({
+  dismissible: true, // Modal can be dismissed by clicking outside of the modal
+  opacity: .7, // Opacity of modal background
+  in_duration: 300, // Transition in duration
+  out_duration: 200, // Transition out duration
+  starting_top: '4%', // Starting top style attribute
+  ending_top: '10%', // Ending top style attribute
+  }
+); //END MODAL
+
 
 $('.logo').on('click', function() {
 	var userId = 1;
@@ -60,3 +71,4 @@ function getImages(id) {
 
 //CALLING FUNCTIONS: ==============================================================================================
 
+openDisplay();
