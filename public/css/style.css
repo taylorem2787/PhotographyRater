@@ -21,6 +21,11 @@ body {
 	left: 0;
 }
 
+ .parallax-container {
+      height: 380px;
+    }
+
+
 .main-search {
 	margin-top: 50px;
 

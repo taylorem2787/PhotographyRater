@@ -12,6 +12,8 @@ $(document).ready(function(){
 	// EVENT LISTENERS: 
 	// Displays pop-over for username and password
 	$('#login').webuiPopover({url:'#login-form'});
+  // Enlarges liked pictures
+  $('.materialboxed').materialbox();
 
 
 
@@ -44,6 +46,8 @@ function openDisplay(id) {
 			console.log('oops!');
 	}
 }
+
+
 //MODAL TRIGGER==================================================================
 $('.modal').modal();
 $('.modal-trigger').leanModal({
@@ -58,7 +62,9 @@ $('.modal-trigger').leanModal({
 $('select').material_select();
 }); //END DOC READY
 
-
+  // $(document).ready(function(){
+  //   $('.materialboxed').materialbox();
+  // });
 
 //CALLING FUNCTIONS: ==============================================================================================
         // $("#exploreBtn").click( function()
