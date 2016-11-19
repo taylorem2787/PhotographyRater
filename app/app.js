@@ -65,8 +65,17 @@ $('.logo').on('click', function() {
 function getImages(id) {
 	$.get('/api/nextImage/' + id, function(result) {
 		console.log(result);
+
+		for (var i = 0; i < result.length; i++) {
+			var img = $('<img />', {src : result[i].url});
+
+			img.addClass('explore-image');
+			img.appendTo('.explore-display');
+		}
+
 	});
 }
+
 
 
 //CALLING FUNCTIONS: ==============================================================================================
