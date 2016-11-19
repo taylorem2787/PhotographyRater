@@ -100,4 +100,3 @@ var nextImage = function(id) {
 
 module.exports = nextImage;
 
-

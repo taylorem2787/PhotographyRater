@@ -1,4 +1,4 @@
-//imported modules for extracting dominant color from an image
+	//imported modules for extracting dominant color from an image
 //============================================================
 
 //npm package to extract the most dominant color from a photo,
@@ -148,10 +148,77 @@ app.get('/api/nextImage/:userId', function(req, res) {
 	});
 });
 
-
-app.post('/addmember', function(req, res){
-
+//Returns a specific user in the allusers table
+//route, where :user is a specific user in the allusers table
+app.get('/match/:user', function(req, res){
+	//req.params.user corresponds to ':user' in the route
+	var user = req.params.user;
+	var queryString = `SELECT * FROM allusers WHERE username='` + user + `';`;
+	connection.query(queryString, function(err, data){
+		if (err) throw err;
+		// console.log(data[0].id);
+		// res.send(data[0].id.toString());
+		return data[0].id;
+	});
 });
+
+
+
+//function to update a user's color value
+//will probably need one for each color
+function updateUserColors(color, userID){
+	var queryString; 
+
+	switch(color) {
+		case 'red':
+			queryString = `UPDATE allusers SET red=red+3, green = green-1, blue=blue-1, bw=bw-1 WHERE id=` + `'` + userID+ `;'`;
+			break;
+
+		case 'green':
+			queryString = `UPDATE allusers SET green=green+3, red = red-1, blue=blue-1, bw=bw-1 WHERE id=` + `'` + userID+ `;'`;
+			break;
+
+		case 'blue':
+			queryString = `UPDATE allusers SET blue=blue+3, green = green-1, red=red-1, bw=bw-1 WHERE id=` + `'` + userID+ `;'`;
+			break;
+
+		case 'bw':
+			queryString = `UPDATE allusers SET bw=bw+3, green = green-1, blue=blue-1, red=red-1 WHERE id=` + `'` + userID+ `;'`;
+	}
+
+	connection.query(queryString, function(err, data){
+		if (err) throw err;
+		console.log(data);
+	});
+}
+
+updateUserColors('bw', 1);
+
+function addMember(login, pwd, emailAddy){
+	var uName = login;
+	var pWord = pwd;
+	var eMail = emailAddy;
+
+	var queryString = `INSERT INTO allusers (username, password, email) VALUES (?, ?, ?);`;
+	connection.query(queryString, [uName, pWord, eMail], function(err, data){
+		if (err) throw err;
+
+		console.log(data);
+	});
+}
+
+
+function viewUsers(){
+	app.get('/members', function(req, res){
+		var queryString = `SELECT * FROM allusers`;
+		connection.query(queryString, function(err, data){
+			res.send(data);
+		});
+	});
+}
+
+
+
 
 
 //Match algorithm
