@@ -197,6 +197,7 @@ app.get('/photos', function(req, res){
 
 //function to update a user's color value
 //this function is called when the user clicks on a photo
+//'color' parameter should be the dominantHue of the clicked photo
 function updateUserColors(color, userID){
 	var queryString; 
 
@@ -260,6 +261,7 @@ function findRed(redValue){
 		}); //END mysql query
 	}); //END route
 }  //END findRed()
+
 
 
 
