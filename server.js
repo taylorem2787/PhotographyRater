@@ -148,8 +148,9 @@ app.get('/api/nextImage/:userId', function(req, res) {
 	});
 });
 
-//Returns a specific user in the allusers table
 //route, where :user is a specific user in the allusers table
+//Returns the user's ID in the allusers table
+
 app.get('/match/:user', function(req, res){
 	//req.params.user corresponds to ':user' in the route
 	var user = req.params.user;
@@ -163,9 +164,40 @@ app.get('/match/:user', function(req, res){
 });
 
 
+//add a new user to mysql db
+//take values from registration form
+//update mysql db using addMember()
+app.post('/adduser', function(req, res){
+	var username = req.body.username;
+	var password = req.body.password;
+	var email = req.body.email;
+
+	addMember(username, password, email);
+});
+
+
+//route to display photos completely randomly
+//for users who aren't logged in
+app.get('/photos', function(req, res){
+	var queryString = `SELECT * FROM photos;`;
+
+	connection.query(queryString, function(err, data){
+		var photoArray = [];
+		var photoCount = data.length;
+		for (var i = 0; i < 9; i++){
+			var random = Math.floor((Math.random() * photoCount));
+			var url = data[random].url
+			photoArray.push(url);
+			// shortenURL(url);
+		}
+		res.send(photoArray);
+	});
+
+});
 
 //function to update a user's color value
-//will probably need one for each color
+//this function is called when the user clicks on a photo
+//'color' parameter should be the dominantHue of the clicked photo
 function updateUserColors(color, userID){
 	var queryString; 
 
@@ -194,13 +226,12 @@ function updateUserColors(color, userID){
 
 // updateUserColors('bw', 1);
 
-function addMember(login, pwd, emailAddy){
-	var uName = login;
-	var pWord = pwd;
-	var eMail = emailAddy;
+
+
+function addMember(username, password, email){
 
 	var queryString = `INSERT INTO allusers (username, password, email) VALUES (?, ?, ?);`;
-	connection.query(queryString, [uName, pWord, eMail], function(err, data){
+	connection.query(queryString, [username, password, email], function(err, data){
 		if (err) throw err;
 
 		console.log(data);
@@ -217,7 +248,7 @@ function viewUsers(){
 	});
 }
 
-//function to return photos that meet a color criterion
+//function to return photos that meet exceed a certain RGB value
 function findRed(redValue){
 	app.get('/red', function(req,res) {
 		connection.query(`SELECT * FROM photos;`, function(err, data){
@@ -233,6 +264,7 @@ function findRed(redValue){
 
 
 
+
 //Reset alluser table to default value of 25 for each color
 function resetMemberColors(){
 	var queryString = `UPDATE allusers SET red=25, green=25, blue=25, bw=25 WHERE id BETWEEN 1 AND 1000000`;
@@ -241,6 +273,29 @@ function resetMemberColors(){
 		console.log(data);
 	});
 }
+
+//from thumbnail photo URL, return URL of uncompressed photo
+//callback function here is shortenURL()
+function largePhotoURL(photoID, callback){
+	var queryString = 'SELECT url FROM photos WHERE id=?';
+	connection.query(queryString, [photoID], function(err, data){
+		var url;
+		if (err) throw err;
+		url = data[0].url;
+		callback(url);		
+	});	
+} 
+//callback function in largePHotoURL()
+function shortenURL(url){
+	var url = url;
+	//index of '?', which is the beginning of the URL extension for compressed photos	
+	var indexOfQ = url.indexOf('?h');
+	console.log(indexOfQ);
+	//truncate URL, beginning with '?'
+	var uncompressedURL = url.substring(0, indexOfQ);
+	console.log(uncompressedURL);
+}
+
 
 
 
