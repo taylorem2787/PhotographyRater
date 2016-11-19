@@ -1,5 +1,7 @@
-//imported modules for extracting dominant color from an image
-//============================================================
+// ==============================================================================
+// DEPENDENCIES
+// Series of npm packages that we will use to give our server useful functionality
+// ==============================================================================
 
 //npm package to extract the most dominant color from a photo,
 //and break down the dominant color to RGB component values
@@ -25,7 +27,11 @@ var connection = mysql.createConnection({
 	database: "ija2qhszw3zfbdpc",
 });
 
-//run express app
+
+// ==============================================================================
+// EXPRESS CONFIGURATION
+// This sets up the basic properties for our express server 
+// ==============================================================================
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -58,7 +64,7 @@ connection.connect(function(err){
 });
 
 
-//root get route. display entire api.
+//route to display the entire photos table.
 app.get('/api', function(req,res) {
 	connection.query(`SELECT * FROM photos;`, function(err, data){
 		if (err) throw err;
@@ -68,8 +74,68 @@ app.get('/api', function(req,res) {
 
 
 app.post('/addmember', function(req, res){
-
+	connection.query('INSERT INTO allusers')
 });
+
+
+//function to return photos that meet a color criterion
+function findRed(redValue){
+	app.get('/red', function(req,res) {
+		connection.query(`SELECT * FROM photos;`, function(err, data){
+			if (err) throw err;
+			for (var i = 0; i < data.length; i++){
+				if (data[i].red > redValue){
+					res.write(data[i].url);
+				}	
+			}	//END for loop
+		}); //END mysql query
+	}); //END route
+}  //END findRed()
+
+findRed(30);
+
+//function to update a user's color value
+//will probably need one for each color
+function updateUserColorRed(userID){
+	var queryString = `UPDATE allusers SET red=red+3, green = green-1, blue=blue-1, bw=bw-1 WHERE id=` + `'` + userID+ `;'`;
+	connection.query(queryString, function(err, data){
+		if (err) throw err;
+		console.log(data);
+	});
+}
+
+
+
+//Returns a specific user in the allusers table
+function findUser(){
+	//route, where :user is a specific user in the allusers table
+	app.get('/match/:user', function(req, res){
+		//req.params.user corresponds to ':user' in the route
+		var user = req.params.user;
+		var queryString = `SELECT * FROM allusers WHERE username='` + user + `';`;
+		connection.query(queryString, function(err, data){
+			if (err) throw err;
+			// console.log(data[0].id);
+			// res.send(data[0].id.toString());
+			return data[0].id;
+		});
+	});
+}
+
+
+
+
+//Match algorithm
+//==============================================
+// function findMatch(user, red, green, blue, bw){
+// 	app.get('/match', function(req, res){
+// 		connection.query('SELECT * FROM photos;', function(err, data){
+// 			if (err) throw err;
+// 			res.json()
+// 		});
+// 	};
+// }
+
 
 
 //Match algorithm
@@ -131,6 +197,8 @@ function processData(req, res, data){
 }//END processData()
 
 
+//Photo upload algorithm
+//==============================================
 //master function that uploads new photos to the mysql db
 //this function uses a callbackfunction
 //'colorCallback', which uses dominant-color npm package to identify rgb values of the dominant color in a photo

@@ -36,6 +36,15 @@ CREATE TABLE allusers
 INSERT INTO allusers (username, password, email) VALUES ('hanbom', 'mickey', 'tmesis3@gmail.com');
 
 
+CREATE TABLE userImages
+(
+	username varchar(255),
+	img_id int,
+	
+
+
+);
+
 /*
 use ija2qhszw3zfbdpc;
 
