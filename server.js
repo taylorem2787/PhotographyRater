@@ -176,6 +176,24 @@ app.post('/adduser', function(req, res){
 });
 
 
+//route to display photos completely randomly
+//for users who aren't logged in
+app.get('/photos', function(req, res){
+	var queryString = `SELECT * FROM photos;`;
+
+	connection.query(queryString, function(err, data){
+		var photoArray = [];
+		var photoCount = data.length;
+		for (var i = 0; i < 9; i++){
+			var random = Math.floor((Math.random() * photoCount));
+			var url = data[random].url
+			photoArray.push(url);
+			// shortenURL(url);
+		}
+		res.send(photoArray);
+	});
+
+});
 
 //function to update a user's color value
 //this function is called when the user clicks on a photo
@@ -277,21 +295,7 @@ function shortenURL(url){
 }
 
 
-//default function to display photos randomly
-function displayPhotos(callback){
-	var queryString = `SELECT * FROM photos;`;
-	connection.query(queryString, function(err, data){
-		var photoCount = data.length;
-		for (var i = 0; i < 9; i++){
-			var random = Math.floor((Math.random() * photoCount));
-			var url = data[random].url
-			console.log(url);
-			// shortenURL(url);
-		}
-	});
-}
 
-displayPhotos();
 
 //Match algorithm
 //==============================================
