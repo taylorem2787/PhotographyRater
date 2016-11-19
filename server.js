@@ -481,4 +481,6 @@ function addPhotoToDb(infoObj){
 //add photo entries to mysql/jaws db
 // findColorAndUploadToDb(queryForDominantColor); 
 
+// });
+
 
