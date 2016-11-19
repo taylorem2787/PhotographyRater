@@ -163,6 +163,8 @@ app.get('/match/:user', function(req, res){
 	});
 });
 
+app.post('/adduser')
+
 
 //add a new user to mysql db
 //take values from registration form
@@ -228,7 +230,14 @@ function updateUserColors(color, userID){
 
 
 
+<<<<<<< HEAD
 function addMember(username, password, email){
+=======
+function addMember(login, pwd, emailAddy){
+	var uName = login;
+	var pWord = pwd;
+	var eMail = emailAddy;
+>>>>>>> 67379d87945d97568914afbb25e2dedb9bfad857
 
 	var queryString = `INSERT INTO allusers (username, password, email) VALUES (?, ?, ?);`;
 	connection.query(queryString, [username, password, email], function(err, data){
@@ -295,8 +304,11 @@ function shortenURL(url){
 	var uncompressedURL = url.substring(0, indexOfQ);
 	console.log(uncompressedURL);
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 67379d87945d97568914afbb25e2dedb9bfad857
 
 
 //Match algorithm
