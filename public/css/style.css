@@ -55,8 +55,8 @@ body {
 
 
 .nav-wrapper {
-	background: rgb(105, 105, 105);
-	background: rgba(105, 105, 105, .5) !important;
+/*	background: rgb(105, 105, 105);
+	background: rgba(105, 105, 105, .5) !important;*/
 	border-bottom-color: 2px solid snow;
 }
 nav, footer, .btn-large, .btn {
@@ -71,10 +71,8 @@ nav, footer, .btn-large, .btn {
 	top: 0;
 	z-index: 100;
 	border-top: 0;
-	background-color: turquoise !important;
-
 	width: 100%;
-	height: 56px;
+	height: 60px;
 }
 
 #exploreBtn {
