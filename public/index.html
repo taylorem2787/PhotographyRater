@@ -35,7 +35,7 @@
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a id="explore" href="explore.html">Explore</a></li>
 					<li><a id="profile" href="profile.html">Profile</a></li>
-					<li><a id="login" href="collapsible.html">Login</a></li>
+					<li><a id="login" href="collapsible.html">Login/Register</a></li>
 				</ul>
 		</div>
 	</nav>
@@ -70,7 +70,8 @@
         </div>
         <div class="row">
           <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a href="#" id="register">Register Now!</a></p>
+	  		<!-- Modal Trigger -->
+            <p class="margin medium-small"><a href="#modal1" id="registration-modal">Register Now!</a></p>
           </div>
           <div class="input-field col s6 m6 l6">
               <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
@@ -80,7 +81,49 @@
       </form>
     </div>
 
-    
+	<!-- Modal -->
+  <div id="modal1" class="modal modal-fixed-footer">
+		<div class="modal-content">
+ <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>Left Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+  			</div>
+    	</div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
+
+
 	<div class="parallax-container">
 		<div class="parallax"><img class="parallax-img" src="img/model.png"></div>
 
@@ -112,7 +155,8 @@
 			              <p>Iris a is a photography rating app based on dominent colors. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore aut deserunt molestias natus, molestiae necessitatibus iste cupiditate debitis cumque distinctio velit aliquid, adipisci accusamus perferendis! Perferendis reiciendis quis, recusandae quo.</p>
 			            </div>
 			            <div class="card-action">
-			              <a id="registration" href="#">Click here to register!</a>
+			            <!-- Modal Link -->
+			              <a href="#modal1" id="registration-modal">Click here to register!</a>
 			            </div>
 			        </div>
 	        	</div>
