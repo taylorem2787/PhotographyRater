@@ -274,12 +274,14 @@ function findRed(redValue){
 
 //Reset alluser table to default value of 25 for each color
 function resetMemberColors(){
-	var queryString = `UPDATE allusers SET red=25, green=25, blue=25, bw=25 WHERE id BETWEEN 1 AND 1000000`;
+	var queryString = `UPDATE allusers SET red=50, green=50, blue=50, bw=50 WHERE id > 0`;
 	connection.query(queryString, function(err, data){
 		if (err) throw err;
 		console.log(data);
 	});
 }
+
+resetMemberColors();
 
 //from thumbnail photo URL, return URL of uncompressed photo
 //callback function here is shortenURL()
