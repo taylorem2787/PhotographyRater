@@ -25,8 +25,11 @@ CREATE TABLE allusers
 
 INSERT INTO allusers (username, password, email) VALUES ('hanbom', 'mickey', 'tmesis3@gmail.com');
 
+drop table allusers;
+
 select * from allusers;
 
 /* counts total number of images */
 SELECT COUNT(*) AS images
 FROM photos;
+

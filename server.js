@@ -148,8 +148,9 @@ app.get('/api/nextImage/:userId', function(req, res) {
 	});
 });
 
-//Returns a specific user in the allusers table
 //route, where :user is a specific user in the allusers table
+//Returns the user's ID in the allusers table
+
 app.get('/match/:user', function(req, res){
 	//req.params.user corresponds to ':user' in the route
 	var user = req.params.user;
@@ -162,10 +163,12 @@ app.get('/match/:user', function(req, res){
 	});
 });
 
+app.post('/adduser')
+
 
 
 //function to update a user's color value
-//will probably need one for each color
+//this function is called when the user clicks on a photo
 function updateUserColors(color, userID){
 	var queryString; 
 
@@ -193,6 +196,8 @@ function updateUserColors(color, userID){
 }
 
 // updateUserColors('bw', 1);
+
+
 
 function addMember(login, pwd, emailAddy){
 	var uName = login;
@@ -242,6 +247,27 @@ function resetMemberColors(){
 	});
 }
 
+//from thumbnail photo URL, return URL of uncompressed photo
+//callback function here is shortenURL()
+function largePhotoURL(photoID, callback){
+	var queryString = 'SELECT url FROM photos WHERE id=?';
+	connection.query(queryString, [photoID], function(err, data){
+		var url;
+		if (err) throw err;
+		url = data[0].url;
+		callback(url);		
+	});	
+} 
+//callback function in largePHotoURL()
+function shortenURL(url){
+	var url = url;
+	//index of '?', which is the beginning of the URL extension for compressed photos	
+	var indexOfQ = url.indexOf('?h');
+	console.log(indexOfQ);
+	//truncate URL, beginning with '?'
+	var uncompressedURL = url.substring(0, indexOfQ);
+	console.log(uncompressedURL);
+}
 
 
 //Match algorithm
