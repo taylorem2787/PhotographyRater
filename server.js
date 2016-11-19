@@ -246,15 +246,15 @@ function addMember(username, password, email){
 }
 
 
-function viewUsers(){
-	app.get('/members', function(req, res){
-		var queryString = `SELECT * FROM allusers`;
-		connection.query(queryString, function(err, data){
-			res.send(data);
-		});
+
+app.get('/members', function(req, res){
+	var queryString = `SELECT * FROM allusers`;
+	connection.query(queryString, function(err, data){
+		res.send(data);
 	});
-}
-viewUsers();
+});
+
+
 
 //function to return photos that meet exceed a certain RGB value
 function findRed(redValue){

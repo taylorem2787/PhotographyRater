@@ -65,7 +65,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <button type="submit" class="btn waves-effect waves-light col s12 turquoise">Sign In</button>
+            <button type="submit" id='submitBtn' class="btn waves-effect waves-light col s12 turquoise">Sign In</button>
           </div>
         </div>
         <div class="row">
@@ -212,6 +212,25 @@
 
 
 </body>
+<!-- Han's code -->
+<script>
+
+var loggedin = false;
+
+
+$('#submitBtn').on('click', function(){
+  var useremail = $('#email').val();
+  var userpassword = $('#password').val();
+
+  
+  $.get("demo_test.asp", function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+
+});
+
+</script>
+
 
 <!-- App -->
 <script type="text/javascript" src="../app/app.js"></script>
