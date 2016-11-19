@@ -65,7 +65,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <button type="submit" class="btn waves-effect waves-light col s12 turquoise">Sign In</button>
+            <button type="submit" id='submitBtn' class="btn waves-effect waves-light col s12 turquoise">Sign In</button>
           </div>
         </div>
         <div class="row">
@@ -167,7 +167,20 @@
 
 <!-- Han's script -->
 <script>
-	var email = $('#email').val();
+	var loggedIn = false;
+
+	$('#submitBtn').on('click', function(){
+		var useremail = $('#email').val();
+		var userpassword = $('#password').val();
+		var currentLocation = window.location.origin;
+
+        alert('hi');
+
+		// $.get(currentLocation + "/method", function(data){
+  //       	console.log(data[0]);
+  //   	});
+	});	
+	
 	
 </script>
 <!-- App -->
