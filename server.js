@@ -163,14 +163,7 @@ app.get('/match/:user', function(req, res){
 	});
 });
 
-
-//add a new user to mysql db
-//take values from registration form
-//update mysql db using addMember()
-app.post('/adduser', function(req, res){
-	var username = req.body.username;
-	var password = req.body.password;
-	var email = req.body.email;
+app.post('/adduser')
 
 
 //add a new user to mysql db
