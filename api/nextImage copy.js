@@ -16,7 +16,13 @@ var nextImage = function(photoID) {
 	return new Promise(function(resolve, reject) {
 
 		// Based on current UserId get the R, G, B, BW values from the User table.
+<<<<<<< HEAD
 		connection.query('SELECT red, green, blue, bw FROM `photos` WHERE id = ?', [ photoID ], function(err, data){
+=======
+
+		connection.query('SELECT red, green, blue, bw FROM `photos` WHERE id = ?', [ photoID ], function(err, data){
+
+>>>>>>> origin/master
 			if (err) reject(err);
 
 			resolve({

@@ -172,6 +172,15 @@ app.post('/adduser', function(req, res){
 	var password = req.body.password;
 	var email = req.body.email;
 
+
+//add a new user to mysql db
+//take values from registration form
+//update mysql db using addMember()
+app.post('/adduser', function(req, res){
+	var username = req.body.username;
+	var password = req.body.password;
+	var email = req.body.email;
+
 	addMember(username, password, email);
 });
 
@@ -228,7 +237,12 @@ function updateUserColors(color, userID){
 
 
 
+
 function addMember(username, password, email){
+
+	var uName = login;
+	var pWord = pwd;
+	var eMail = emailAddy;
 
 	var queryString = `INSERT INTO allusers (username, password, email) VALUES (?, ?, ?);`;
 	connection.query(queryString, [username, password, email], function(err, data){
@@ -295,7 +309,6 @@ function shortenURL(url){
 	var uncompressedURL = url.substring(0, indexOfQ);
 	console.log(uncompressedURL);
 }
-
 
 
 
