@@ -13,7 +13,6 @@ var bodyParser = require('body-parser');
 //npm package to handle file pathways
 var path = require('path');
 
-var promise = require('promise');
 
 //npm package to store sensitive info, e.g. login parameters
 require('dotenv').config();
@@ -246,15 +245,14 @@ function addMember(username, password, email){
 }
 
 
-function viewUsers(){
-	app.get('/members', function(req, res){
-		var queryString = `SELECT * FROM allusers`;
-		connection.query(queryString, function(err, data){
-			res.send(data);
-		});
+
+app.get('/members', function(req, res){
+	var queryString = `SELECT * FROM allusers`;
+	connection.query(queryString, function(err, data){
+		res.send(data);
 	});
-}
-viewUsers();
+});
+
 
 //function to return photos that meet exceed a certain RGB value
 function findRed(redValue){
