@@ -51,6 +51,24 @@ nav, footer, .btn-large, .btn {
 	height: 56px;
 }
 
+.explore-display {
+	padding-top: 30px;
+	column-count: 3;
+	line-height: 2;
+	width: 100%;
+	margin: 0px;
+}
+
+.explore-image {
+	display: inline-block;
+	vertical-align: top;
+	margin: 2px;
+	width: 100%;
+	-webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
 footer.page-footer {
     margin-top: 0px;
     background: rgba(105, 105, 105, .5) !important;
