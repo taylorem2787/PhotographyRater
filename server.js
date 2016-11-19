@@ -1,7 +1,5 @@
-// ==============================================================================
-// DEPENDENCIES
-// Series of npm packages that we will use to give our server useful functionality
-// ==============================================================================
+	//imported modules for extracting dominant color from an image
+//============================================================
 
 //npm package to extract the most dominant color from a photo,
 //and break down the dominant color to RGB component values
@@ -18,6 +16,8 @@ var path = require('path');
 //npm package to store sensitive info, e.g. login parameters
 require('dotenv').config();
 
+var api = require('./api');
+
 //parameters to establish mysql connection
 var connection = mysql.createConnection({
 	host: process.env.dbhost,
@@ -27,11 +27,7 @@ var connection = mysql.createConnection({
 	database: "ija2qhszw3zfbdpc",
 });
 
-
-// ==============================================================================
-// EXPRESS CONFIGURATION
-// This sets up the basic properties for our express server 
-// ==============================================================================
+//run express app
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -63,8 +59,79 @@ connection.connect(function(err){
 	console.log('connected as ID ' + connection.threadId);
 });
 
+// Static file routes
+app.get('/', function(req,res) {
+	res.sendFile(path.join(__dirname, './public/index.html'));
+});
 
-//route to display the entire photos table.
+app.get('/css/:name', function(req, res) {
+	var fileName = req.params.name;
+	var options = {
+		root: __dirname + '/public/css/',
+		dotfiles: 'deny',
+		headers: {
+		    'x-timestamp': Date.now(),
+		    'x-sent': true
+		}
+	};
+
+	res.sendFile(fileName, options, function (err) {
+		if (err) {
+			console.log(err);
+			res.status(err.status).end();
+		}
+		else {
+			console.log('Sent:', fileName);
+		}
+	});
+});
+
+app.get('/img/:name', function(req, res) {
+	var fileName = req.params.name;
+	var options = {
+		root: __dirname + '/public/img/',
+		dotfiles: 'deny',
+		headers: {
+		    'x-timestamp': Date.now(),
+		    'x-sent': true
+		}
+	};
+
+	res.sendFile(fileName, options, function (err) {
+		if (err) {
+			console.log(err);
+			res.status(err.status).end();
+		}
+		else {
+			console.log('Sent:', fileName);
+		}
+	});
+});
+
+app.get('/app/:name', function(req, res) {
+	var fileName = req.params.name;
+	var options = {
+		root: __dirname + '/app/',
+		dotfiles: 'deny',
+		headers: {
+		    'x-timestamp': Date.now(),
+		    'x-sent': true
+		}
+	};
+
+	res.sendFile(fileName, options, function (err) {
+		if (err) {
+			console.log(err);
+			res.status(err.status).end();
+		}
+		else {
+			console.log('Sent:', fileName);
+		}
+	});
+});
+
+
+//root get route. display entire api.
 app.get('/api', function(req,res) {
 	connection.query(`SELECT * FROM photos;`, function(err, data){
 		if (err) throw err;
@@ -72,11 +139,83 @@ app.get('/api', function(req,res) {
 	});
 });
 
+app.get('/api/nextImage/:userId', function(req, res) {
 
-app.post('/addmember', function(req, res){
-	connection.query('INSERT INTO allusers')
+	const userId = req.params.userId;
+	api.nextImage(userId)
+	.then(function(data) {
+		res.send(data);
+	});
 });
 
+//Returns a specific user in the allusers table
+//route, where :user is a specific user in the allusers table
+app.get('/match/:user', function(req, res){
+	//req.params.user corresponds to ':user' in the route
+	var user = req.params.user;
+	var queryString = `SELECT * FROM allusers WHERE username='` + user + `';`;
+	connection.query(queryString, function(err, data){
+		if (err) throw err;
+		// console.log(data[0].id);
+		// res.send(data[0].id.toString());
+		return data[0].id;
+	});
+});
+
+
+
+//function to update a user's color value
+//will probably need one for each color
+function updateUserColors(color, userID){
+	var queryString; 
+
+	switch(color) {
+		case 'red':
+			queryString = `UPDATE allusers SET red=red+3, green = green-1, blue=blue-1, bw=bw-1 WHERE id=` + `'` + userID+ `;'`;
+			break;
+
+		case 'green':
+			queryString = `UPDATE allusers SET green=green+3, red = red-1, blue=blue-1, bw=bw-1 WHERE id=` + `'` + userID+ `;'`;
+			break;
+
+		case 'blue':
+			queryString = `UPDATE allusers SET blue=blue+3, green = green-1, red=red-1, bw=bw-1 WHERE id=` + `'` + userID+ `;'`;
+			break;
+
+		case 'bw':
+			queryString = `UPDATE allusers SET bw=bw+3, green = green-1, blue=blue-1, red=red-1 WHERE id=` + `'` + userID+ `;'`;
+	}
+
+	connection.query(queryString, function(err, data){
+		if (err) throw err;
+		console.log(data);
+	});
+}
+
+// updateUserColors('bw', 1);
+
+function addMember(login, pwd, emailAddy){
+	var uName = login;
+	var pWord = pwd;
+	var eMail = emailAddy;
+
+	var queryString = `INSERT INTO allusers (username, password, email) VALUES (?, ?, ?);`;
+	connection.query(queryString, [uName, pWord, eMail], function(err, data){
+		if (err) throw err;
+
+		console.log(data);
+	});
+}
+
+
+function viewUsers(){
+	app.get('/members', function(req, res){
+		var queryString = `SELECT * FROM allusers`;
+		connection.query(queryString, function(err, data){
+			res.send(data);
+		});
+	});
+}
 
 //function to return photos that meet a color criterion
 function findRed(redValue){
@@ -92,49 +231,16 @@ function findRed(redValue){
 	}); //END route
 }  //END findRed()
 
-findRed(30);
 
-//function to update a user's color value
-//will probably need one for each color
-function updateUserColorRed(userID){
-	var queryString = `UPDATE allusers SET red=red+3, green = green-1, blue=blue-1, bw=bw-1 WHERE id=` + `'` + userID+ `;'`;
+
+//Reset alluser table to default value of 25 for each color
+function resetMemberColors(){
+	var queryString = `UPDATE allusers SET red=25, green=25, blue=25, bw=25 WHERE id BETWEEN 1 AND 1000000`;
 	connection.query(queryString, function(err, data){
 		if (err) throw err;
 		console.log(data);
 	});
 }
-
-
-
-//Returns a specific user in the allusers table
-function findUser(){
-	//route, where :user is a specific user in the allusers table
-	app.get('/match/:user', function(req, res){
-		//req.params.user corresponds to ':user' in the route
-		var user = req.params.user;
-		var queryString = `SELECT * FROM allusers WHERE username='` + user + `';`;
-		connection.query(queryString, function(err, data){
-			if (err) throw err;
-			// console.log(data[0].id);
-			// res.send(data[0].id.toString());
-			return data[0].id;
-		});
-	});
-}
-
-
-
-
-//Match algorithm
-//==============================================
-// function findMatch(user, red, green, blue, bw){
-// 	app.get('/match', function(req, res){
-// 		connection.query('SELECT * FROM photos;', function(err, data){
-// 			if (err) throw err;
-// 			res.json()
-// 		});
-// 	};
-// }
 
 
 
@@ -197,8 +303,6 @@ function processData(req, res, data){
 }//END processData()
 
 
-//Photo upload algorithm
-//==============================================
 //master function that uploads new photos to the mysql db
 //this function uses a callbackfunction
 //'colorCallback', which uses dominant-color npm package to identify rgb values of the dominant color in a photo
