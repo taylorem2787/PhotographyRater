@@ -7,7 +7,10 @@ $(document).ready(function(){
 
 	// EVENT LISTENERS: 
 	// Displays pop-over for username and password
-	$('#login').webuiPopover({url:'#login-form'});
+	$('#login').webuiPopover({
+		url:'#login-form',
+		dismissible: true, // Modal can be dismissed by clicking outside of the modal
+	});
 
   // Material Box - Enlarges liked pictures
   $('.materialboxed').materialbox();
@@ -55,6 +58,24 @@ $('.registration-modal').modal({
 ); //END MODAL
 
 
+// Smooth scrolling to explore-display on click of explore in Nav
+// https://css-tricks.com/snippets/jquery/smooth-scrolling/
+$(function() {
+  $('#explore').on('click', function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+
+
 // On click of 'explore-button' triggers getting user images by user ID preference
 $('.explore-button').on('click', function() {
 	var userId = 1;
@@ -70,7 +91,7 @@ function getImages(id) {
 			var img = $('<img />', {src : result[i].url});
 
 			img.addClass('explore-image');
-			img.appendTo('.explore-display');
+			img.appendTo('#explore-display');
 		}
 
 	});
