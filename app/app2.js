@@ -17,7 +17,31 @@ $('#submitBtn').on('click', function(){
     		}
     	}
 	});
-		return false;
+
+	$('#email').val('');
+	$('#password').val('');
+	return false;
 });	
 
 //REGISTER FUNCTION
+$('#registerBtn').on('click', function(){
+	// alert('hi');
+	var username = $('#icon_prefix').val();
+	var email = $('#icon_email').val();
+	var password = $('#icon_password').val();
+
+	var userInfo = {
+		username: username,
+		email: email,
+		password: password
+	};
+	// console.log(userInfo);
+
+	//current URL displayed in the browser, e.g. localhost:3000
+	var currentLocation = window.location.origin;
+	$.post(currentLocation + '/adduser', userInfo, function(data){
+		console.log(status);
+		alert('hiii');
+	});
+
+});
