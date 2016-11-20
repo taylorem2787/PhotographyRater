@@ -7,7 +7,7 @@ $('#submitBtn').on('click', function(){
 	var userpassword = $('#password').val();
 	var currentLocation = window.location.origin;
 
-	console.log('hi');
+	alert('hi');
 	//make ajax call to mysql db. if login details match, 'loggedIn' is toggled to true
 	$.get(currentLocation + "/members", function(data){
     	for (var i = 0; i < data.length; i++){
