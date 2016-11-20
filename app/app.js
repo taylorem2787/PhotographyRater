@@ -68,13 +68,14 @@ function getImages(id) {
 
 		for (var i = 0; i < result.length; i++) {
 			var img = $('<img />', {src : result[i].url});
-
+			console.log(result[i].dominant);
 			img.addClass('explore-image');
 			img.appendTo('.explore-display');
 		}
 
 	});
 }
+
 
 
 
