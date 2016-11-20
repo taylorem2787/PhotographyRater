@@ -62,7 +62,7 @@ connection.connect(function(err){
 
 // Static file routes
 app.get('/', function(req,res) {
-	res.sendFile(path.join(__dirname, './public/index.html'));
+	res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 app.get('/css/:name', function(req, res) {
@@ -245,7 +245,7 @@ function addMember(username, password, email){
 }
 
 
-
+//route
 app.get('/members', function(req, res){
 	var queryString = `SELECT * FROM allusers`;
 	connection.query(queryString, function(err, data){
