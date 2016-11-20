@@ -41,7 +41,7 @@ body {
     background-color: rgba(255,255,255,0.3);
 }
 
-.modal {
+.registration-modal {
 	border-radius: 3px;
 	background: rgb(105, 105, 105);
     background: rgba(105, 105, 105, .5) !important;  
@@ -81,12 +81,15 @@ nav, footer, .btn-large, .btn {
 	line-height: 2;
 	width: 100%;
 	margin: 0px;
+    -moz-column-gap: 0;
+    -webkit-column-gap: 0;
+    column-gap: 0;
 }
 
 .explore-image {
 	display: inline-block;
 	vertical-align: top;
-	margin: 2px;
+	margin: 2px 2px 0;
 	width: 100%;
 	-webkit-column-break-inside: avoid;
     page-break-inside: avoid;
