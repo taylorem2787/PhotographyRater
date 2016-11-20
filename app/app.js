@@ -44,8 +44,7 @@ function openDisplay(id) {
 	}
 }
  // Modal 
-$('.modal').modal();
-$('.modal-trigger').leanModal({
+$('.modal').modal({
   dismissible: true, // Modal can be dismissed by clicking outside of the modal
   opacity: .7, // Opacity of modal background
   in_duration: 300, // Transition in duration
@@ -56,7 +55,7 @@ $('.modal-trigger').leanModal({
 ); //END MODAL
 
 
-$('.logo').on('click', function() {
+$('.explore-button').on('click', function() {
 	var userId = 1;
 	getImages(userId);
 })
