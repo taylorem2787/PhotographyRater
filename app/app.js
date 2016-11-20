@@ -2,7 +2,11 @@
 
 	// State object for app
 	var app = {
-		images: []
+		images: [
+			[],
+			[],
+			[]
+		]
 	};
 
 //PARALLAX=======================================================================
@@ -47,12 +51,15 @@ $('.registration-modal').on('click', function() {
 // https://css-tricks.com/snippets/jquery/smooth-scrolling/
 $(function() {
   $('#explore').on('click', function() {
+
+  	var navHeight = $('#navbar').height();
+
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
       if (target.length) {
         $('html, body').animate({
-          scrollTop: target.offset().top
+          scrollTop: target.offset().top - navHeight
         }, 1000);
         return false;
       }
@@ -70,23 +77,41 @@ $('.explore-button').on('click', function() {
 // AJAX call to the API displaying next image
 function getImages(id) {
 	$.get('/api/nextImage/' + id, function(result) {
-		console.log(result);
-		app.images = result;
-		renderImages(app.images);
+		addImages(result);
+		renderImages();
 	});
 }
 
-function renderImages(images) {
-	for (var i = 0; i < images.length; i++) {
-		var img = $('<img />', {src : images[i].url});
+function addImages(newImages) {
+	for(var i in newImages) {
+		var idx = Math.floor(i % 3);
+		app.images[idx].push(newImages[i])
+	}
+}
 
-		img.addClass('explore-image');
-		img.appendTo('#explore-display');
+function renderImages() {
+	var images = app.images;
+	$('#explore-display').html('');
+	for (var i = 0; i < images.length; i++) {
+		for(var j = 0; j < images[i].length; j++) {
+			var img = $('<img />', {src : images[i][j].url, 'data-col': i, 'data-row': j});
+
+			img.addClass('explore-image');
+			img.appendTo('#explore-display');
+
+			img.on('click', function(e) {
+				var img = e.target;
+				var row = $(img).data('row');
+				var col = $(img).data('col');
+				console.log(app.images[col][row])
+			})
+		}
 	}
 
-	console.log(app.images)
+	// console.log(app.images)
 
 }
+
 
 })(); // END MAIN CLOSURE
 

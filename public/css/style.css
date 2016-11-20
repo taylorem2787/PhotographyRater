@@ -96,6 +96,10 @@ nav img {
 	height: 60px;
 }
 
+.load-more {
+	width: 100%;
+}
+
 #explore-display {
 	padding-top: 30px;
 	column-count: 3;
