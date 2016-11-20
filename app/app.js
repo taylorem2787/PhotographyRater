@@ -74,6 +74,10 @@ $('.explore-button').on('click', function() {
 	getImages(userId);
 })
 
+//// TEMP
+	$('.explore-button').trigger('click');
+//// TEMP
+
 // AJAX call to the API displaying next image
 function getImages(id) {
 	$.get('/api/nextImage/' + id, function(result) {
@@ -91,27 +95,30 @@ function addImages(newImages) {
 
 function renderImages() {
 	var images = app.images;
-	$('#explore-display').html('');
+	$('#explore-display').html('<div>');
 	for (var i = 0; i < images.length; i++) {
 		for(var j = 0; j < images[i].length; j++) {
-			var img = $('<img />', {src : images[i][j].url, 'data-col': i, 'data-row': j});
+			var imgContainer = $('<div class="explore-image">', {'data-col': i, 'data-row': j})
+			var imgOverlay = $('<div class="explore-image__overlay">');
+			var imgUpvote = $('<div class="explore-image__overlay__upvote">');
+			var img = $('<img />', {src : images[i][j].url});
 
-			img.addClass('explore-image');
-			img.appendTo('#explore-display');
+			imgOverlay.append(imgUpvote);
+			imgContainer.append(img);
+			imgContainer.append(imgOverlay);
 
-			img.on('click', function(e) {
+			$('#explore-display').append(imgContainer);
+
+			imgContainer.on('click', function(e) {
 				var img = e.target;
 				var row = $(img).data('row');
 				var col = $(img).data('col');
+
 				console.log(app.images[col][row])
 			})
 		}
 	}
-
-	// console.log(app.images)
-
 }
-
 
 })(); // END MAIN CLOSURE
 
