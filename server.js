@@ -245,7 +245,7 @@ function addMember(username, password, email){
 }
 
 
-
+//route
 app.get('/members', function(req, res){
 	var queryString = `SELECT * FROM allusers`;
 	connection.query(queryString, function(err, data){
