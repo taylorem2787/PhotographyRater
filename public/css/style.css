@@ -38,7 +38,20 @@ body {
 
 .main-intro {
 	background-color: #fff;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.7);
+	margin: 80px;
+}
+
+.main-intro-subnav {
+
+}
+
+/* Main Intro Link */
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+    color: #382323;
+    margin-right: 20px;
+    transition: color .3s ease;
+    text-transform: uppercase;
 }
 
 .registration-modal {
@@ -83,7 +96,7 @@ nav img {
 	height: 60px;
 }
 
-.explore-display {
+#explore-display {
 	padding-top: 30px;
 	column-count: 3;
 	line-height: 2;

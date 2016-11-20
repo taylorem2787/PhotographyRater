@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Photography Rating App</title>
+		<title>colorme</title>
 		<!-- jQuery -->
 		<script
 		  src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -33,7 +33,7 @@
 		<div class="nav-wrapper teal accent-2" id="navbar">
 			<a id="home" href="index.html" class="brand-logo"><img src="img/colormelogo.svg"></a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a id="explore" href="explore.html">Explore</a></li>
+					<li><a id="explore" href="#explore-display-top">Explore</a></li>
 					<li><a id="profile" href="profile.html">Profile</a></li>
 					<li><a id="login" href="collapsible.html">Login/Register</a></li>
 				</ul>
@@ -81,14 +81,14 @@
       </form>
     </div>
 
-				<!-- Modal -->
+		<!-- Modal -->
 		<div id="modal1" class="modal registration-modal">
 			<div class="modal-content">
 			 <div class="slider">
 				<div class="row">
 					<div class="col s12 m6 l12">
 						<div class="card-panel z-depth-5">
-							<h4 class="center"> color<bold>me</bold> Registration</h4>	 
+							<h4 class="center"> <b>color</b>me Registration</h4>	 
 						<div class="row">
 							<form class="col s12 m12">
 							   	<div class="row">
@@ -128,52 +128,39 @@
 	<div class="parallax-container">
 		<div class="parallax"><img class="parallax-img" src="img/model.png"></div>
 
+		<!-- MAIN INTRO -->
 		<div class="container">
-			<!-- SEARCH BAR -->
-<!-- 	        <div class="row">
-	            <div class="col s12"></div>
-	            <nav>
-	                <div class="nav-wrapper main-search">
-	                    <form id="search-bar" onsubmit="return false">
-	                <div class="nav-wrapper main-search">
-	                    <form id="search-bar" novalidate>
-	                        <div class="input-field">
-	                            <input id="search" type="search" required>
-	                            <label for="search"><i class="material-icons">search</i></label>
-	                            <i class="material-icons done" id="submit-button">done</i>
-	                        </div>
-	                    </form>
-	                </div>
-	           </nav>
-	        </div>  --><!-- End of search bar -->
-
-	        <!-- MAIN INTRO -->
 	        <div class="row">
 	        	<div class="col s12">
 	        		<div class="card main-intro">
 			            <div class="card-content black-text">
-			              <span class="card-title"><strong>Welcome to Iris!</strong></span>
-			              <p>Iris a is a photography rating app based on dominent colors. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore aut deserunt molestias natus, molestiae necessitatibus iste cupiditate debitis cumque distinctio velit aliquid, adipisci accusamus perferendis! Perferendis reiciendis quis, recusandae quo.</p>
+			              <span class="card-title"><strong>Welcome to <b>color</b>me!</strong></span>
+			              <p>
+							Using images collected from thousands of photographers through Pexels, <b>color</b>me finds your true favorite color through a series of photo ratings. Think of it like a mood ring that you get by choosing your favorite art and photography. Login or register to get started! 
+			              </p>
 			            </div>
-			            <div class="card-action">
+			            <div class="card-action main-intro-subnav">
 			            <!-- Modal Link -->
 			              <a class="-text" href="#modal1" id="registration-modal">Click here to register!</a>
 			            </div>
 			        </div>
 	        	</div>
 	        </div>
-		</div> <!-- End of search container --> 
+		</div> <!-- End of main intro container --> 
 	</div> <!-- End of top parallax container -->
 
-	<div class="section white">
+	<div class="section white" id="explore-display-top">
 		<div class="row container">
-			<h2 class="header">Photography Rating App</h2>
-				<p class="grey-text text-darken-3 lighten-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur facilis sit sunt officiis quisquam magni, vero eveniet animi ducimus, asperiores, maiores ratione debitis totam consequatur numquam fugiat corrupti aliquid omnis!</p>
-			<a class="waves-effect waves-light btn-large teal accent-2 explore-button"><i class="material-icons left">visibility</i>Explore</a>
+			<h2 class="header"><b>color</b>me by iris</h2>
+				<!-- Explore Text Area -->
+				<p class="grey-text text-darken-3 lighten-3">
+				Find out your true favorite color by rating photos that resonate with you. What does your personality say about you? Let <b>color</b>me find your color! Let's get to rating!
+				</p>
+			<div class="waves-effect waves-light btn-large teal accent-2 explore-button"><i class="material-icons left">visibility</i>Explore</div>
 		</div>
 
 		<!-- Photos display here -->
-		<div class="explore-display"></div>
+		<div id="explore-display"></div>
 
 	</div>
 
@@ -189,24 +176,29 @@
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
-            <h5 class="white-text">Iris</h5>
-            <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus possimus optio dicta cumque harum! Blanditiis culpa obcaecati voluptatibus voluptatem tenetur aliquam quod est rerum in? Rem exercitationem officiis nisi, obcaecati?</p>
+          <img src="img/colormelogo.svg">
+            <p class="grey-text text-lighten-4">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum corporis earum laboriosam atque nemo provident modi, repellendus voluptas perferendis. Quam impedit cupiditate hic recusandae sapiente facere deserunt animi error fuga.
+            </br>
+            </br>
+			All images sourced from <a href="www.pexel.com">Pexels</a>.
+            </p>
           </div>
           <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
+            <h5 class="white-text">Iris Developers</h5>
             <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Developer GitHub</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Developer GitHub</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Developer GitHub</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Developer GitHub</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/tatianaalcocer">Tatiana Alcocer</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/taylorem2787">Taylor Emolo</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/kulini">Han Lee</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/ar07111">Allen Raymond</a></li>
             </ul>
           </div>
         </div>
       </div>
       <div class="footer-copyright">
         <div class="container">
-        © 2016 Iris
-        <a class="grey-text text-lighten-4 right" href="#!">Project GitHub</a>
+        © 2016 <b>color</b>me by Iris
+        <a class="grey-text text-lighten-4 right" href="https://github.com/tatianaalcocer/PhotographyRater">Project GitHub</a>
         </div>
       </div>
     </footer>
