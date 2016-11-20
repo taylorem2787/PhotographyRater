@@ -43,8 +43,8 @@ function openDisplay(id) {
 			console.log('oops!');
 	}
 }
- // Modal 
-$('.modal').modal({
+ // Registration Modal 
+$('.registration-modal').modal({
   dismissible: true, // Modal can be dismissed by clicking outside of the modal
   opacity: .7, // Opacity of modal background
   in_duration: 300, // Transition in duration
@@ -55,6 +55,7 @@ $('.modal').modal({
 ); //END MODAL
 
 
+// On click of 'explore-button' triggers getting user images by user ID preference
 $('.explore-button').on('click', function() {
 	var userId = 1;
 	getImages(userId);
