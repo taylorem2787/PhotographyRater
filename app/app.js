@@ -1,3 +1,9 @@
+(function() {
+
+	// State object for app
+	var app = {
+		images: []
+	};
 
 //PARALLAX=======================================================================
 $(document).ready(function(){
@@ -12,53 +18,32 @@ $(document).ready(function(){
 		dismissible: true, // Modal can be dismissed by clicking outside of the modal
 	});
 
-  // Material Box - Enlarges liked pictures
-  $('.materialboxed').materialbox();
+	// Material Box - Enlarges liked pictures
+	$('.materialboxed').materialbox();
 
-  $('.slider').slider();
+	$('.slider').slider();
 
 }); // End of document.ready function
 
 
 //GENERAL FUNCTIONS: ==============================================================================================
 
-// General function for opening modals
-function openDisplay(id) {
-
-	switch(id) {
-
-		case 'registration-modal':
-			console.log("opening registration modal");
-			$('#registration-modal').modal();
-
-			// After registration modal is closed, run calibration function
-			// $('#registration-modal').on("click", ".close-registration", function() {
-			// 	openDisplay("calibration");
-			// })
-			// break;
-
-        // case 'calibration':
-        //     $('#calibration').openModal();
-        //     console.log("opening calibration modal");
-        //     break;
-
-		default:
-			console.log('oops!');
-	}
-}
- // Registration Modal 
+// Registration Modal 
 $('.registration-modal').modal({
-  dismissible: true, // Modal can be dismissed by clicking outside of the modal
-  opacity: .7, // Opacity of modal background
-  in_duration: 300, // Transition in duration
-  out_duration: 200, // Transition out duration
-  starting_top: '4%', // Starting top style attribute
-  ending_top: '10%', // Ending top style attribute
-  }
+	dismissible: true, // Modal can be dismissed by clicking outside of the modal
+	opacity: .7, // Opacity of modal background
+	in_duration: 300, // Transition in duration
+	out_duration: 200, // Transition out duration
+	starting_top: '4%', // Starting top style attribute
+	ending_top: '10%', // Ending top style attribute
+	}
 ); //END MODAL
 
+$('.registration-modal').on('click', function() {
+	$('#login').webuiPopover('hide');
+})
 
-// Smooth scrolling to explore-display on click of explore in Nav
+// Smooth scrolling to explore-display on click of Explore in Nav
 // https://css-tricks.com/snippets/jquery/smooth-scrolling/
 $(function() {
   $('#explore').on('click', function() {
@@ -86,21 +71,22 @@ $('.explore-button').on('click', function() {
 function getImages(id) {
 	$.get('/api/nextImage/' + id, function(result) {
 		console.log(result);
-
-		for (var i = 0; i < result.length; i++) {
-			var img = $('<img />', {src : result[i].url});
-
-			img.addClass('explore-image');
-			img.appendTo('#explore-display');
-		}
-
+		app.images = result;
+		renderImages(app.images);
 	});
 }
 
+function renderImages(images) {
+	for (var i = 0; i < images.length; i++) {
+		var img = $('<img />', {src : images[i].url});
 
+		img.addClass('explore-image');
+		img.appendTo('#explore-display');
+	}
 
-//CALLING FUNCTIONS: ==============================================================================================
+	console.log(app.images)
 
-openDisplay();
+}
 
+})(); // END MAIN CLOSURE
 
