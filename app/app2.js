@@ -1,3 +1,4 @@
+//LOG IN FUNCTION
 var loggedIn = false;
 
 //when the user successfully logs in, 'loggedIn' toggles to true
@@ -7,7 +8,6 @@ $('#submitBtn').on('click', function(){
 	var userpassword = $('#password').val();
 	var currentLocation = window.location.origin;
 
-	alert('hi');
 	//make ajax call to mysql db. if login details match, 'loggedIn' is toggled to true
 	$.get(currentLocation + "/members", function(data){
     	for (var i = 0; i < data.length; i++){
@@ -19,3 +19,5 @@ $('#submitBtn').on('click', function(){
 	});
 		return false;
 });	
+
+//REGISTER FUNCTION
