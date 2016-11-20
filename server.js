@@ -13,8 +13,7 @@ var bodyParser = require('body-parser');
 //npm package to handle file pathways
 var path = require('path');
 
-var promise = require('promise');
-
+// app.use(express.static(path.join(__dirname, 'public')));
 //npm package to store sensitive info, e.g. login parameters
 require('dotenv').config();
 
@@ -63,7 +62,7 @@ connection.connect(function(err){
 
 // Static file routes
 app.get('/', function(req,res) {
-	res.sendFile(path.join(__dirname, './public/index.html'));
+	res.sendFile(path.join(__dirname, './public/indexcopy.html'));
 });
 
 app.get('/css/:name', function(req, res) {
@@ -253,7 +252,6 @@ app.get('/members', function(req, res){
 		res.send(data);
 	});
 });
-
 
 
 //function to return photos that meet exceed a certain RGB value
