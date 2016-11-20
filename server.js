@@ -232,10 +232,6 @@ function updateUserColors(color, userID){
 
 function addMember(username, password, email){
 
-	var uName = login;
-	var pWord = pwd;
-	var eMail = emailAddy;
-
 	var queryString = `INSERT INTO allusers (username, password, email) VALUES (?, ?, ?);`;
 	connection.query(queryString, [username, password, email], function(err, data){
 		if (err) throw err;
