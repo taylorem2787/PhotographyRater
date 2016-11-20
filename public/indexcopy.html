@@ -174,15 +174,18 @@
 		var userpassword = $('#password').val();
 		var currentLocation = window.location.origin;
 
-        console.log('hi');
+        // console.log('hi');
 
-		$.get(currentLocation + "/method", function(data){
-        	console.log(data[0]);
+		$.get(currentLocation + "/members", function(data){
+        	for (var i = 0; i < data.length; i++){
+        		if (data[i].email === useremail && data[i].password === userpassword){
+        			loggedIn = true;
+        			console.log(loggedIn);
+        		}
+        	}
     	});
   		return false;
 	});	
-	
-	
 </script>
 <!-- App -->
 <script type="text/javascript" src="../app/app.js"></script>
