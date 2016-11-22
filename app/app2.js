@@ -1,5 +1,6 @@
 //LOG IN FUNCTION
 var loggedIn = false;
+var userID;
 
 //when the user successfully logs in, 'loggedIn' toggles to true
 $('#submitBtn').on('click', function(){
@@ -14,6 +15,9 @@ $('#submitBtn').on('click', function(){
     		if (data[i].email === useremail && data[i].password === userpassword){
     			loggedIn = true;
     			console.log(loggedIn);
+    			// console.log(data[i].username);
+    			userID = data[i].username;
+    			console.log(userID);
     		}
     	}
 	});
@@ -41,7 +45,10 @@ $('#registerBtn').on('click', function(){
 	var currentLocation = window.location.origin;
 	$.post(currentLocation + '/adduser', userInfo, function(data){
 		console.log(status);
-		alert('hiii');
+		$('#icon_prefix').val();
+		$('#icon_email').val();
+		$('#icon_password').val();
 	});
 
 });
+

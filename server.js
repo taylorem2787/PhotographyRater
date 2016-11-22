@@ -140,16 +140,16 @@ app.get('/api', function(req,res) {
 	});
 });
 
-app.get('/api/nextImage/:userId', function(req, res) {
+app.get('/api/nextImage/:photoID', function(req, res) {
 
-	const userId = req.params.userId;
-	api.nextImage(userId)
+	const photoID = req.params.photoID;
+	api.nextImage(photoID)
 	.then(function(data) {
 		res.send(data);
 	});
 });
 
-//route, where :user is a specific user in the allusers table
+//route where :user is a specific user in the allusers table
 //Returns the user's ID in the allusers table
 
 app.get('/match/:user', function(req, res){
@@ -158,7 +158,7 @@ app.get('/match/:user', function(req, res){
 	var queryString = `SELECT * FROM allusers WHERE username='` + user + `';`;
 	connection.query(queryString, function(err, data){
 		if (err) throw err;
-		// console.log(data[0].id);
+		console.log(data[0].id);
 		// res.send(data[0].id.toString());
 		return data[0].id;
 	});
@@ -174,8 +174,26 @@ app.post('/adduser', function(req, res){
 	var email = req.body.email;
 
 	addMember(username, password, email);
+	createMemberTable(username);
 });
 
+function addMember(username, password, email){
+	var member = {};
+
+	var queryString = `INSERT INTO allusers (username, password, email) VALUES (?, ?, ?);`;
+	connection.query(queryString, [username, password, email], function(err, data){
+		if (err) throw err;
+		// member.id = data
+		console.log(data);
+	});
+}
+
+function createMemberTable(newusername){
+	var queryString = `CREATE TABLE ` + newusername + ` (id int, url varchar (255), upvoted boolean default 1, uploaded boolean)`;
+	connection.query(queryString, function(err, data){
+		console.log(data);
+	});
+}
 
 //route to display photos completely randomly
 //for users who aren't logged in
@@ -193,52 +211,8 @@ app.get('/photos', function(req, res){
 		}
 		res.send(photoArray);
 	});
-
 });
 
-//function to update a user's color value
-//this function is called when the user clicks on a photo
-//'color' parameter should be the dominantHue of the clicked photo
-function updateUserColors(color, userID){
-	var queryString; 
-
-	switch(color) {
-		case 'red':
-			queryString = `UPDATE allusers SET red=red+30, green = green-10, blue=blue-10, bw=bw-10 WHERE id=` + `'` + userID+ `;'`;
-			break;
-
-		case 'green':
-			queryString = `UPDATE allusers SET green=green+30, red = red-10, blue=blue-10, bw=bw-10 WHERE id=` + `'` + userID+ `;'`;
-			break;
-
-		case 'blue':
-			queryString = `UPDATE allusers SET blue=blue+30, green = green-10, red=red-10, bw=bw-10 WHERE id=` + `'` + userID+ `;'`;
-			break;
-
-		case 'bw':
-			queryString = `UPDATE allusers SET bw=bw+30, green = green-10, blue=blue-10, red=red-10 WHERE id=` + `'` + userID+ `;'`;
-	}
-
-	connection.query(queryString, function(err, data){
-		if (err) throw err;
-		console.log(data);
-	});
-}
-
-// updateUserColors('bw', 1);
-
-
-
-
-function addMember(username, password, email){
-
-	var queryString = `INSERT INTO allusers (username, password, email) VALUES (?, ?, ?);`;
-	connection.query(queryString, [username, password, email], function(err, data){
-		if (err) throw err;
-
-		console.log(data);
-	});
-}
 
 
 //route
@@ -250,33 +224,18 @@ app.get('/members', function(req, res){
 });
 
 
-//function to return photos that meet exceed a certain RGB value
-function findRed(redValue){
-	app.get('/red', function(req,res) {
-		connection.query(`SELECT * FROM photos;`, function(err, data){
-			if (err) throw err;
-			for (var i = 0; i < data.length; i++){
-				if (data[i].red > redValue){
-					res.write(data[i].url);
-				}	
-			}	//END for loop
-		}); //END mysql query
-	}); //END route
-}  //END findRed()
 
 
-
-
-//Reset alluser table to default value of 25 for each color
+//Reset alluser table to default value of 0 for each color
 function resetMemberColors(){
-	var queryString = `UPDATE allusers SET red=50, green=50, blue=50, bw=50 WHERE id > 0`;
+	var queryString = `UPDATE allusers SET red=100, green=100, blue=100, bwCount=0, upvotes=0 WHERE id > 0`;
 	connection.query(queryString, function(err, data){
 		if (err) throw err;
 		console.log(data);
 	});
 }
 
-
+// resetMemberColors();
 
 //from thumbnail photo URL, return URL of uncompressed photo
 //callback function here is shortenURL()
@@ -307,7 +266,7 @@ function shortenURL(url){
 app.get('/userRGB/:userid', function(req, res){
 	var rgbProfile ={};
 	var userid = req.params.userid;
-	var queryString = `SELECT * FROM allusers WHERE id=?;`;
+	var queryString = `SELECT * FROM allusers WHERE username=?;`;
 	connection.query(queryString, [userid], function(err, data){
 		rgbProfile.red = data[0].red;
 		rgbProfile.green = data[0].green;
@@ -319,63 +278,80 @@ app.get('/userRGB/:userid', function(req, res){
 });
 
 
-//Match algorithm
-//==============================================
-app.get('/match', function(req, res){
-	//connect to sql databse and make query
-	connection.query(`SELECT * FROM photos;`, function(err, data){
+
+//Route for updating a user's RGB/color profile
+//this post route is called when a user clicks/upvotes a photo
+
+app.post('/updateUserColors/:user', function(req, res){
+	var userid = req.params.user;
+	var data = req.body;
+	var dominant = req.body.dominant;
+	var url = req.body.url;
+	var photoid = req.body.id;
+
+	console.log('userid: ' + userid);
+	// console.log(data.dominant);
+	// updateUserColors( , userid)
+
+	// var red = req.body.red;
+	// var green = req.body.green;
+	// var blue = req.body.green;
+	// var dominant = req.body.dominant;
+ //    var bw;
+
+ //    if (dominant == 'bw') bw = 1;
+ //    else bw = 0;
+
+	// var colorInfo = [red, green, blue, bw, userid];
+
+	// var queryString = `UPDATE allusers SET red=red+?, green=green+?, blue=blue+?, bwCount=bwCount+?, upvotes=upvotes+1  WHERE id=?`;
+	// connection.query(queryString, colorInfo, function(err, data){
+	// 	console.log(data);
+	// });
+
+	updateUserColors(dominant, userid);
+	updateUserTable(userid, photoid, url);
+});
+
+
+// //function to update a user's color value
+// //this function is called when the user clicks on a photo
+// //'color' parameter is the dominantHue of the clicked photo
+function updateUserColors(color, userID){
+	var queryString; 
+
+	switch(color) {
+		case 'red':
+			queryString = `UPDATE allusers SET red=red+20, green = green-10, blue=blue-10, upvotes=upvotes+1 WHERE username=` + `'` + userID+ `';`;
+			break;
+
+		case 'green':
+			queryString = `UPDATE allusers SET green=green+20, red = red-10, blue=blue-10, upvotes=upvotes+1 WHERE username=` + `'` + userID+ `';`;
+			break;
+
+		case 'blue':
+			queryString = `UPDATE allusers SET blue=blue+20, green = green-10, red=red-10, upvotes=upvotes+1 WHERE username=` + `'` + userID+ `';`;
+			break;
+
+		case 'bw':
+			queryString = `UPDATE allusers SET bwCount=bwCount+1, upvotes=upvotes+1 WHERE username=` + `'` + userID+ `';`;
+	}
+
+	connection.query(queryString, function(err, data){
 		if (err) throw err;
+		console.log(data);
+	});
+}
 
-		//processData() finds and returns the best match
-		res.json(processData(req, res, data));
-	}); //END connection.query (mysql query)
-}); //END '/match' route
+function updateUserTable(userID, photoID, url){
+	var queryString = `INSERT INTO ` + userID + ` (id, url) VALUES (?, ?)`;
+	connection.query(queryString, [photoID, url], function(err, data){
+		if (err) throw err;
+		console.log(data);
+	});
+}
 
 
-//function written as a test to find the best match. will return to this later. not used for now.
-function processData(req, res, data){
-	//query mysql db
-	var bestMatch;
-
-	//test case
-	var testObj = {
-		//ansel adams
-		url: 'http://www.fullredneck.com/wp-content/uploads/2016/06/Funny-Trump-Snapchat-Filter-15.jpg',
-		bw: 1,
-		photofilter: 0,
-		humor: 0,
-		tagword: 'trump'
-	};
-
-	//best match returned by this function
-	bestMatch = {
-		url: '',
-		bw: '',
-		photofilter: '',
-		humor: '',
-		differential: 1000
-	};
-
-	// var differential = 1000;
-
-	for (var i = 0; i < data.length; i++){
-		var sumOfDff = 0;
-		
-		var bwDiff = Math.abs(testObj.bw - data[i].bw);
-		var photofilterDiff = Math.abs(testObj.photofilter - data[i].photofilter);
-		var humorDiff = Math.abs(testObj.humor - data[i].humor);
-
-		sumOfDff = sumOfDff + bwDiff + photofilterDiff + humorDiff;
-		if (sumOfDff < bestMatch.differential){
-			bestMatch['url'] = data[i].url;
-			bestMatch['bw'] = data[i].bw;
-			bestMatch['photofilter'] = data[i].photofilter;
-			bestMatch['humor'] = data[i].humor;
-			bestMatch['differential'] = sumOfDff;
-		}		
-	}//END for loop
-	return bestMatch;
-}//END processData()
 
 
 //master function that uploads new photos to the mysql db
