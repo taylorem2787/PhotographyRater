@@ -61,17 +61,6 @@ body {
     /*background-color: red; */
 }
 
-.logo {
-	
-}
-
-
-.nav-wrapper {
-/*	background: rgb(105, 105, 105);
-	background: rgba(105, 105, 105, .5) !important;*/
-	border-bottom-color: 2px solid snow;
-}
-
 nav, footer, .btn-large, .btn {
 	background-color: turquoise !important;
 }
@@ -86,7 +75,7 @@ nav img {
 	width: 100%;
 }
 
-#navbar {
+#navbar, .nav-extended {
 	position: fixed;
 	width: 100%;
 	left: 0;
@@ -101,7 +90,7 @@ nav img {
 	width: 100%;
 }
 
-#explore-display {
+#explore-display, profile-display {
 	padding-top: 30px;
 	column-count: 3;
 	line-height: 2;
@@ -193,9 +182,9 @@ footer.page-footer {
 .parallax-profile {
 	background: rgba(105, 105, 105, .5) !important;
 }
-.extended{
+/*.extended{
 	border-top-color: 2 solid #fff !important;
-}
+}*/
 
 .nav-extended{
 	background-image: url(../img/nav.png) !important;
