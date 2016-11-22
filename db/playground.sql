@@ -54,7 +54,7 @@ CREATE TABLE mickey
     uploaded boolean default 0
 );
 
-select * from mickey;
+select * from hanbom;
 
 drop table mickey;
 

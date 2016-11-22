@@ -1,7 +1,7 @@
 CREATE TABLE photos
 (
 	id int NOT NULL AUTO_INCREMENT,
-	url varchar(255) NOT NULL,
+	url varchar(255) NOT NULL UNIQUE,
 	red int NOT NULL,
 	green int NOT NULL,
 	blue int NOT NULL,
