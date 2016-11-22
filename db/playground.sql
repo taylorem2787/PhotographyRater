@@ -54,6 +54,10 @@ CREATE TABLE mickey
     uploaded boolean default 0
 );
 
-select * from hanbom;
+select * from mickey;
 
-drop table hanbom;
+drop table mickey;
+
+UPDATE photos
+SET upvotes = upvotes + 1
+WHERE id = 131;

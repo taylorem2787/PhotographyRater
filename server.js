@@ -189,7 +189,7 @@ function addMember(username, password, email){
 }
 
 function createMemberTable(newusername){
-	var queryString = `CREATE TABLE ` + newusername + ` (id int, url varchar (255), upvoted boolean default 1, uploaded boolean)`;
+	var queryString = `CREATE TABLE ` + newusername + ` (id int, url varchar (255), upvoted boolean default 1, uploaded boolean default 0)`;
 	connection.query(queryString, function(err, data){
 		console.log(data);
 	});
@@ -350,6 +350,9 @@ function updateUserTable(userID, photoID, url){
 		console.log(data);
 	});
 }
+
+
+
 
 //route to display a user's saved/liked photos
 app.get('/profile/:user', function(req, res){
