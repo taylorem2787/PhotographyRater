@@ -51,7 +51,9 @@ CREATE TABLE mickey
 	id int, 
     url varchar (255), 
     upvoted boolean default 1, 
-    uploaded boolean
+    uploaded boolean default 0
 );
 
 select * from hanbom;
+
+drop table hanbom;

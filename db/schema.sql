@@ -6,8 +6,8 @@ CREATE TABLE photos
 	green int NOT NULL,
 	blue int NOT NULL,
 	dominant varchar(255),
-	upvotes int,
-	downvotes int,
+	upvotes int DEFAULT 0,
+	downvotes int DEFAULT 0,
 	category varchar(255),
 	tagword varchar(255),
 	PRIMARY KEY (id)

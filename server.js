@@ -351,7 +351,17 @@ function updateUserTable(userID, photoID, url){
 	});
 }
 
-
+//route to display a user's saved/liked photos
+app.get('/profile/:user', function(req, res){
+	var user = req.params.user;
+	var queryString = `SELECT * FROM ` + user + `;`;
+	connection.query(queryString, function(err, data){
+		if (err) throw err;
+		for (var i = 0, n = data.length; i < n; i++){
+			console.log(data[0].url);
+		}
+	});
+});
 
 
 //master function that uploads new photos to the mysql db

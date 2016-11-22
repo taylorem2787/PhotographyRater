@@ -29,7 +29,7 @@ $('#submitBtn').on('click', function(){
 
 //REGISTER FUNCTION
 $('#registerBtn').on('click', function(){
-	// alert('hi');
+
 	var username = $('#icon_prefix').val();
 	var email = $('#icon_email').val();
 	var password = $('#icon_password').val();
@@ -43,12 +43,20 @@ $('#registerBtn').on('click', function(){
 
 	//current URL displayed in the browser, e.g. localhost:3000
 	var currentLocation = window.location.origin;
-	$.post(currentLocation + '/adduser', userInfo, function(data){
-		console.log(status);
-		$('#icon_prefix').val();
-		$('#icon_email').val();
-		$('#icon_password').val();
-	});
 
+	if (username && email && password){
+		$.post(currentLocation + '/adduser', userInfo, function(data){
+			console.log(status);
+			$('#icon_prefix').val();
+			$('#icon_email').val();
+			$('#icon_password').val();
+		});
+	}
 });
 
+//Display a user's liked/saved photos
+$('#profile').on('click', function(){
+	$.get('/profile/' + userID, function(data){
+		console.log(data);
+	});
+});
