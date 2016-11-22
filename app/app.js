@@ -135,6 +135,8 @@ function updateUserColors(photoInfo){
 	});
 }
 
+//CALLING FUNCTIONS: ==============================================================================================
+
 
 })(); // END MAIN CLOSURE
 
