@@ -189,7 +189,7 @@ function addMember(username, password, email){
 }
 
 function createMemberTable(newusername){
-	var queryString = `CREATE TABLE ` + newusername + ` (id int, url varchar (255), upvoted boolean default 1, uploaded boolean default 0)`;
+	var queryString = `CREATE TABLE ` + newusername + ` (id int, url varchar (255), upvoted boolean default 1, uploaded boolean)`;
 	connection.query(queryString, function(err, data){
 		console.log(data);
 	});
@@ -228,14 +228,14 @@ app.get('/members', function(req, res){
 
 //Reset alluser table to default value of 0 for each color
 function resetMemberColors(){
-	var queryString = `UPDATE allusers SET red=100, green=100, blue=100, bwCount=0, upvotes=0`;
+	var queryString = `UPDATE allusers SET red=100, green=100, blue=100, bwCount=0, upvotes=0 WHERE id > 0`;
 	connection.query(queryString, function(err, data){
 		if (err) throw err;
 		console.log(data);
 	});
 }
 
-resetMemberColors();
+// resetMemberColors();
 
 //from thumbnail photo URL, return URL of uncompressed photo
 //callback function here is shortenURL()
@@ -354,19 +354,6 @@ function updateUserTable(userID, photoID, url){
 
 
 
-//route to display a user's saved/liked photos
-app.get('/profile/:user', function(req, res){
-	var user = req.params.user;
-	var queryString = `SELECT * FROM ` + user + `;`;
-	connection.query(queryString, function(err, data){
-		if (err) throw err;
-		for (var i = 0, n = data.length; i < n; i++){
-			console.log(data[0].url);
-		}
-	});
-});
-
-
 //master function that uploads new photos to the mysql db
 //this function uses a callbackfunction
 //'colorCallback', which uses dominant-color npm package to identify rgb values of the dominant color in a photo
@@ -374,7 +361,8 @@ app.get('/profile/:user', function(req, res){
 //queryForDominantColor(), in turn, calls addPhotoToDb(), which uploads photo info to mysql db.		
 function findColorAndUploadToDb(colorCallback){
 	var photosArray = [
-
+'https://images.pexels.com/photos/166571/pexels-photo-166571.jpeg?h=350&auto=compress',
+'https://images.pexels.com/photos/175854/pexels-photo-175854.jpeg?h=350&auto=compress'
 	 ];
 
 	for (var i = 0; i < photosArray.length; i++){
