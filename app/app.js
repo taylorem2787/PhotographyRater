@@ -70,11 +70,8 @@ $(function() {
 
 // On click of 'explore-button' triggers getting user images by user ID preference
 $('.explore-button').on('click', function() {
-<<<<<<< HEAD
 	var defaultPhotoId = 182;
-=======
-	var defaultPhotoId = 138;
->>>>>>> 1834130d9296f5bbd3ce9e7150417754ebdde26a
+	
 	getImages(defaultPhotoId);
 })
 
