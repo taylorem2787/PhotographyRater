@@ -321,13 +321,26 @@ app.post('/updateUserColors/:user', function(req, res){
 // //'color' parameter is the dominantHue of the clicked photo
 function updateUserColors(color, userID){
 	var queryString; 
-
+	`UPDATE allusers
+		SET green = CASE
+		   WHEN green < 235 THEN green+20
+		   ELSE green
+		END,
+			red = CASE
+		    WHEN red >= 10 THEN red-10
+		    ELSE red
+		END,
+			blue = CASE
+		    WHEN blue >= 10 THEN blue-10
+		    ELSE blue
+		END
+	WHERE username=`
 	switch(color) {
 		case 'red':
 			queryString = 
 			`UPDATE allusers
 				SET red = CASE
-				   WHEN red <= 235 THEN red+20
+				   WHEN red < 235 THEN red+20
 				   ELSE red
 				END,
 					green = CASE
@@ -345,7 +358,7 @@ function updateUserColors(color, userID){
 			queryString = 
 			`UPDATE allusers
 				SET green = CASE
-				   WHEN green <= 235 THEN green+20
+				   WHEN green < 235 THEN green+20
 				   ELSE green
 				END,
 					red = CASE
@@ -363,7 +376,7 @@ function updateUserColors(color, userID){
 			queryString = 
 			`UPDATE allusers
 				SET blue = CASE
-				   WHEN blue <= 235 THEN blue+20
+				   WHEN blue < 235 THEN blue+20
 				   ELSE blue
 				END,
 					red = CASE
