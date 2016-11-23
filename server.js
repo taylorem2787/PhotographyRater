@@ -230,7 +230,7 @@ app.get('/members', function(req, res){
 
 //Reset alluser table to default value of 0 for each color
 function resetMemberColors(){
-	var queryString = `UPDATE allusers SET red=100, green=100, blue=100, bwCount=0, upvotes=0 WHERE id > 0`;
+	var queryString = `UPDATE allusers SET red=130, green=130, blue=130, bwCount=0, upvotes=0`;
 	connection.query(queryString, function(err, data){
 		if (err) throw err;
 		console.log(data);
