@@ -70,7 +70,7 @@ $(function() {
 
 // On click of 'explore-button' triggers getting user images by user ID preference
 $('.explore-button').on('click', function() {
-	var defaultPhotoId = 138;
+	var defaultPhotoId = 182;
 	getImages(defaultPhotoId);
 })
 
@@ -116,7 +116,7 @@ function renderImages() {
 
 				updateUserColors(clickedImage);
 
-			})
+			});
 		}
 	}
 	// console.log(app.images)

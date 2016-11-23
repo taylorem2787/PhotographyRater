@@ -17,7 +17,7 @@ var nextImage = function(photoID) {
 
 		// Based on current UserId get the R, G, B, BW values from the User table.
 
-		connection.query('SELECT red, green, blue, bw FROM `photos` WHERE id = ?', [ photoID ], function(err, data){
+		connection.query('SELECT red, green, blue FROM `photos` WHERE id = ?', [ photoID ], function(err, data){
 
 			if (err) reject(err);
 
@@ -25,7 +25,7 @@ var nextImage = function(photoID) {
 				red: data[0].red,
 				blue: data[0].blue,
 				green: data[0].green,
-				bw: data[0].bw
+				// bw: data[0].bw
 			});
 
 		});
@@ -37,21 +37,21 @@ var nextImage = function(photoID) {
 			red: colorFloor(results.red - variance),
 			green: colorFloor(results.green - variance),
 			blue: colorFloor(results.blue - variance),
-			bw: colorFloor(results.bw - variance)
+			// bw: colorFloor(results.bw - variance)
 		};
 
 		const maximums = {
 			red: colorCeil(results.red + variance),
 			green: colorCeil(results.green + variance),
 			blue: colorCeil(results.blue + variance),
-			bw: colorCeil(results.bw + variance)
+			// bw: colorCeil(results.bw + variance)
 		};
 
 
 		// Query the DB for 9 images matching the minimums and maximums
 		return new Promise(function(resolve, reject) {
 
-			const query = 'SELECT * FROM `photos` AS p WHERE p.red >= ? AND p.red <= ? AND p.green >= ? AND p.green <= ? AND p.blue >= ? AND p.blue <= ?';
+			const query = 'SELECT * FROM photos AS p WHERE p.red >= ? AND p.red <= ? AND p.green >= ? AND p.green <= ? AND p.blue >= ? AND p.blue <= ?';
 			const parameters = [
 				minimums.red,
 				maximums.red,
