@@ -1,4 +1,6 @@
-	//imported modules for extracting dominant color from an image
+var photosArray = require('./pexelsRed.js');
+
+//imported modules for extracting dominant color from an image
 //============================================================
 
 //npm package to extract the most dominant color from a photo,
@@ -360,10 +362,7 @@ function updateUserTable(userID, photoID, url){
 //'colorCallback' argument is function 'queryForDominantColor()'
 //queryForDominantColor(), in turn, calls addPhotoToDb(), which uploads photo info to mysql db.		
 function findColorAndUploadToDb(colorCallback){
-	var photosArray = [
-'https://images.pexels.com/photos/166571/pexels-photo-166571.jpeg?h=350&auto=compress',
-'https://images.pexels.com/photos/175854/pexels-photo-175854.jpeg?h=350&auto=compress'
-	 ];
+	
 
 	for (var i = 0; i < photosArray.length; i++){
 
