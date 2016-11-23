@@ -60,3 +60,7 @@ $('#profile').on('click', function(){
 		console.log(data);
 	});
 });
+
+$('.explore-image').on('click', function(){
+	alert('clicked');
+});

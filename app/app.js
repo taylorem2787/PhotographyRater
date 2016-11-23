@@ -121,6 +121,7 @@ function renderImages() {
 		}
 	}
 	// console.log(app.images)
+	return false;
 }
 
 function updateUserColors(photoInfo){
