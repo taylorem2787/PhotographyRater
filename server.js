@@ -321,18 +321,73 @@ app.post('/updateUserColors/:user', function(req, res){
 // //'color' parameter is the dominantHue of the clicked photo
 function updateUserColors(color, userID){
 	var queryString; 
-
+	`UPDATE allusers
+		SET green = CASE
+		   WHEN green < 235 THEN green+20
+		   ELSE green
+		END,
+			red = CASE
+		    WHEN red >= 10 THEN red-10
+		    ELSE red
+		END,
+			blue = CASE
+		    WHEN blue >= 10 THEN blue-10
+		    ELSE blue
+		END
+	WHERE username=`
 	switch(color) {
 		case 'red':
-			queryString = `UPDATE allusers SET red=red+20, green = green-10, blue=blue-10, upvotes=upvotes+1 WHERE username=` + `'` + userID+ `';`;
+			queryString = 
+			`UPDATE allusers
+				SET red = CASE
+				   WHEN red < 235 THEN red+20
+				   ELSE red
+				END,
+					green = CASE
+				    WHEN green >= 10 THEN green-10
+				    ELSE green
+				END,
+					blue = CASE
+				    WHEN blue >= 10 THEN blue-10
+				    ELSE blue
+				END
+			WHERE username=` + `'` + userID+ `';`;
 			break;
 
 		case 'green':
-			queryString = `UPDATE allusers SET green=green+20, red = red-10, blue=blue-10, upvotes=upvotes+1 WHERE username=` + `'` + userID+ `';`;
+			queryString = 
+			`UPDATE allusers
+				SET green = CASE
+				   WHEN green < 235 THEN green+20
+				   ELSE green
+				END,
+					red = CASE
+				    WHEN red >= 10 THEN red-10
+				    ELSE red
+				END,
+					blue = CASE
+				    WHEN blue >= 10 THEN blue-10
+				    ELSE blue
+				END
+			WHERE username=` + `'` + userID+ `';`;
 			break;
 
 		case 'blue':
-			queryString = `UPDATE allusers SET blue=blue+20, green = green-10, red=red-10, upvotes=upvotes+1 WHERE username=` + `'` + userID+ `';`;
+			queryString = 
+			`UPDATE allusers
+				SET blue = CASE
+				   WHEN blue < 235 THEN blue+20
+				   ELSE blue
+				END,
+					red = CASE
+				    WHEN red >= 10 THEN red-10
+				    ELSE red
+				END,
+					green = CASE
+				    WHEN green >= 10 THEN green-10
+				    ELSE green
+				END
+			WHERE username=` + `'` + userID+ `';`;
 			break;
 
 		case 'bw':
