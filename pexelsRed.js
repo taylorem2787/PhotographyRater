@@ -1,13 +1,6 @@
 var photosArray = [
 
 
-
-
-
-
-
-// 'https://images.pexels.com/photos/166571/pexels-photo-166571.jpeg?h=350&auto=compress',
-// 'https://images.pexels.com/photos/175854/pexels-photo-175854.jpeg?h=350&auto=compress',
 // 'https://images.pexels.com/photos/139099/pexels-photo-139099.jpeg?h=350&auto=compress',
 // 'https://images.pexels.com/photos/115106/pexels-photo-115106.jpeg?h=350&auto=compress',
 // 'https://images.pexels.com/photos/220618/pexels-photo-220618.jpeg?h=350&auto=compress',
@@ -151,6 +144,9 @@ var photosArray = [
 // 'https://images.pexels.com/photos/40825/ant-macro-insect-red-40825.jpeg?h=350&auto=compress',
 // 'https://images.pexels.com/photos/84838/tulips-flowers-women-84838.jpeg?h=350&auto=compress',
 // 'https://images.pexels.com/photos/6231/marketing-color-colors-wheel.jpg?h=350&auto=compress',
+
+
+
 // 'https://images.pexels.com/photos/15239/flower-roses-red-roses-bloom.jpg?h=350&auto=compress',
 // 'https://images.pexels.com/photos/1749/fire-orange-emergency-burning.jpg?h=350&auto=compress',
 // 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?h=350&auto=compress',
