@@ -115,8 +115,8 @@ function renderImages() {
 				var dominant= clickedImage.dominant;
 				console.log('dominant: ' + dominant);
 
-
-				updateUserColors(clickedImage);
+				if (userID) updateUserColors(clickedImage);
+				
 			});
 		}
 	}
