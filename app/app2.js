@@ -1,5 +1,6 @@
 //LOG IN FUNCTION
 var loggedIn = false;
+var userID;
 
 //when the user successfully logs in, 'loggedIn' toggles to true
 $('#submitBtn').on('click', function(){
@@ -14,6 +15,9 @@ $('#submitBtn').on('click', function(){
     		if (data[i].email === useremail && data[i].password === userpassword){
     			loggedIn = true;
     			console.log(loggedIn);
+    			// console.log(data[i].username);
+    			userID = data[i].username;
+    			console.log(userID);
     		}
     	}
 	});
@@ -25,7 +29,7 @@ $('#submitBtn').on('click', function(){
 
 //REGISTER FUNCTION
 $('#registerBtn').on('click', function(){
-	// alert('hi');
+
 	var username = $('#icon_prefix').val();
 	var email = $('#icon_email').val();
 	var password = $('#icon_password').val();
@@ -39,9 +43,20 @@ $('#registerBtn').on('click', function(){
 
 	//current URL displayed in the browser, e.g. localhost:3000
 	var currentLocation = window.location.origin;
-	$.post(currentLocation + '/adduser', userInfo, function(data){
-		console.log(status);
-		alert('hiii');
-	});
 
+	if (username && email && password){
+		$.post(currentLocation + '/adduser', userInfo, function(data){
+			console.log(status);
+			$('#icon_prefix').val();
+			$('#icon_email').val();
+			$('#icon_password').val();
+		});
+	}
+});
+
+//Display a user's liked/saved photos
+$('#profile').on('click', function(){
+	$.get('/profile/' + userID, function(data){
+		console.log(data);
+	});
 });

@@ -1,13 +1,13 @@
 CREATE TABLE photos
 (
 	id int NOT NULL AUTO_INCREMENT,
-	url varchar(255) NOT NULL,
+	url varchar(255) NOT NULL UNIQUE,
 	red int NOT NULL,
 	green int NOT NULL,
 	blue int NOT NULL,
 	dominant varchar(255),
-	upvotes int,
-	downvotes int,
+	upvotes int DEFAULT 0,
+	downvotes int DEFAULT 0,
 	category varchar(255),
 	tagword varchar(255),
 	PRIMARY KEY (id)
@@ -19,30 +19,28 @@ INSERT INTO photos (url, red, green, blue, dominant) VALUES (?, ?, ?, ?, ?);
 
 CREATE TABLE allusers
 (
-	id int NOT NULL AUTO_INCREMENT,
 	username varchar(255) NOT NULL,
 	password varchar(255) NOT NULL,
 	email varchar(255) NOT NULL,
-	red int DEFAULT 25,
-	green int DEFAULT 25,
-	blue int DEFAULT 25,
-	bw int DEFAULT 25,
-	totalUpvotes int,
-	totalDownvotes int,
-	totalUploads int,
-	PRIMARY KEY (id)
+	red int DEFAULT 100,
+	green int DEFAULT 100,
+	blue int DEFAULT 100,
+	bwCount int DEFAULT 0,
+	upvotes int DEFAULT 0,
+	downvotes int DEFAULT 0,
+	totalUploads int DEFAULT 0,
+	PRIMARY KEY (username)
 );
 
 INSERT INTO allusers (username, password, email) VALUES ('hanbom', 'mickey', 'tmesis3@gmail.com');
 
 
-CREATE TABLE userImages
+CREATE TABLE mickey 
 (
-	username varchar(255),
-	img_id int,
-	
-
-
+	id int, 
+    url varchar (255), 
+    upvoted boolean default 1, 
+    uploaded boolean
 );
 
 /*

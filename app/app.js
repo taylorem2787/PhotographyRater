@@ -70,13 +70,9 @@ $(function() {
 
 // On click of 'explore-button' triggers getting user images by user ID preference
 $('.explore-button').on('click', function() {
-	var userId = 1;
-	getImages(userId);
+	var defaultPhotoId = 138;
+	getImages(defaultPhotoId);
 })
-
-//// TEMP
-	$('.explore-button').trigger('click');
-//// TEMP
 
 // AJAX call to the API displaying next image
 function getImages(id) {
@@ -95,30 +91,52 @@ function addImages(newImages) {
 
 function renderImages() {
 	var images = app.images;
-	$('#explore-display').html('<div>');
+	$('#explore-display').html('');
 	for (var i = 0; i < images.length; i++) {
 		for(var j = 0; j < images[i].length; j++) {
-			var imgContainer = $('<div class="explore-image">', {'data-col': i, 'data-row': j})
-			var imgOverlay = $('<div class="explore-image__overlay">');
-			var imgUpvote = $('<div class="explore-image__overlay__upvote">');
-			var img = $('<img />', {src : images[i][j].url});
+			var img = $('<img />', {src : images[i][j].url, 'data-col': i, 'data-row': j});
 
-			imgOverlay.append(imgUpvote);
-			imgContainer.append(img);
-			imgContainer.append(imgOverlay);
+			img.addClass('explore-image');
+			img.appendTo('#explore-display');
 
-			$('#explore-display').append(imgContainer);
-
-			imgContainer.on('click', function(e) {
+			img.on('click', function(e) {
 				var img = e.target;
 				var row = $(img).data('row');
 				var col = $(img).data('col');
+				// console.log(app.images[col][row]);
+				var clickedImage = app.images[col][row];
+				var photoID = clickedImage.id;
+				
+				console.log(clickedImage);
 
-				console.log(app.images[col][row])
+				getImages(photoID);
+
+				var dominant= clickedImage.dominant;
+				console.log('dominant: ' + dominant);
+
+				updateUserColors(clickedImage);
+
 			})
 		}
 	}
+	// console.log(app.images)
 }
+
+function updateUserColors(photoInfo){
+
+	var colorInfo = photoInfo;
+	
+	var currentLocation = window.location.origin;
+
+	var URL = currentLocation + '/updateUserColors/' + userID;
+
+	$.post(URL, colorInfo, function(data){
+		console.log('data: ' + data);
+	});
+}
+
+//CALLING FUNCTIONS: ==============================================================================================
+
 
 })(); // END MAIN CLOSURE
 

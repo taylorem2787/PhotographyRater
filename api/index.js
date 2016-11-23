@@ -1,4 +1,4 @@
-var nextImage = require('./nextImage')
+var nextImage = require('./nextImageCopy')
 
 var api = {
 	'nextImage': nextImage

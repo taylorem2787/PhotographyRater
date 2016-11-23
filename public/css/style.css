@@ -71,7 +71,6 @@ body {
 	background: rgba(105, 105, 105, .5) !important;*/
 	border-bottom-color: 2px solid snow;
 }
-
 nav, footer, .btn-large, .btn {
 	background-color: turquoise !important;
 }
@@ -120,63 +119,19 @@ nav img {
 	-webkit-column-break-inside: avoid;
     page-break-inside: avoid;
     break-inside: avoid;
-    line-height: 0;
-}
-
-.explore-image img {
-	width: 100%;
-	margin: 0;
-}
-
-.explore-image__overlay {
-	opacity: 0;
- 	position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-/*    background-color: #ff00ff;
-*/    transition: opacity ease 0.2s;
-}
-
-.explore-image:hover .explore-image__overlay {
-    opacity: 1;
-}
-
-.explore-image__overlay__upvote {
-	background-image: url("../img/upvote.svg"); 
-	background-size: 100% 100%;
-	position: absolute;
-	bottom: 2px;
-	right: 0;
-	height: 15%;
-	width: 15%;
-	min-height: 20px;
-	min-width: 20px;
-	cursor: pointer;
-}
-
-.explore-image__overlay__upvote:hover {
-
-}
 
 footer.page-footer {
     margin-top: 0px;
-/*    background: rgba(105, 105, 105, .5) !important;
-*/}
+    background: rgba(105, 105, 105, .5) !important;
+}
 
 .logo{
 	width: 215px;
 	height: 75px;
 }
-
 .webui-popover {
 	background-color: #fff;
     background-color: rgba(255,255,255,0.3);
-}
-
-#hidden {
-	display: none;
 }
 
 /*==========================PROFILE.HTML=============================*/
