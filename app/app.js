@@ -95,28 +95,16 @@ function renderImages() {
 	$('#explore-display').html('');
 	for (var i = 0; i < images.length; i++) {
 		for(var j = 0; j < images[i].length; j++) {
-			// var img = $('<img />', {src : images[i][j].url, 'data-col': i, 'data-row': j});
+			var img = $('<img />', {src : images[i][j].url, 'data-col': i, 'data-row': j});
 
-			// img.addClass('explore-image');
-			// img.appendTo('#explore-display');
+			img.addClass('explore-image');
+			img.appendTo('#explore-display');
 
-			var imgContainer = $('<div class="explore-image">');
-			imgContainer.data('col', i);
-			imgContainer.data('row', j);
-			var imgOverlay = $('<div class="explore-image__overlay">');
-			var imgUpvote = $('<div class="explore-image__overlay__upvote">');
-			var img = $('<img />', {src : images[i][j].url});
-
-			imgOverlay.append(imgUpvote);
-			imgContainer.append(img);
-			imgContainer.append(imgOverlay);
-
-			$('#explore-display').append(imgContainer);
-
-			imgContainer.on('click', function(e) {
-				var img = e.currentTarget;
+			img.on('click', function(e) {
+				var img = e.target;
 				var row = $(img).data('row');
 				var col = $(img).data('col');
+				// console.log(app.images[col][row]);
 				var clickedImage = app.images[col][row];
 				var photoID = clickedImage.id;
 				
@@ -127,33 +115,36 @@ function renderImages() {
 				var dominant= clickedImage.dominant;
 				console.log('dominant: ' + dominant);
 
-				if (userID) updateUserColors(clickedImage, userID);
+				//for logged in users, update user color profile in mysql db
+				if (userID) updateUserColors(clickedImage);
+				//for logged in users, update color window
+				if (userID) getLoggedUserColors(userID);
+				
+				//for users who aren't logged in, update user color profile, userRGB[]
+				if (!userID) changeUnloggedUserColors(dominant);
+				//for users who aren't logged in, update color window
+				if (!userID) updateColorWindowUnlogged(unloggedRGB);
 			});
-
 		}
 	}
 	// console.log(app.images)
 	return false;
 }
 
-function updateUserColors(photoInfo, userID){
+function updateUserColors(photoInfo){
 
 	var colorInfo = photoInfo;
 	
 	var currentLocation = window.location.origin;
 
 	var URL = currentLocation + '/updateUserColors/' + userID;
-	console.log('updating user colors')
 
 	$.post(URL, colorInfo, function(data){
-		console.log('updated user colors')
-
 		console.log('data: ' + data);
-
-		getLoggedUserColors(userID);
 	});
 }
 
+//update color window/bar for users who are logged in
 function getLoggedUserColors(userid){
 	var currentLocation = window.location.origin;
 	var URL = currentLocation + '/userRGB/' + userid;
@@ -170,9 +161,49 @@ function getLoggedUserColors(userid){
 	});
 }
 
-function changeLoggedUserColors(colors){
+//update color window/bar for users who are not logged in
+function changeUnloggedUserColors(dominantColor){
+
+	var dominant = dominantColor;
+	var userRed = unloggedRGB[0];
+	var userGreen = unloggedRGB[1];
+	var userBlue = unloggedRGB[2];
+
+
+	console.log(userRed);
+	console.log(userGreen);
+	console.log(userBlue);
+
+	switch (dominant){
+		case 'red':
+		  if (userRed <= 235) unloggedRGB[0] = unloggedRGB[0] + 20;
+		  if (userGreen >= 10) unloggedRGB[1] = unloggedRGB[1] - 10;
+		  if (userBlue >= 10) unloggedRGB[2] = unloggedRGB[2] - 10;
+		  break;
+
+		case 'green':
+		  if (userGreen <= 235) unloggedRGB[1] = unloggedRGB[1] + 20;
+		  if (userRed >= 10) unloggedRGB[0] = unloggedRGB[0] - 10;
+		  if (userBlue >= 10) unloggedRGB[2] = unloggedRGB[2] - 10;
+		  break;
+
+		case 'blue':
+		  if (userBlue <= 235) unloggedRGB[2] = unloggedRGB[2] + 20;
+		  if (userRed >= 10) unloggedRGB[0] = unloggedRGB[0] - 10;
+		  if (userGreen >= 10) unloggedRGB[1] = unloggedRGB[1] - 10;
+		  break;
+	}
+}
+
+function updateColorWindowUnlogged(colorArray){
+	var red = colorArray[0];
+	var green = colorArray[1];
+	var blue = colorArray[2];
+
+	$('.color-window').css('background-color', `rgb(${red}, ${green}, ${blue})`);
 
 }
+
 
 // var getLoggedUserColors(userid) = new Promise ((resolve, reject) => {
 // 	var currentLocation = window.location.origin;
