@@ -177,6 +177,7 @@ app.post('/adduser', function(req, res){
 
 	addMember(username, password, email);
 	createMemberTable(username);
+	res.send();
 });
 
 function addMember(username, password, email){
