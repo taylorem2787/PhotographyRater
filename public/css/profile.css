@@ -1,0 +1,39 @@
+body {
+    width: 100%;
+    padding: 0px;
+    margin: 0 auto;
+    overflow: auto;
+    line-height: 25px;
+    background-color: black;
+}
+* {
+	position: relative;
+	box-sizing: border-box;
+}
+.container-profile {
+	min-height: 500px;
+	background-color: black !important;
+    background-color: rgba(255,255,255,0.3) !important;
+   	
+	column-count: 3;
+	line-height: 2;
+	width: 90%;
+	margin: auto;
+    -moz-column-gap: 0;
+    -webkit-column-gap: 0;
+    column-gap: 0;
+    border-radius: 10px;
+}
+
+.nav-extended{
+	background-image: url(../img/nav.png) !important;
+	background-size: cover;
+	clear: both;
+}
+
+nav .brand-logo {
+    display: flex;
+    align-items: center;
+    
+    width: 200px;
+}
