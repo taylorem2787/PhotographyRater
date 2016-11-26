@@ -203,14 +203,13 @@ footer.page-footer {
 .nav-extended{
 	background-image: url(../img/nav.png) !important;
 	background-size: cover;
+	clear: both;
 }
 
 #like {
 	color: #fff !important;
 }
 
-/*.container-profile {
-		background-color: black;
-    background-color: rgba(255,255,255,0.3) !important;*/
+
 
 
