@@ -77,7 +77,10 @@ $('.explore-button').on('click', function() {
 
 // AJAX call to the API displaying next image
 function getImages(id) {
-	$.get('/api/nextImage/' + id, function(result) {
+	var currentLocation = window.location.origin;
+	var URL = currentLocation + '/api/nextImage/';
+	
+	$.get(URL + id, function(result) {
 		addImages(result);
 		renderImages();
 	});
