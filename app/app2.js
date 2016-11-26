@@ -2,6 +2,9 @@
 var loggedIn = false;
 var userID;
 
+//color profile for users who aren't logged in. RGB values
+var unloggedRGB = [130, 130, 130];
+
 //when the user successfully logs in, 'loggedIn' toggles to true
 $('#submitBtn').on('click', function(){
 	//values from log in modal window
