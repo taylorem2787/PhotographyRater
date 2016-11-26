@@ -31,9 +31,9 @@
 
 <!-- ===============================NAV===================================== -->
   
-    <nav class="nav-extended">
-    <div class="nav-wrapper"><img class="logo" src="img/iris.png">
-      <a href="#" class="brand-logo"></a>
+  <nav class="nav-extended teal accent-2">
+    <div class="nav-wrapper teal accent-2" id="navbar">
+      <a id="home" href="index.html" class="brand-logo"><img src="img/colormelogo.svg"></a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a id="explore" href="explore.html">Explore</a></li>
@@ -46,15 +46,30 @@
           <li><a id="login" href="collapsible.html">Login</a></li>
       </ul>
       <div class="extended">
-      <ul class="tabs tabs-transparent black">
-        <li class="tab"><a href="#test1">My Profile</a></li>
-        <li class="tab"><a href="#test2">Uploads</a></li>
-        <li class="tab "><a href="#test3">Disliked Photos</a></li>
-        <li class="tab"><a href="#test4">Settings</a></li>
-      </ul>
-    </div>
+        <ul class="tabs tabs-transparent black">
+          <li class="tab"><a href="#profile">My Profile</a></li>
+          <li class="tab"><a href="#uploads">Uploads</a></li>
+          <li class="tab "><a href="#dislikes">Disliked Photos</a></li>
+          <li class="tab"><a href="#settings">Settings</a></li>
+        </ul>
+    
     </div>
   </nav>
+<div class="pink-light"></div>
+<div id='profile'>
+  <p>Hi, this is the first tab.</p>
+</div>
+<div id='uploads'>
+  <p>This is the 2nd tab.</p>
+</div>
+<div id='dislikes'>
+  <p>And this is the 3rd tab.</p>
+</div>
+
+<div id='settings'>
+  <p>And this is the 3rd tab.</p>
+</div>
+      </div>
 <!--   <div id="test1" class="col s12">My Profile</div>
   <div id="test2" class="col s12">Liked Photos</div>
   <div id="test3" class="col s12">Disliked</div>
@@ -102,114 +117,12 @@
     </div>
     <!-- ======================LOGIN END================================= -->
 
-<!-- ========================IMAGE CARD DIV======================================= -->
-<div class="randomImages">
-  
-</div>
 
-    <!-- ================IMAGE CARDS FOR PROFILE================================= -->
-    <!-- I have to figure this out still - lets talk about this once we get the images in explore to appear -->
-    <div class="container-profile">
-    <br>
-    <!-- ROW ONE -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card  z-depth-8 transparent darken-5">
-            <div class="card-image"><img class="materialboxed" width="550" src="img/paint.jpg"></div>
-            <div class="card-action transparent">
-              <i class="material-icons" id="like">add</i>
-            </div>
-          </div>
-        </div>
+  <div class="parallax-container">
+    
 
-        <div class="col s12 m4">
-          <div class="card  z-depth-8 transparent darken-5">
-            <div class="card-image"><img class="materialboxed" width="550" src="img/paint.jpg"></div>
-            <div class="card-action transparent">
-              <i class="material-icons" id="like">add</i>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="card  z-depth-8 transparent darken-5">
-            <div class="card-image"><img class="materialboxed" width="550" src="img/paint.jpg"></div>
-            <div class="card-action transparent">
-              <i class="material-icons" id="like">add</i>
-            </div>
-          </div>
-        </div>
-      </div> <!-- row end -->
-
-      <!-- ROW TWO -->
-
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card transparent">
-            <div class="card-image"><img class="materialboxed" width="550" src="img/flower.jpeg"></div>
-            <div class="card-action transparent">
-              <i class="material-icons" id="like">add</i>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="card transparent">
-            <div class="card-image"><img class="materialboxed" width="550" src="img/flower.jpeg"></div>
-            <div class="card-action transparent">
-              <i class="material-icons" id="like">add</i>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="card transparent">
-            <div class="card-image"><img class="materialboxed" width="550" src="img/flower.jpeg"></div>
-            <div class="card-action transparent">
-              <i class="material-icons" id="like">add</i>
-            </div>
-          </div>
-        </div>
-      </div> <!-- row end -->
-    </div> <!-- container profile end -->
-<!-- ===================================PARALLAX START======================================= -->
-
-  <div class="parallax-container" id="parallax-profile">
-    <div class="row">
-      <section>
-        <div class="col 12 m4">
-          <div class="parallax"><img class="parallax-img profile" src="img/fruit.jpeg"></div>
-        </div>
-
-        <div class="col 12 m4">
-          <div class="parallax"><img class="parallax-img profile" src="img/brick.jpeg"></div>
-        </div>
-
-        <div class="col 12 m4">
-          <div class="parallax"><img class="parallax-img profile" src="img/brick.jpeg"></div>
-        </div>
-      </section>
-    </div> <!-- row end -->
-  </div> <!-- container end -->
-
+    <div class="parallax"><img class="parallax-img" src="img/nyc.jpg"></div>
   </div>
-  
-<div class="section">
-      <div class="row">
-      <div class="col 12 s4">
-        <div class="parallax"><img class="parallax-img profile" src="img/paint.jpg"></div>
-      </div>
-      <div class="col 12 s4">
-        <div class="parallax"><img class="parallax-img profile" src="img/jellyfish.jpeg"></div>
-      </div>
-      <div class="col 12 s4">
-        <div class="parallax"><img class="parallax-img profile" src="img/flower.jpeg"></div>
-      </div>
-      </div>
-</div>
-      </section>
-      </div> 
-
 
       
 <!-- =================================FOOTER================================== -->
