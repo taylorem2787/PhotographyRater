@@ -116,6 +116,8 @@ function renderImages() {
 				console.log('dominant: ' + dominant);
 
 				if (userID) updateUserColors(clickedImage);
+
+				getLoggedUserColors(userID);
 				
 			});
 		}
@@ -137,6 +139,33 @@ function updateUserColors(photoInfo){
 	});
 }
 
+function getLoggedUserColors(userid){
+	var currentLocation = window.location.origin;
+	var URL = currentLocation + '/userRGB/' + userid;
+	$.get(URL, function(data){
+		// callback(data);
+		var red = data.red;
+		var green = data.green;
+		var blue = data.blue;
+
+		console.log(red);
+		console.log(green);
+		console.log(blue);
+		$('.color-window').css('background-color', `rgb(${red}, ${green}, ${blue})`);
+	});
+}
+
+function changeLoggedUserColors(colors){
+
+}
+
+// var getLoggedUserColors(userid) = new Promise ((resolve, reject) => {
+// 	var currentLocation = window.location.origin;
+// 	var URL = currentLocation + '/userRGB/' + userid;
+// 	$.get(URL, function(data){
+// 		callback(data);
+// 	});
+// });
 //CALLING FUNCTIONS: ==============================================================================================
 
 
