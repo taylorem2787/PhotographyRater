@@ -313,6 +313,7 @@ app.post('/updateUserColors/:user', function(req, res){
 
 	updateUserColors(dominant, userid);
 	updateUserTable(userid, photoid, url);
+	res.send();
 });
 
 

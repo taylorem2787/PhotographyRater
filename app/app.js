@@ -95,16 +95,28 @@ function renderImages() {
 	$('#explore-display').html('');
 	for (var i = 0; i < images.length; i++) {
 		for(var j = 0; j < images[i].length; j++) {
-			var img = $('<img />', {src : images[i][j].url, 'data-col': i, 'data-row': j});
+			// var img = $('<img />', {src : images[i][j].url, 'data-col': i, 'data-row': j});
 
-			img.addClass('explore-image');
-			img.appendTo('#explore-display');
+			// img.addClass('explore-image');
+			// img.appendTo('#explore-display');
 
-			img.on('click', function(e) {
-				var img = e.target;
+			var imgContainer = $('<div class="explore-image">');
+			imgContainer.data('col', i);
+			imgContainer.data('row', j);
+			var imgOverlay = $('<div class="explore-image__overlay">');
+			var imgUpvote = $('<div class="explore-image__overlay__upvote">');
+			var img = $('<img />', {src : images[i][j].url});
+
+			imgOverlay.append(imgUpvote);
+			imgContainer.append(img);
+			imgContainer.append(imgOverlay);
+
+			$('#explore-display').append(imgContainer);
+
+			imgContainer.on('click', function(e) {
+				var img = e.currentTarget;
 				var row = $(img).data('row');
 				var col = $(img).data('col');
-				// console.log(app.images[col][row]);
 				var clickedImage = app.images[col][row];
 				var photoID = clickedImage.id;
 				
@@ -115,27 +127,30 @@ function renderImages() {
 				var dominant= clickedImage.dominant;
 				console.log('dominant: ' + dominant);
 
-				if (userID) updateUserColors(clickedImage);
-
-				getLoggedUserColors(userID);
-				
+				if (userID) updateUserColors(clickedImage, userID);
 			});
+
 		}
 	}
 	// console.log(app.images)
 	return false;
 }
 
-function updateUserColors(photoInfo){
+function updateUserColors(photoInfo, userID){
 
 	var colorInfo = photoInfo;
 	
 	var currentLocation = window.location.origin;
 
 	var URL = currentLocation + '/updateUserColors/' + userID;
+	console.log('updating user colors')
 
 	$.post(URL, colorInfo, function(data){
+		console.log('updated user colors')
+
 		console.log('data: ' + data);
+
+		getLoggedUserColors(userID);
 	});
 }
 
