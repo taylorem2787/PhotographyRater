@@ -204,14 +204,6 @@ function updateColorWindowUnlogged(colorArray){
 
 }
 
-
-// var getLoggedUserColors(userid) = new Promise ((resolve, reject) => {
-// 	var currentLocation = window.location.origin;
-// 	var URL = currentLocation + '/userRGB/' + userid;
-// 	$.get(URL, function(data){
-// 		callback(data);
-// 	});
-// });
 //CALLING FUNCTIONS: ==============================================================================================
 
 
