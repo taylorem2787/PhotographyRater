@@ -96,6 +96,15 @@ nav img {
 	height: 60px;
 }
 
+/*height increased to 106% to be flush with rest of navbar.*/
+.color-window {
+	position: relative;
+	height: 106%;
+	width: 40%;
+	left: 30%;
+	background-color: orange;
+}
+
 .load-more {
 	width: 100%;
 }
