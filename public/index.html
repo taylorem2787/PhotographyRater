@@ -30,18 +30,14 @@
 
 	<!-- Nav Bar -->
 	<nav class="color-window">
-
 		<div class="nav-wrapper color-window" id="navbar">
 			<a id="home" href="index.html" class="brand-logo"><img src="img/colormelogo.svg"></a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a id="explore" href="#explore-display-top">Explore</a></li>
-					<li><a class="profileBtn" id="profile" href="#profile-display-top">Profile</a></li>
-					<li><a id="login" href="collapsible.html">Login/Register</a></li>
-				</ul>
-			<div class="color-window"></div>
-
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a id="explore" href="#explore-display-top">Explore</a></li>
+				<li><a class="profileBtn" id="profile" href="#profile-display-top">Profile</a></li>
+				<li><a id="login" href="collapsible.html">Login/Register</a></li>
+			</ul>
 		</div>
-
 	</nav>
 
 	<!-- Login -->
@@ -81,139 +77,125 @@
               <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
           </div>          
         </div>
-
       </form>
     </div>
 
-		<!-- Modal -->
-		<div id="modal1" class="modal registration-modal">
-			<div class="modal-content">
-			 <div class="slider">
-				<div class="row">
-					<div class="col s12 m6 l12">
-						<div class="card-panel z-depth-5">
-							<h4 class="center"> <b>color</b>me Registration</h4>	 
-						<div class="row">
-							<form class="col s12 m12">
-							   	<div class="row">
-							    	<div class="input-field col s12 m12">
-							        	<i class="mdi-action-account-circle prefix"></i>
-							        	<input id="icon_prefix" type="text" class="validate">
-							        	<label for="icon_prefix">Username</label>
-							      	</div>
-							      
-							      	<div class="input-field col s12 m12">
-							        	<i class="mdi-communication-email prefix"></i>
-								        <input id="icon_email" type="email" class="validate">
-							        	<label for="icon_email">Your Email</label>
-							      	</div>
-							      
-							        <div class="input-field col s12 m12">
-							        	<i class="fa fa-unlock-alt prefix"></i>
-							        	<input id="icon_password" type="password" class="validate">
-								        <label for="icon_password">Password</label>
-							      	</div>   
-							    </div>
-							</form>
-						</div><!--row-->
-						 <button id="registerBtn" class="btn waves-effect waves-light center teal accent-2" type="submit" name="action">Sign Up
-						    <i class="fa fa-sign-in right"></i>
-						  </button>
-							</div><!--card-->
-						</div><!--col-->
+	<!-- Modal -->
+	<div id="modal1" class="modal registration-modal">
+		<div class="modal-content">
+			<div class="row">
+				<div class="col s12 m6 l12">
+					<div class="card-panel z-depth-5">
+						<h4 class="center black-text"><b>color</b>me Registration</h4>	 
+					<div class="row">
+						<form class="col s12 m6 l12">
+							<div class="row">
+						    	<div class="input-field col s12 m12">
+					        		<i class="mdi-action-account-circle prefix"></i>
+					        		<input id="icon_prefix" type="text" class="validate">
+					        		<label for="icon_prefix">Username</label>
+						    	</div>
+				      			<div class="input-field col s12 m12">
+				        			<i class="mdi-communication-email prefix"></i>
+					        		<input id="icon_email" type="email" class="validate">
+				        			<label for="icon_email">Your Email</label>
+				      			</div>
+						    	<div class="input-field col s12 m12">
+						      		<i class="fa fa-unlock-alt prefix"></i>
+						      		<input id="icon_password" type="password" class="validate">
+							    	<label for="icon_password">Password</label>
+						    	</div>
+						    	<div class="col s12 m12">
+						  			<button id="registerBtn" class="btn waves-effect waves-light center teal accent-2 center" type="submit" name="action">Sign Up<i class="fa fa-sign-in right"></i></button>
+						    	</div>     
+						  	</div> <!-- row end -->
+						</form>
 					</div><!--row-->
-				</div><!--conatiner-->
+					</div><!--card-->
+				</div><!--col end-->
 			</div> <!-- row end -->
-	  		</div> <!-- end slider -->
-	    	</div> <!-- mondal content end -->
-		</div> <!--  modal end -->
+  		</div> <!-- mondal content end -->
+	</div> <!--  modal end -->
 
-
+	<!-- Parallax Container -->
 	<div class="parallax-container">
 		<div class="parallax"><img class="parallax-img" src="img/model.png"></div>
-
 		<!-- MAIN INTRO -->
 		<div class="container">
 	        <div class="row">
 	        	<div class="col s12">
 	        		<div class="card main-intro">
 			            <div class="card-content black-text">
-			              <span class="card-title"><strong>Welcome to <b>color</b>me!</strong></span>
-			              <p>
-							Using images collected from thousands of photographers through Pexels, <b>color</b>me finds your true favorite color through a series of photo ratings. Think of it like a mood ring that you get by choosing your favorite art and photography. Login or register to get started! 
-			              </p>
+			              	<span class="card-title"><strong>Welcome to <b>color</b>me!</strong></span>
+			              	<p>Using images collected from thousands of photographers through Pexels, <b>color</b>me finds your true favorite color through a series of photo ratings. Think of it like a mood ring that you get by choosing your favorite art and photography. Login or register to get started! 
+			              	</p>
 			            </div>
 			            <div class="card-action main-intro-subnav">
-			            <!-- Modal Link -->
-			              <a class="-text" href="#modal1" id="registration-modal">Click here to register!</a>
+			            	<!-- Modal Link -->
+			              	<a class="-text" href="#modal1" id="registration-modal">Click here to register!</a>
 			            </div>
 			        </div>
 	        	</div>
-	        </div>
+	    	</div>
 		</div> <!-- End of main intro container --> 
 	</div> <!-- End of top parallax container -->
 
 	<div class="section white" id="explore-display-top">
 		<div class="row container">
 			<h2 class="header"><b>color</b>me by iris</h2>
-				<!-- Explore Text Area -->
-				<p class="grey-text text-darken-3 lighten-3">
-				Find out your true favorite color by rating photos that resonate with you. What does your personality say about you? Let <b>color</b>me find your color! Let's get to rating!
-				</p>
+			<!-- Explore Text Area -->
+			<p class="grey-text text-darken-3 lighten-3">
+			Find out your true favorite color by rating photos that resonate with you. What does your personality say about you? Let <b>color</b>me find your color! Let's get to rating!
+			</p>
 			<div class="waves-effect waves-light btn-large color-window explore-button"><i class="material-icons left">visibility</i>Explore</div>
 		</div>
-
 		<!-- Photos display here -->
 		<div id="explore-display"></div>
-
 	</div>
-
+	
+	<!-- Parallax Container -->
 	<div class="parallax-container">
 		<div class="waves-effect waves-light btn-large color-window explore-button load-more">Load More</div>
 
 		<div class="parallax"><img class="parallax-img" id="peacock" src="img/peacock.jpg"></div>
 	</div>
 
-
-
-
 	<!-- STICKY FOOTER -->
     <footer class="page-footer turquoise color-window">
-      <div class="container color-window">
-        <div class="row">
-          <div class="col l6 s12">
-          <img src="img/colormelogo.svg">
-            <p class="grey-text text-lighten-4">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum corporis earum laboriosam atque nemo provident modi, repellendus voluptas perferendis. Quam impedit cupiditate hic recusandae sapiente facere deserunt animi error fuga.
-            </br>
-            </br>
-			All images sourced from <a href="www.pexel.com">Pexels</a>.
-            </p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">team iris</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="https://github.com/tatianaalcocer">Tatiana Alcocer</a></li>
-              <li><a class="grey-text text-lighten-3" href="https://github.com/taylorem2787">Taylor Emolo</a></li>
-              <li><a class="grey-text text-lighten-3" href="https://github.com/kulini">Han Lee</a></li>
-              <li><a class="grey-text text-lighten-3" href="https://github.com/ar07111">Allen Raymond</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright color-window turquoise">
-        <div class="container">
-        © 2016 <b>color</b>me by iris
-        <a class="grey-text text-lighten-4 right" href="https://github.com/tatianaalcocer/PhotographyRater">Project GitHub</a>
-        </div>
-      </div>
+      	<div class="container color-window">
+        	<div class="row">
+          		<div class="col l6 s12">
+          			<img src="img/colormelogo.svg">
+        			<p class="grey-text text-lighten-4">
+        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum corporis earum laboriosam atque nemo provident modi, repellendus voluptas perferendis. Quam impedit cupiditate hic recusandae sapiente facere deserunt animi error fuga.
+        			</br>
+        			</br>
+					All images sourced from <a href="www.pexel.com">Pexels</a>.
+            		</p>
+          		</div>
+         		<div class="col l4 offset-l2 s12">
+            		<h5 class="white-text">team iris</h5>
+            		<ul>
+		              <li><a class="grey-text text-lighten-3" href="https://github.com/tatianaalcocer">Tatiana Alcocer</a></li>
+		              <li><a class="grey-text text-lighten-3" href="https://github.com/taylorem2787">Taylor Emolo</a></li>
+		              <li><a class="grey-text text-lighten-3" href="https://github.com/kulini">Han Lee</a></li>
+		              <li><a class="grey-text text-lighten-3" href="https://github.com/ar07111">Allen Raymond</a></li>
+            		</ul>
+          		</div>
+        	</div>
+      	</div>
+      	<div class="footer-copyright color-window turquoise">
+        	<div class="container">
+        		2016 <b>color</b>me by iris
+        		<a class="grey-text text-lighten-4 right" href="https://github.com/tatianaalcocer/PhotographyRater">Project GitHub</a>
+       		</div>
+      	</div>
     </footer>
 
 </body>
 <!-- App -->
 <script src="../app/app2.js"></script>
 <script type="text/javascript" src="../app/app.js"></script>
-
 <script src="../app/app3.js"></script>
 
 
