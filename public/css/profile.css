@@ -11,10 +11,13 @@ body {
 	box-sizing: border-box;
 }
 .container-profile {
-	min-height: 500px;
-	background-color: black !important;
+	min-height: 1000px;
+	color: white;
+	/*background-color: black !important;*/
     background-color: rgba(255,255,255,0.3) !important;
-   	
+  /* 	background-image: url(../img/bokeh.png) !important;*/
+   	background-repeat: no-repeat;
+   	background-size: cover;
 	column-count: 3;
 	line-height: 2;
 	width: 90%;
@@ -26,7 +29,7 @@ body {
 }
 
 .nav-extended{
-	background-image: url(../img/nav.png) !important;
+	/*background-image: url(../img/nav.png) !important;*/
 	background-size: cover;
 	clear: both;
 }
@@ -34,6 +37,38 @@ body {
 nav .brand-logo {
     display: flex;
     align-items: center;
-    
+    padding: 5px;
     width: 200px;
 }
+
+.brand-logo{
+	width: 100px;
+}
+
+#navbar {
+/*	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	border-top: 0;
+	width: 100%;*/
+	/*height: 60px;*/
+}
+
+
+.parallax-img img {
+	position: absolute;
+	background-position: 50% 210px !important;
+	width: 100%;
+	height: auto !important;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+
+ .parallax-container {
+      height: 380px;
+    }

@@ -54,13 +54,3 @@ $('#registerBtn').on('click', function(){
 	}
 });
 
-//Display a user's liked/saved photos
-$('#profile').on('click', function(){
-	$.get('/profile/' + userID, function(data){
-		console.log(data);
-	});
-});
-
-$('.explore-image').on('click', function(){
-	alert('clicked');
-});
