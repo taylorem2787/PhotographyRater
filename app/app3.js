@@ -1,7 +1,7 @@
-$('#profile').on('click', function(){
-	console.log('clicked');
-	alert('clicked');
-});
+// $('#profile').on('click', function(){
+// 	console.log('clicked');
+// 	alert('clicked');
+// });
 
 function renderProfile(userid) {
 		//Display a user's liked/saved photos
@@ -13,10 +13,10 @@ function renderProfile(userid) {
 	});
 }
 
-$a.on('click', '.profileBtn', function(event) {
-    console.log(event.target.id);
-    alert(event.target.id);
-});
+// $a.on('click', '.profileBtn', function(event) {
+//     console.log(event.target.id);
+//     alert(event.target.id);
+// });
 
 // function renderProfile() {
 // 	var imagesLiked = userid.clickedImage;
