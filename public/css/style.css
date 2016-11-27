@@ -12,7 +12,7 @@ body {
 }
 
 
-.parallax-img img {
+/*.parallax-img img {
 	position: absolute;
 	background-position: 50% 210px !important;
 	width: 100%;
@@ -21,7 +21,7 @@ body {
 	bottom: 0;
 	right: 0;
 	left: 0;
-}
+}*/
 
 
  .parallax-container {
@@ -72,7 +72,8 @@ body {
 	border-bottom-color: 2px solid snow;
 }
 nav, footer, .btn-large, .btn {
-	background-color: turquoise !important;
+	background-color: turquoise;
+    background-color: rgba(255,255,255,0.5);
 }
 
 nav .brand-logo {
@@ -98,11 +99,8 @@ nav img {
 
 /*Window in navbar that displays the user's color profile*/
 .color-window {
-	position: relative;
-	height: 100%;
-	width: 40%;
-	left: 30%;
-	background-color: orange;
+	background-color: turquoise;
+	/*background-color: rgba(255,255,255,0.5);*/
 }
 
 .load-more {
@@ -170,7 +168,7 @@ nav img {
 
 footer.page-footer {
     margin-top: 0px;
-    background: rgba(105, 105, 105, .5) !important;
+    background: turquoise; !important;
 }
 
 .logo{
