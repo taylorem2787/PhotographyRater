@@ -70,6 +70,7 @@ body {
 /*	background: rgb(105, 105, 105);
 	background: rgba(105, 105, 105, .5) !important;*/
 	border-bottom-color: 2px solid snow;
+	transition: background-color ease 0.2s;
 }
 nav, footer, .btn-large, .btn {
 	background-color: turquoise;
