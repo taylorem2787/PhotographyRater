@@ -21,6 +21,9 @@ $('#submitBtn').on('click', function(){
     			// console.log(data[i].username);
     			userID = data[i].username;
     			console.log(userID);
+    			localStorage.setItem('userid', userID);
+    			var userid = localStorage.getItem('userid');
+    			console.log(userid);
     		}
     	}
 	});

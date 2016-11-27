@@ -114,11 +114,30 @@
       </div> <!-- container end -->
     </footer>
 
+<!-- <script type="text/javascript" src="../app/app.js"></script>    
+<script type="text/javascript" src="../app/app2.js"></script> 
+<script type="text/javascript" src="../app/app3.js"></script>  -->
+<script>
+  
+  window.onload = function(){
+    var userid = localStorage.getItem('userid');
+    console.log(userid);
+    var currentLocation = window.location.origin;
+    var URL = currentLocation + '/profile/' + userid;
+    console.log(URL);
+    // var URL = '/profile/' + userid;
+    $.get(URL, function(data, status){
+      console.log(status);
 
+      for (var i = 0; i < data.length; i++){
+        console.log(data[i].url);
+      }
+    });
+  }
+
+</script>
 </body>
 
 <!-- App -->
-<script type="text/javascript" src="../app/app.js"></script>    
-<script type="text/javascript" src="../app/app2.js"></script> 
-<script type="text/javascript" src="../app/app3.js"></script> 
+
 
