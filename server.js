@@ -231,7 +231,14 @@ app.get('/members', function(req, res){
 });
 
 
-
+//get route for the profile page
+app.get('/profile/:user', function(req, res){
+	var user = req.params.user;
+	var queryString = `SELECT * FROM ?`;
+	connection.query(queryString, [user], function(err, data){
+		res.send(data);
+	});
+});
 
 //Reset alluser table to default value of 0 for each color
 function resetMemberColors(){
