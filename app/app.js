@@ -98,13 +98,19 @@ function renderImages() {
 	$('#explore-display').html('');
 	for (var i = 0; i < images.length; i++) {
 		for(var j = 0; j < images[i].length; j++) {
-			var img = $('<img />', {src : images[i][j].url, 'data-col': i, 'data-row': j});
+			var imgContainer = $('<div class="explore-image">', {'data-col': i, 'data-row': j})
+			var imgOverlay = $('<div class="explore-image__overlay">');
+			var imgUpvote = $('<div class="explore-image__overlay__upvote">');
+			var img = $('<img />', {src : images[i][j].url});
 
-			img.addClass('explore-image');
-			img.appendTo('#explore-display');
+			imgOverlay.append(imgUpvote);
+			imgContainer.append(img);
+			imgContainer.append(imgOverlay);
 
-			img.on('click', function(e) {
-				var img = e.target;
+			$('#explore-display').append(imgContainer);
+
+			imgContainer.on('click', function(e) {
+				var img = e.currentTarget;
 				var row = $(img).data('row');
 				var col = $(img).data('col');
 				// console.log(app.images[col][row]);
