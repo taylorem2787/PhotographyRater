@@ -14,18 +14,34 @@ body {
 	min-height: 1000px;
 	color: white;
 	/*background-color: black !important;*/
-    background-color: rgba(255,255,255,0.3) !important;
-  /* 	background-image: url(../img/bokeh.png) !important;*/
-   	background-repeat: no-repeat;
-   	background-size: cover;
+   /* background: rgba(105, 105, 105, .3) !important;*/
 	column-count: 3;
 	line-height: 2;
-	width: 90%;
-	margin: auto;
+	width: 95%;
+	margin: 20px auto;
     -moz-column-gap: 0;
     -webkit-column-gap: 0;
     column-gap: 0;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
+    border: white solid 15px;
+    padding: 10px auto;
+}
+.profile{
+	margin: 5px auto;
+}
+.container-rgb{
+	width: 95%;
+	margin: 20px auto;
+
+}
+.rgb-image{
+	margin: 10px auto;
+	border: 2px solid white;
+
+
+}
+profile-display img {
+	padding: 10px;
 }
 
 .nav-extended{
