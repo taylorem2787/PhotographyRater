@@ -66,7 +66,7 @@ $('#submitBtn').on('click', function() {
 	        return false;
 	      }
 	    }
-	    
+
 	}
 })
 
@@ -122,7 +122,9 @@ function renderImages() {
 	$('#explore-display').html('');
 	for (var i = 0; i < images.length; i++) {
 		for(var j = 0; j < images[i].length; j++) {
-			var imgContainer = $('<div class="explore-image">', {'data-col': i, 'data-row': j})
+			var imgContainer = $('<div class="explore-image">');
+			imgContainer.data('col', i);
+			imgContainer.data('row', j);
 			var imgOverlay = $('<div class="explore-image__overlay">');
 			var imgUpvote = $('<div class="explore-image__overlay__upvote">');
 			var img = $('<img />', {src : images[i][j].url});
