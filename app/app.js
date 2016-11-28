@@ -47,6 +47,30 @@ $('.registration-modal').on('click', function() {
 	$('#login').webuiPopover('hide');
 })
 
+// Closing login modal and hiding main-intro card when logged in
+$('#submitBtn').on('click', function() {
+	if (loggedIn = true) {
+		$('#login').webuiPopover('hide');
+		$('.main-intro').addClass('hidden');
+		$('.main-intro-subnav').addClass('hidden');
+
+		var navHeight = $('#navbar').height();
+
+	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	      var target = $(this.hash);
+	      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	      if (target.length) {
+	        $('html, body').animate({
+	          scrollTop: target.offset().top - navHeight
+	        }, 1000);
+	        return false;
+	      }
+	    }
+	    
+	}
+})
+
+
 // Smooth scrolling to explore-display on click of Explore in Nav
 // https://css-tricks.com/snippets/jquery/smooth-scrolling/
 $(function() {
