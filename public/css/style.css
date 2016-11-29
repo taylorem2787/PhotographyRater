@@ -11,7 +11,8 @@ body {
 	box-sizing: border-box;
 }
 
-#model img {
+
+.parallax-img img {
 	position: absolute;
 	background-position: 50% 210px !important;
 	width: 100%;
@@ -22,13 +23,21 @@ body {
 	left: 0;
 }
 
+
 .parallax-container {
-	height: 480px;
+	height: 380px;
+}
+
+#peacock{
+ background-position: 50% 50%;
+ background-size: 40%;
+ max-height: 300px;
 }
 
 .main-search {
 	margin-top: 50px;
-    background-color: rgba(255,255,255,0.5);
+
+    /*background-color: rgba(255,255,255,0.5);*/
     border-radius: 10px;
 }
 
@@ -40,6 +49,7 @@ body {
     font-weight: 400;
     font-size: 14px;
     letter-spacing: 1px;
+    /*line-height: 25px;*/
     text-transform: uppercase;
 }
 
@@ -59,6 +69,7 @@ body {
 	border-radius: 3px;
 	background: rgb(105, 105, 105);
     background: rgba(105, 105, 105, .5) !important;  
+    /*background-color: red; */
 }
 
 .nav-wrapper {
@@ -68,20 +79,17 @@ body {
 	transition: background-color ease 0.2s;
 }
 nav, footer, .btn-large, .btn {
-	background-color: turquoise !important;
-    background-color: rgba(255,255,255,0.2);
+	background-color: turquoise;
+    background-color: rgba(255,255,255,0.5);
     font-family: "Futura W01 Book", georgia, sans-serif;
     font-weight: 400;
     font-size: 14px;
     letter-spacing: 4px;
+    line-height: 53px;
     text-transform: uppercase;
     color: #FFF;
    /* opacity: 0.6;*/
     -webkit-font-smoothing: antialiased;
-}
-
-nav{
-	line-height: 53px !important;
 }
 
 nav .brand-logo {
@@ -108,7 +116,7 @@ nav img {
 /*Window in navbar that displays the user's color profile*/
 .color-window {
 	background-color: turquoise;
-	background-color: rgba(255,255,255,0.2);
+	/*background-color: rgba(255,255,255,0.5);*/
 }
 
 .load-more {
@@ -195,6 +203,7 @@ footer.page-footer {
 .parallax-img {
 	background: rgba(105, 105, 105, .5) !important;
 	max-width: 33%;
+
 }
 
 .parallax-profile {
