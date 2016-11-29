@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 
 var nextImage = function(photoID) {
 
-	const variance = 30;
+	var variance = 30;
 
 	return new Promise(function(resolve, reject) {
 
