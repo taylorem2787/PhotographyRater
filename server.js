@@ -34,6 +34,15 @@ connection.connect(function(err){
 });
 
 
+//get route for the profile page
+app.get('/profile/:user', function(req, res){
+	var user = req.params.user;
+	var queryString = `SELECT * FROM ` + user;
+	connection.query(queryString, function(err, data){
+		res.send(data);
+	});
+});
+
 require('./api/api-routes.js')(app);
 require('./api/admin-routes.js')(app);
 require('./api/login-register-routes.js')(app);
