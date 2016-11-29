@@ -1,4 +1,3 @@
-"use strict";
 var photosArray = require('./pexelsRed.js');
 
 //imported modules for extracting dominant color from an image
@@ -28,7 +27,7 @@ var connection = mysql.createConnection({
 	port: 3306,
 	user: process.env.dbuser,
 	password: process.env.dbpassword,
-	database: "ija2qhszw3zfbdpc",
+	database: "heisodbf0ehdxjh4",
 });
 
 //run express app

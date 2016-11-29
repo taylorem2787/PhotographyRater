@@ -1,4 +1,3 @@
-
 (function() {
 
 	// State object for app
