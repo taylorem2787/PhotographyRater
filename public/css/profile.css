@@ -6,10 +6,12 @@ body {
     line-height: 25px;
     background-color: black;
 }
+
 * {
 	position: relative;
 	box-sizing: border-box;
 }
+
 .container-profile {
 	min-height: 1000px;
 	color: white;
@@ -26,28 +28,23 @@ body {
     border: white solid 15px;
     padding: 10px auto;
 }
-.profile{
-	margin: 5px auto;
-}
+
 .container-rgb{
 	width: 95%;
 	margin: 20px auto;
-
 }
-.rgb-image{
+
+.profile{
+	margin: 5px auto;
+}
+
+/*.rgb-image{
 	margin: 10px auto;
 	border: 2px solid white;
+}*/
 
-
-}
 profile-display img {
 	padding: 10px;
-}
-
-.nav-extended{
-	/*background-image: url(../img/nav.png) !important;*/
-	background-size: cover;
-	clear: both;
 }
 
 nav .brand-logo {
@@ -55,6 +52,12 @@ nav .brand-logo {
     align-items: center;
     padding: 5px;
     width: 200px;
+}
+
+.nav-extended{
+	/*background-image: url(../img/nav.png) !important;*/
+	background-size: cover;
+	clear: both;
 }
 
 .brand-logo{
@@ -84,7 +87,6 @@ nav .brand-logo {
 	left: 0;
 }
 
-
  .parallax-container {
       height: 380px;
-    }
+}
