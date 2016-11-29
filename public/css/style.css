@@ -45,6 +45,10 @@ body {
 	background-color: #fff;
     background-color: rgba(255,255,255,0.7);
 	margin: 80px;
+	font-family: "Futura W01 Book", georgia, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
 .main-intro-subnav {
@@ -75,6 +79,15 @@ body {
 nav, footer, .btn-large, .btn {
 	background-color: turquoise;
     background-color: rgba(255,255,255,0.5);
+    font-family: "Futura W01 Book", georgia, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 4px;
+    line-height: 53px;
+    text-transform: uppercase;
+    color: #FFF;
+   /* opacity: 0.6;*/
+    -webkit-font-smoothing: antialiased;
 }
 
 nav .brand-logo {
@@ -148,7 +161,17 @@ nav img {
 .explore-image:hover .explore-image__overlay {
     opacity: 1;
 }
-
+footer{
+    font-family: "Futura W01 Book", georgia, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 4px;
+    line-height: 25px !important;
+    text-transform: uppercase;
+    color: #FFF;
+   /* opacity: 0.6;*/
+    -webkit-font-smoothing: antialiased;
+}
 .explore-image__overlay__upvote {
 	background-image: url("../img/upvote.svg"); 
 	background-size: 100% 100%;
