@@ -1,28 +1,29 @@
 {
-  "name": "PhotographyRater",
+  "name": "photographyrater",
   "version": "1.0.0",
   "description": "",
-  "main": "keys.js",
+  "main": "server.js",
+  "dependencies": {
+    "dominant-color": "^0.0.1",
+    "dotenv": "^2.0.0",
+    "mysql": "^2.12.0",
+    "express": "^4.14.0",
+    "path": "^0.12.7",
+    "body-parser": "^1.15.2"
+  },
+  "devDependencies": {},
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tatianaalcocer/PhotographyRater.git"
+    "url": "git+https://github.com/afhaque/PhotographyRater.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tatianaalcocer/PhotographyRater/issues"
+    "url": "https://github.com/afhaque/PhotographyRater/issues"
   },
-  "homepage": "https://github.com/tatianaalcocer/PhotographyRater#readme",
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "dominant-color": "0.0.1",
-    "dotenv": "^2.0.0",
-    "express": "^4.14.0",
-    "mysql": "^2.12.0",
-    "path": "^0.12.7"
-  }
+  "homepage": "https://github.com/afhaque/PhotographyRater#readme"
 }

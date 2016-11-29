@@ -304,24 +304,6 @@ app.post('/updateUserColors/:user', function(req, res){
 	var photoid = req.body.id;
 
 	console.log('userid: ' + userid);
-	// console.log(data.dominant);
-	// updateUserColors( , userid)
-
-	// var red = req.body.red;
-	// var green = req.body.green;
-	// var blue = req.body.green;
-	// var dominant = req.body.dominant;
- //    var bw;
-
- //    if (dominant == 'bw') bw = 1;
- //    else bw = 0;
-
-	// var colorInfo = [red, green, blue, bw, userid];
-
-	// var queryString = `UPDATE allusers SET red=red+?, green=green+?, blue=blue+?, bwCount=bwCount+?, upvotes=upvotes+1  WHERE id=?`;
-	// connection.query(queryString, colorInfo, function(err, data){
-	// 	console.log(data);
-	// });
 
 	updateUserColors(dominant, userid);
 	updateUserTable(userid, photoid, url);

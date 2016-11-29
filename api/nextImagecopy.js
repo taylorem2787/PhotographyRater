@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
 	port: 3306,
 	user: process.env.dbuser,
 	password: process.env.dbpassword,
-	database: "ija2qhszw3zfbdpc",
+	database: "heisodbf0ehdxjh4",
 });
 
 var nextImage = function(photoID) {
