@@ -48,6 +48,8 @@ body {
 	font-family: "Futura W01 Book", georgia, sans-serif;
     font-weight: 400;
     font-size: 14px;
+    letter-spacing: 1px;
+    /*line-height: 25px;*/
     text-transform: uppercase;
 }
 
@@ -161,17 +163,7 @@ nav img {
 .explore-image:hover .explore-image__overlay {
     opacity: 1;
 }
-footer{
-    font-family: "Futura W01 Book", georgia, sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    letter-spacing: 4px;
-    line-height: 25px !important;
-    text-transform: uppercase;
-    color: #FFF;
-   /* opacity: 0.6;*/
-    -webkit-font-smoothing: antialiased;
-}
+
 .explore-image__overlay__upvote {
 	background-image: url("../img/upvote.svg"); 
 	background-size: 100% 100%;
