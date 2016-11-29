@@ -12,7 +12,7 @@ body {
 }
 
 
-#model img {
+.parallax-img img {
 	position: absolute;
 	background-position: 50% 210px !important;
 	width: 100%;
@@ -25,14 +25,14 @@ body {
 
 
 .parallax-container {
-	height: 480px;
+	height: 380px;
 }
 
-/*#peacock{
+#peacock{
  background-position: 50% 50%;
  background-size: 40%;
  max-height: 300px;
-}*/
+}
 
 .main-search {
 	margin-top: 50px;
