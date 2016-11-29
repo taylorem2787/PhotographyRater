@@ -2,7 +2,9 @@
   "name": "PhotographyRater",
   "version": "1.0.0",
   "description": "",
-  "main": "keys.js",
+  "main": "server.js",
+  "engines": {
+    "node": "6.9.1",
   "scripts": {
     "start": "node server.js"
   },
