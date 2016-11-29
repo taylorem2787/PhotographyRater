@@ -1,3 +1,5 @@
+"use strict";
+
 (function() {
 
 	// State object for app
