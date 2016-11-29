@@ -1,4 +1,3 @@
-"use strict";
 
 var photosArray = require('./pexelsRed.js');
 
