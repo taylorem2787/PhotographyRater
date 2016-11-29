@@ -1,4 +1,4 @@
-
+"use strict";
 var photosArray = require('./pexelsRed.js');
 
 //imported modules for extracting dominant color from an image
