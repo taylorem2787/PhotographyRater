@@ -65,7 +65,7 @@
 		transition:opacity 0.6s ease-out;	
 	}
 	
-	.menuworks, .menuabout, .menublog, .menucontact, .menu:hover, .menu.actif, nav.enter .menu, nav.enter .menuworks, nav.enter .menuabout, nav.enter .menublog, nav.enter .menucontact, nav.enter .menu:hover, nav.enter .menu.actif {
+	.menuworks, .menuprofile, .menulogin, .menucontact, .menu:hover, .menu.actif, nav.enter .menu, nav.enter .menuworks, nav.enter .menuprofile, nav.enter .menulogin, nav.enter .menucontact, nav.enter .menu:hover, nav.enter .menu.actif {
 		position:relative;	
 		top:auto;
 		left:auto;
@@ -83,11 +83,11 @@
   		box-sizing: border-box;   
 	}
 	
-	.menuworks, .menublog {
+	.menuworks, .menulogin {
 		border-right:1px solid #444;
 	}
 	
-	.menuworks, .menuabout {
+	.menuworks, .menuprofile {
 		border-bottom:1px solid #444;
 	}
 	
@@ -98,7 +98,7 @@
 		background-repeat: no-repeat !important;
 	}
 
-	body.maram nav .menu.actif { background-image: linear-gradient(to right, #ae9a9a 50%, #ae9a9a 50% 50%) !important; }
+/*	body.maram nav .menu.actif { background-image: linear-gradient(to right, #ae9a9a 50%, #ae9a9a 50% 50%) !important; }
 	body.zoo nav .menu.actif { background-image: linear-gradient(to right, #9f9d96 50%, #9f9d96 50%) !important; }
 	body.cgi nav .menu.actif { background-image: linear-gradient(to right, #901325 50%, #901325 50%) !important; }
 	body.antoinelestage nav .menu.actif { background-image: linear-gradient(to right, #426b29 50%, #426b29 50%) !important; }
@@ -113,7 +113,7 @@
 	body.witchatt nav .menu.actif { background-image: linear-gradient(to right, #608484 50%, #608484 50%) !important; }
 	body.antro nav .menu.actif { background-image: linear-gradient(to right, #608484 50%, #608484 50%)  !important; }
 	body.origami nav .menu.actif { background-image: linear-gradient(to right, #7b745c 50%, #7b745c 50%) !important; }
-	body.legrandbal nav .menu.actif { background-image: linear-gradient(to right, #5a7981 50%, #5a7981 50%)  !important; }
+	body.legrandbal nav .menu.actif { background-image: linear-gradient(to right, #5a7981 50%, #5a7981 50%)  !important; }*/
 
 	
 	.menu span.label {
@@ -334,24 +334,24 @@
 		background-size: 2px 30px;
 	}
 	
-	#about, #contact {
+	#profile, #register {
 		padding:180px 0 450px 0;	
 	}
 	
-	body.about #about{
+	body.profile #profile{
 		min-height:600px;
 	}
 	
-	#about_info img, #contact_info img {
+	#profile_info img, #register_info img {
 		height:100%;
 		width:auto;
 	}
 	
-	body.about #city_grid {
+	body.profile #city_grid {
 		margin: 60px auto 0 auto;
 	}
 	
-	#about_info p {
+	#profile_info p {
 		position: relative;
 		display: table-cell;
 		vertical-align: middle;
@@ -435,7 +435,7 @@
 	}
 
 	
-	.year1, .year2 {
+/*	.year1, .year2 {
 		opacity:1;
 	}
 	
@@ -463,13 +463,13 @@
 	.sunderland, .sunderland:hover {
 		background:url(design/sunderland.jpg) no-repeat center center;
 		background-size:cover;
-	}
+	}*/
 	
-	#social a {
+/*	#social a {
 		width:50%;
 		padding-bottom:50%;
 		background-size:50%;
-	} 
+	} */
 
 	footer {
 		bottom:-340px;
@@ -524,28 +524,35 @@
 		margin:50px auto;
 	}
 	
-	body.contact #contact_info {
+	body.register #contact_info {
 		height: 250px;
 	}
 	
-	#form {
+/*	#form {
 		margin: 110px auto 100px auto;
-	}
+	}*/
 	
-	.contactC, .contactT, .contactTT {
+	.registerRR, .registerEE, .registerG {
 		left: 8%;
 	}
 	
-	.contactN, .contactCC, .contactE {
+	.registerII, .registerS, .registerT {
 		right: 8%;
 	}
+
+
 	
-	#contactleft, #contactright {
+	#loginleft, #loginright {
+		float:none;
+		width:100%;
+	}
+
+	#registerleft, #registerright {
 		float:none;
 		width:100%;
 	}
 	
-	#social a:nth-child(2) {
+/*	#social a:nth-child(2) {
 		background-color:#ddd;
 	}
 	
@@ -555,7 +562,7 @@
 	
 	#social a:nth-child(4) {
 		background-color:#ccc;
-	}
+	}*/
 	
 }
 
@@ -626,15 +633,15 @@
 		-webkit-transform: rotateX(0deg);
 	}
 	
-	#about, #contact {
+	#profile, #register, #register {
 		padding: 80px 0 450px 0;
 	}
 	
-	body.about #about_info, body.contact #contact_info {
+	body.profile #profile_info, body.register #contact_info, body.register #register_info {
 		height: 200px;
 	}
 	
-	#about_info img, #contact_info img {
+	#profile_info img, #contact_info img {
 		width: 100%;
 		height: auto;
 	}
@@ -672,7 +679,10 @@
 		margin-top: -40px;
 	}
 	
-	#form {
+	.registerT, .registerA, .registerCC {
+		margin-top: -40px;
+	}
+/*	#form {
 		margin: 120px auto 100px auto;
 	}
 	
@@ -684,5 +694,5 @@
 		width:25%;
 		padding-bottom:25%;
 		background-size:40%;
-	} 
+	} */
 }

@@ -8,7 +8,7 @@ $(document).ready(function(){
 	var position, op, scrollto, screencount, numprojet = 0;
 	var hgrid = 2000;
 	var lastClass;
-	var projectsList = ["maram", "zoo", "cgi", "antoinelestage", "tokkun", "soulofthedeadtree", "pmmt", "dixon", "artspire", "departementevenement", "lerecyclagepasapas", "inlogia", "witchatt", "antro", "origami", "legrandbal"];
+	// var projectsList = ["maram", "zoo", "cgi", "antoinelestage", "tokkun", "soulofthedeadtree", "pmmt", "dixon", "artspire", "departementevenement", "lerecyclagepasapas", "inlogia", "witchatt", "antro", "origami", "legrandbal"];
 	
 	$.fn.isOnScreen = function(){
 		var element = this.get(0);
@@ -80,16 +80,19 @@ $(document).ready(function(){
 					}
 				}
 			}
-			if (section == "about") {
-				if (scrollP < 700 && ($(window).width() >= 960)) { $('#about .image img').css("marginTop", -scrollP/2) }
+			if (section == "profile") {
+				if (scrollP < 700 && ($(window).width() >= 960)) { $('#profile .image img').css("marginTop", -scrollP/2) }
 				for (var cc = 1; cc<=4; cc++) {
 					if ( $(".city" + cc).isOnScreen() ) {
 						$(".city" + cc).addClass("display");
 					}
 				}
 			}
-			if (section == "contact") {
-				if (scrollP < 700 && ($(window).width() >= 960)) { $('#contact .image img').css("marginTop", -scrollP/2) }
+			if (section == "login") {
+				if (scrollP < 700 && ($(window).width() >= 960)) { $('#login .image img').css("marginTop", -scrollP/2) }
+			}
+			if (section == "register") {
+				if (scrollP < 700 && ($(window).width() >= 960)) { $('#register .image img').css("marginTop", -scrollP/2) }
 			}
 		}
 	});
@@ -247,7 +250,7 @@ $(document).ready(function(){
 			};
 			setTimeout(function(){ section = "home";isOpening = false; }, 3000);
 		}
-		if (section == "about" && isOpening == false) { 
+		if (section == "profile" && isOpening == false) { 
 			closeabout();
 			$("#grid").removeClass("fade");
 			//$("html, body").animate( { scrollTop: 0 }, 500 ); 
@@ -260,7 +263,20 @@ $(document).ready(function(){
 			};
 			setTimeout(function(){ section = "home";isOpening = false;}, 2000);
 		}
-		if (section == "contact" && isOpening == false) {	
+		if (section == "login" && isOpening == false) { 
+			closeabout();
+			$("#grid").removeClass("fade");
+			//$("html, body").animate( { scrollTop: 0 }, 500 ); 
+			if ($(this).hasClass("menuworks")) { setTimeout(function(){ $(window).scrollTop($(window).height()); }, 1000); }
+			else {
+				$("html, body").animate( { scrollTop: 0 }, 500 ); 
+				$("#grid_bg").removeClass("fx");
+				setTimeout(function(){ $("nav").css("top", "80%"); }, 2000);
+				setTimeout(function(){ $("nav").removeClass("enter navtop"); }, 2300); 
+			};
+			setTimeout(function(){ section = "home";isOpening = false;}, 2000);
+		}
+		if (section == "register" && isOpening == false) {	
 			closecontact(); 
 			$("#grid").removeClass("fade");
 			//$("html, body").animate( { scrollTop: 0 }, 500 ); 
@@ -311,17 +327,25 @@ $(document).ready(function(){
 	
 	function closeabout() {
 		isOpening = true;
-		$("body").removeClass("about"); 
+		$("body").removeClass("profile"); 
 		setTimeout(function(){ 
-			$("#about").addClass("pfix");  
+			$("#profile").addClass("pfix");  
+		}, 1000);
+	}
+
+	function closecontact() {
+		isOpening = true;
+		$("body").removeClass("register"); 
+		setTimeout(function(){ 
+			$("#login").addClass("pfix");  
 		}, 1000);
 	}
 	
 	function closecontact() {
 		isOpening = true;
-		$("body").removeClass("contact"); 
+		$("body").removeClass("register"); 
 		setTimeout(function(){ 
-			$("#contact").addClass("pfix");  
+			$("#register").addClass("pfix");  
 		}, 1000);
 	}
 
@@ -340,9 +364,9 @@ $(document).ready(function(){
 		}, 600);
 	};
 	
-	$(".menublog").click(function(){
-		window.open("http://www.art-spire.com");
-	});
+	// $(".menulogin").click(function(){
+	// 	window.open("http://www.art-spire.com");
+	// });
 
 	$(document).on("click","#viewcasestudy",function(e){
 		scrollto = $("#screenshots").offset().top - $("#projet_content").offset().top + $("#projet_content").height();
@@ -354,25 +378,25 @@ $(document).ready(function(){
 		$("html, body").animate( { scrollTop: 0 }, 600 );
 	});
 	
-	$(".menuabout").click(function(){
+	$(".menuprofile").click(function(){
 		if (isOpening == false) {
 			isOpening = true;
 			closenav(); // mobile
-			if (projetouvert == true) { closeproject("about"); }
-			if (section == "contact") { 
-				$("#contact").css('z-index', 9);
+			if (projetouvert == true) { closeproject("profile"); }
+			if (section == "register") { 
+				$("#register").css('z-index', 9);
 				setTimeout(function() { closecontact(); }, 800); 
 			}
-			section = "about";
-			$("#about").css('z-index', 10);
-			$("body").addClass("about"); 
+			section = "profile";
+			$("#profile").css('z-index', 10);
+			$("body").addClass("profile"); 
 			isScrolling = true;
 			if ($(window).width() >= 960) { $("nav").addClass("navtop"); };
 			$(".menu").removeClass("actif");
-			$(".menuabout").addClass("actif");
+			$(".menuprofile").addClass("actif");
 			setTimeout(function() { 
 				$("html, body").animate( { scrollTop: 0 }, 0 ); 
-				$("#about").removeClass("pfix"); 
+				$("#profile").removeClass("pfix"); 
 				$("#grid, #grid_bg").addClass("enter");
 				}, 500);	
 			setTimeout(function() { 
@@ -389,21 +413,21 @@ $(document).ready(function(){
 		if (isOpening == false) {
 			isOpening = true;
 			closenav(); // mobile
-			if (projetouvert == true) { closeproject("contact"); }
-			if (section == "about") { 
-				$("#about").css('z-index', 9);
+			if (projetouvert == true) { closeproject("register"); }
+			if (section == "profile") { 
+				$("#profile").css('z-index', 9);
 				setTimeout(function() { closeabout(); }, 800); 
 			}
-			section = "contact";
-			$("#contact").css('z-index', 10);
-			$("body").addClass("contact"); 
+			section = "register";
+			$("#register").css('z-index', 10);
+			$("body").addClass("register"); 
 			isScrolling = true;
 			if ($(window).width() >= 960) { $("nav").addClass("navtop"); };
 			$(".menu").removeClass("actif");
 			$(".menucontact").addClass("actif");
 			setTimeout(function() {  
 				$("html, body").animate( { scrollTop: 0 }, 0 ); 
-				$("#contact").removeClass("pfix"); 
+				$("#register").removeClass("pfix"); 
 				$("#grid, #grid_bg").addClass("enter");
 				}, 500);	
 			setTimeout(function() { 
@@ -417,6 +441,37 @@ $(document).ready(function(){
 	});
 	
 });
+
+	$(".menulogin").click(function(){
+		if (isOpening == false) {
+			isOpening = true;
+			closenav(); // mobile
+			if (projetouvert == true) { closeproject("profile"); }
+			if (section == "register") { 
+				$("#register").css('z-index', 9);
+				setTimeout(function() { closecontact(); }, 800); 
+			}
+			section = "login";
+			$("#login").css('z-index', 10);
+			$("body").addClass("login"); 
+			isScrolling = true;
+			if ($(window).width() >= 960) { $("nav").addClass("navtop"); };
+			$(".menu").removeClass("actif");
+			$(".menulogin").addClass("actif");
+			setTimeout(function() { 
+				$("html, body").animate( { scrollTop: 0 }, 0 ); 
+				$("#login").removeClass("pfix"); 
+				$("#grid, #grid_bg").addClass("enter");
+				}, 500);	
+			setTimeout(function() { 
+				if ($(window).width() >= 960) {  
+					$("nav").addClass("enter");
+				} 
+				$("#grid").addClass("fade"); 
+			}, 1000);	
+			setTimeout(function() { isScrolling = isOpening = false; }, 2000);	
+		}
+	});
 
 $(window).load(
     function() {
