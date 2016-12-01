@@ -127,18 +127,48 @@ function renderImages() {
 			imgContainer.data('row', j);
 			var imgOverlay = $('<div class="explore-image__overlay">');
 			var imgUpvote = $('<div class="explore-image__overlay__upvote">');
+			var imgDownvote = $('<div class="explore-image__overlay__downvote">');
 			var img = $('<img />', {src : images[i][j].url});
 
 			imgOverlay.append(imgUpvote);
+			imgOverlay.append(imgDownvote);
 			imgContainer.append(img);
 			imgContainer.append(imgOverlay);
 
 			$('#explore-display').append(imgContainer);
 
-			imgContainer.on('click', function(e) {
+			imgUpvote.on('click', function(e) {
+				// console.log(e);
 				var img = e.currentTarget;
-				var row = $(img).data('row');
-				var col = $(img).data('col');
+				var row = $(img).parents('.explore-image').data('row');
+				var col = $(img).parents('.explore-image').data('col');
+				// console.log(app.images[col][row]);
+
+				var clickedImage = app.images[col][row];
+				var photoID = clickedImage.id;
+				
+				console.log(clickedImage);
+
+				getImages(photoID);
+
+				var dominant = clickedImage.dominant;
+				console.log('dominant: ' + dominant);
+
+				//for logged in users, update user color profile in mysql db
+				if (userID) upvoteUserColors(clickedImage);
+				//for logged in users, update color window
+				if (userID) getLoggedUserColors(userID);
+				
+				//for users who aren't logged in, update user color profile, userRGB[]
+				if (!userID) upvoteUnloggedUserColors(dominant);
+				//for users who aren't logged in, update color window
+				if (!userID) updateColorWindowUnlogged(unloggedRGB);
+			});
+
+			imgDownvote.on('click', function(e) {
+				var img = e.currentTarget;
+				var row = $(img).parents('.explore-image').data('row');
+				var col = $(img).parents('.explore-image').data('col');
 				// console.log(app.images[col][row]);
 				var clickedImage = app.images[col][row];
 				var photoID = clickedImage.id;
@@ -147,16 +177,16 @@ function renderImages() {
 
 				getImages(photoID);
 
-				var dominant= clickedImage.dominant;
+				var dominant = clickedImage.dominant;
 				console.log('dominant: ' + dominant);
 
 				//for logged in users, update user color profile in mysql db
-				if (userID) updateUserColors(clickedImage);
+				if (userID) downvoteUserColors(clickedImage);
 				//for logged in users, update color window
 				if (userID) getLoggedUserColors(userID);
 				
 				//for users who aren't logged in, update user color profile, userRGB[]
-				if (!userID) changeUnloggedUserColors(dominant);
+				if (!userID) downvoteUnloggedUserColors(dominant);
 				//for users who aren't logged in, update color window
 				if (!userID) updateColorWindowUnlogged(unloggedRGB);
 			});
@@ -166,14 +196,24 @@ function renderImages() {
 	return false;
 }
 
-function updateUserColors(photoInfo){
+function upvoteUserColors(photoInfo){
 
 	var colorInfo = photoInfo;
 	
 	var currentLocation = window.location.origin;
 
-	var URL = currentLocation + '/updateUserColors/' + userID;
+	var URL = currentLocation + '/upvoteUserColors/' + userID;
 
+	$.post(URL, colorInfo, function(data){
+		console.log('data: ' + data);
+		// console.log('data red' + data[0].red);
+	});
+}
+
+function downvoteUserColors(photoInfo){
+	var colorInfo = photoInfo;
+	var currentLocation = window.location.origin;
+	var URL = currentLocation + '/downvoteUserColors/' + userID;
 	$.post(URL, colorInfo, function(data){
 		console.log('data: ' + data);
 	});
@@ -197,7 +237,7 @@ function getLoggedUserColors(userid){
 }
 
 //update color window/bar for users who are not logged in
-function changeUnloggedUserColors(dominantColor){
+function upvoteUnloggedUserColors(dominantColor){
 
 	var dominant = dominantColor;
 	var userRed = unloggedRGB[0];
@@ -226,6 +266,40 @@ function changeUnloggedUserColors(dominantColor){
 		  if (userBlue <= 235) unloggedRGB[2] = unloggedRGB[2] + 20;
 		  if (userRed >= 10) unloggedRGB[0] = unloggedRGB[0] - 10;
 		  if (userGreen >= 10) unloggedRGB[1] = unloggedRGB[1] - 10;
+		  break;
+	}
+}
+
+
+function downvoteUnloggedUserColors(dominantColor){
+
+	var dominant = dominantColor;
+	var userRed = unloggedRGB[0];
+	var userGreen = unloggedRGB[1];
+	var userBlue = unloggedRGB[2];
+
+
+	console.log(userRed);
+	console.log(userGreen);
+	console.log(userBlue);
+
+	switch (dominant){
+		case 'red':
+		  if (userRed >= 10) unloggedRGB[0] = unloggedRGB[0] - 10;
+		  if (userGreen <= 250) unloggedRGB[1] = unloggedRGB[1] +5;
+		  if (userBlue <= 250) unloggedRGB[2] = unloggedRGB[2] +5;
+		  break;
+
+		case 'green':
+		  if (userGreen >= 10) unloggedRGB[1] = unloggedRGB[1] - 10;
+		  if (userRed <= 250) unloggedRGB[0] = unloggedRGB[0] + 5;
+		  if (userBlue <= 250) unloggedRGB[2] = unloggedRGB[2] + 5;
+		  break;
+
+		case 'blue':
+		  if (userBlue >= 10) unloggedRGB[2] = unloggedRGB[2] - 10;
+		  if (userRed <= 250) unloggedRGB[0] = unloggedRGB[0] + 5;
+		  if (userGreen <= 250) unloggedRGB[1] = unloggedRGB[1] + 5;
 		  break;
 	}
 }

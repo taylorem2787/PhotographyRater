@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <title>Photography Rating App</title>
+    <title>colorme</title>
     <!-- jQuery -->
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -23,7 +23,8 @@
     <!-- JQuery Web Pop-over -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
     <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
-
+	<!-- CanvasJS CDN -->
+	<script src="../app/canvas.js"></script>
     <!-- JS files -->
     <script src="../app/app.js"></script>     
     </head>
@@ -36,7 +37,7 @@
       <a id="home" href="index.html" class="brand-logo"><img src="img/colormelogo.svg"></a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a id="explore" href="explore.html">Explore</a></li>
+          <li><a id="explore" href="#explore-display-top">Explore</a></li>
           <li><a id="profile" href="profile.html">Profile</a></li>
           <li><a id="login" href="collapsible.html">Login</a></li>
       </ul>
@@ -47,8 +48,8 @@
       </ul>
       <div class="extended">
         <ul class="tabs tabs-transparent black">
-          <li class="tab"><a href="#profile">My Profile</a></li>
-          <li class="tab"><a href="#settings">Settings</a></li>
+          <li id="profilepane" class="tab"><a href="#profile">My Photos</a></li>
+          <li id="settingspane" class="tab"><a href="#settings">Settings</a></li>
         </ul>
     </div>
   </nav>
@@ -74,20 +75,36 @@
         </div>
       </div> 
     </div>
-    </div>
+  </div>
   
-    <!-- Settings Page -->
-    <div id='settings'>
-      <div class="row">
-        <div class="col s12 m6 l12">
-          <div class="card center-align">
-              <img class="rgb-image center-align" src="img/rgbplaceholder.png">
-          </div>
+  <!-- Settings Page -->
+  <div id='settings'>
+    <div class="row">
+      <div class="col s12 m6 l12">
+        <div id="settingscard" class="card center-align">
+            <img class="rgb-image center-align" src="img/rgbplaceholder.png">
         </div>
       </div>
-    </div> <!-- setting end -->
-  </div> <!-- end profile display -->
-</div>
+    </div>
+  </div> <!-- setting end -->
+
+  <div id='settings2'>
+    <div class="row">
+      <div class="col s12 m6 l12">
+        <div id="settingscard2" class="card center-align">
+          <a id='resetBtn' class="waves-effect waves-light btn"><i class="material-icons left">cached</i>Reset Colors</a>
+        </div>
+      </div>
+      <div class="col s12 m6 l12">
+        <div id="color-profile-slider">
+          <h5 id="slider-text">Control photo color range</h5>
+          <input id="slider" type="range" min="5" max="50" value="30" step="5" />
+        </div>
+      </div>
+    </div>
+  </div> <!-- setting end -->
+<!--   </div> end profile display
+</div> -->
 
 
 
@@ -126,29 +143,9 @@
       </div> <!-- container end -->
     </footer>
 
-<script>
-  
-  window.onload = function(){
-    var userid = localStorage.getItem('userid');
-    console.log(userid);
-    var currentLocation = window.location.origin;
-    var URL = currentLocation + '/profile/' + userid;
-    console.log(URL);
 
-    $.get(URL, function(data, status){
-      console.log(status);
+<script src="../app/app-settings.js"></script>     
+<script src="../app/app-profile.js"></script>     
 
-      for (var i = 0; i < data.length; i++){
-        console.log(data[i].url);
-        var imgurl = data[i].url;
-        var img = $('<img>');
-        img.attr('src', imgurl);
-        $('#profile-display').append(img);
-      }
-    });
-  }
-
-</script>
 </body>
-
 <!-- App -->

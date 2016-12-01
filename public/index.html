@@ -28,25 +28,21 @@
 <body>
 <body class="">
 
-<!-- NEW FILES ADDED responsive.css, script.js, interactive.js -->
-<!-- main issue is the login button, i cant get it to load, i think the issue is in iteraction.js. the rest are style adjustments and pictures in profile load -->
-
-
-
+<!-- NEW FILES ADDED responsive.css, interactive.js -->
 	<section id="intro">
-        <div id="artdirector"><span></span></div>
+	        <div id="artdirector"><span></span></div>
         <div id="illustrator"><span></span></div>
-        <div id="logo"><img class="logo" src="img/colormelogo.svg" alt="logo"></div>
+        <div class="center-align" id="logo"><img class="logo" style="width:500px; height: 600px;" src="img/colormelogo.svg" alt="logo"></div>
     </section>
 
 	<!-- Particles Section -->
-	<div id="particles-js" "><canvas  width="3060" height="1524" style="width: 100%; height: 110%;"></canvas>
+	<div id="particles-js" "><canvas  width="900" height="1224" style="width: 100%; height: 50%;"></canvas>
 	</div>	
 	</section>
 <br>
-	<!-- =====================NAV======================= -->
+<!-- ==================================NAV================================== -->
     <div id="openmenu"></div>
-    <nav class=" transparent" style="top: 80%;">
+    <nav class="transparent" style="top: 80%;">
     	<div class="menu menuworks">
             <span class="number" id="explore" href="#explore-display-top">01</span><span class="label">Explore</span>
         </div>
@@ -55,12 +51,13 @@
         </div>
 
         <div id="logosmall">
+
             <img src="img/colormelogo.svg" width="100" height="100" alt=""></div>
         <div id="close"></div>
 
-        <div class="menu menulogin">
+        <div class="menu menulogin" href="#modal1" id="registration-modal" class="registration-modal>
             <span class="number">03</span>
-            <!-- <a id="login" href="collapsible.html"></a> -->
+            <!-- <a href="#modal1" id="registration-modal" class="registration-modal"> -->
             <span class="label">Log In</span>
         </div>
         <div class="menu menucontact">
@@ -69,10 +66,13 @@
     </nav>
     </div>
 
-    <!-- ==========================MAIN INTRO====================== -->
-	<div class="container id="explore-display-top"" style="top: 80%;">
+<!-- ==================================MAIN INTRO============================ -->
+	<!-- ==DONT DELETE(CONTROLS PROFILE SLIDER)== -->
+	<div id="grid_bg" class="legrandbal"></div>
+	<section id="grid">
+	<!-- ========================================= -->
         <div class="row">
-        	<div class="col s12">
+        	<div class="container-main center-align" id="main" style="top: 0%;">
         		<div class="card main-intro center-align">
 		            <div class="card-content black-text">
 		              	<span class="card-title"><strong>Welcome to <b>color</b>me!</strong></span>
@@ -80,51 +80,68 @@
 		              	</p>
 		            </div>
 		            <div class="card-action main-intro-subnav">
-		            	<!-- Modal Link -->
 		              	<a class="black-text center-align" href="#modal1" id="registration-modal">Click here to register!</a>
 		            </div>
 		        </div>
         	</div>
-    	</div>
+    	</div> 
+		
+		
+		<div class="container-explore color-window" style="top: 10%;">
+	        <div class="row center-align">
+	        	<div class="col s12 m6 l12">
+	        		<div class="row center-align color-window">
+	        			<div class="col s12 m6">
+					    	<h2 class="header"><b>color</b>me by iris</h2>
+					    	<!-- Explore Text Area -->
+					    	<p class="grey-text text-darken-3 lighten-3">Find out your true favorite color by rating photos that resonate with you. Your favorite color reveals your inner character. What does your color preference say profile your personality? Let <b>color</b>me find your color! Let's get to rating!
+					    	</p>
+					    	<div class="waves-effect waves-light btn-large color-window explore-button"><i class="material-icons left">visibility</i>Explore</div>
+							
+						</div>
+					</div>
+				</div>
+	        	<div class=" center-align" id="explore-display-top" style="top: 20%">
+	        		<div class="row">
+	        			<div class="col s12 m6 l12">
+		            <!-- Photos display here -->
+		        			<div class="color-window" id="explore-display"></div>
+								<br>
+		        			<div class="waves-effect waves-light btn-large color-window explore-button load-more">Load More</div>
+		        				<br>
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div> <!-- explore display end -->
+	   		</div>
+		</div>
+	</div>
+</section>
+	<!-- </div> -->
+    	
     	<br><br>
    <!--  	<div class="section white" id="explore-display-top"> -->
 
-
-  	
-<!--========================== EXPLORE AREA =========================== -->
-  	<div class="row color-window">
-        <div class="col s12 m6 l12">
-        	<section class=" center-align color-window" id="explore-display-top">
-        	
-            	<h2 class="header"><b>color</b>me by iris</h2>
-            	<!-- Explore Text Area -->
-            	<p class="grey-text text-darken-3 lighten-3">Find out your true favorite color by rating photos that resonate with you. Your favorite color reveals your inner character. What does your color preference say profile your personality? Let <b>color</b>me find your color! Let's get to rating!
-            	</p>
-            	<div class="waves-effect waves-light btn-large color-window explore-button"><i class="material-icons left">visibility</i>Explore</div>
-            	<!-- Photos display here -->
-        		<div class="color-window" id="explore-display"></div>
-				<br>
-        		<div class="waves-effect waves-light btn-large color-window explore-button load-more">Load More</div>
-        		<br>
-        	</section>
-        </div>
-   	</div>
+<!--============================= EXPLORE AREA ============================= -->
 
 
-    <div id="grid_bg" class="legrandbal"></div>
-    <section id="grid" style="height: 2985.83px;">
-	</div>
-
-
+<!-- ====================DONT DELETE(CONTROLS PROFILE SLIDER)================ -->
+	
 	<div id="projet_bg"></div>
-    	<div class="previous" style="top: 0px; margin-left: 0px;"><div class="previous_bg" style="width: 1050px; height: 309px;"></div><span>Previous</span></div>
-		<div class="next" style="top: 0px; margin-right: 0px;"><div class="next_bg" style="width: 1050px; height: 309px;"></div><span>Next</span></div>
-    <section id="projet" style="top: 0px;">
-    </section>
-    
-    <div class="masqueblanc"></div>
+    	<div class="previous" style="top: 0px; margin-left: 0px;">
+    	<div class="previous_bg" style="width: 1050px; height: 309px;"></div>
+    		<span>Previous</span>
+    	</div>
+		<div class="next" style="top: 0px; margin-right: 0px;">
+		<div class="next_bg" style="width: 1050px; height: 309px;"></div>
+			<span>Next</span>
+		</div>
+	</div>
+<!-- ======================================================================== -->
+<!--     <section id="projet" style="top: 0px;"></section> -->
 
 <!-- =============================PROFILE==================================== -->
+    <div class="masqueblanc"></div>
     <section id="profile" class="pfix">
     	<div id="profile_info">
         		<!-- <div class="image"><img src="design/fond_about.jpg" alt="fond profile"></div> -->
@@ -133,189 +150,123 @@
             <p></span></p>
         </div>
         
-<!--         <div id="city_grid">
-        	<div class="perspective" style="height: 441px;"> -->
-              <div class="container-profile black" id="profile-display-top"> 
-                <div class="row">
-                  <div class="col sm12 m6 l12">
+        <div class="container-profile black" id="profile-display-top"> 
+            <div class="row">
+                <div class="col sm12 m6 l12">
                     <!-- Profile Page -->
                     <div id='profile'>
                        <div id="profile-display"></div> 
                     </div>
-                  </div> 
                 </div>
-<!--             </div>
-        </div> -->
+           </div>
+        </div>
     </section>
 
-<!--                 <div class="city city1 lyon">
-                    <div class="city_info">
-                        <div class="degrade"></div>
-                        <h3>lyon</h3>
-                        <div class="line"></div>
-                        <div class="position">Available for hiring</div>
-                        <div class="year1">2015</div>
-                        <div class="year2">Future</div>
-                    </div>
-                </div>
-            </div>
-            <div class="perspective" style="height: 441px;">
-                <div class="city city2 montreal">
-                    <div class="city_info">
-                        <div class="degrade"></div>
-                        <h3>montreal</h3>
-                        <div class="line"></div>
-                        <div class="position">Art Director at Antro</div>
-                        <div class="year1">2013</div>
-                        <div class="year2">2015</div>
-                    </div>
-            	</div>
-            </div>
-            <div class="perspective" style="height: 441px;">
-                <div class="city city3 paris">
-                    <div class="city_info">
-                        <div class="degrade"></div>
-                        <h3>paris</h3>
-                        <div class="line"></div>
-                        <div class="position">Freelance Art Director / Illustrator</div>
-                        <div class="year1">2011</div>
-                        <div class="year2">2013</div>
-                    </div>
-                </div>
-            </div>
-            <div class="perspective" style="height: 441px;">
-                <div class="city city4 sunderland">
-                    <div class="city_info">
-                        <div class="degrade"></div>
-                        <h3>sunderland</h3>
-                        <div class="line"></div>
-                        <div class="position">Intern Graphic Designer</div>
-                        <div class="year1">2011</div>
-                        <div class="year2">2011</div>
-                    </div>
-                </div>
-            </div> -->
- 
-
-<!-- ==============================LOG IN================================ -->
-    <section id="login" class="pfix">
-    	<div id="login_info">
-        	<!-- <div class="image"><img src="design/fond_contact.jpg" alt="fond contact"></div> -->
-		                <!-- Login -->
-		    <div id="login-form" class=" center-align">
-		  <!--   <div class="container-login" id="form-login"> -->
-		      <form class="login-form" onsubmit="return false">
-		        <div class="row margin">
-		          <div class="input-field col s12">
-		            <i class="material-icons prefix">person outline</i>
-		            <input class="validate" id="email" type="email">
-		            <label for="email" data-error="wrong" data-success="right" class="center-align">Email</label>
-		          </div>
-		        </div>
-		        <div class="row margin">
-		          <div class="input-field col s12">
-		            <i class="material-icons prefix">lock outline</i>
-		            <input id="password" type="password">
-		            <label for="password">Password</label>
-		          </div>
-		        </div>
-		        <div class="row">          
-		          <div class="input-field col s12 login-text">
-		              <input type="checkbox" id="remember-me" />
-		              <label for="remember-me">Remember me</label>
-		          </div>
-		        </div>
-		        <div class="row">
-		          <div class="input-field col s12">
-		            <button type="submit" id="submitBtn" class="btn waves-effect waves-light col s12 teal accent-2">Sign In</button>
-		          </div>
-		        </div>
-		        <div class="row">
-		          <div class="input-field col s12">
-		            <!-- Modal Trigger -->
-		            <p class="margin medium-small"><a href="#modal1" id="registration-modal" class="registration-modal">Register Now!</a></p>
-		          </div>
-		          <div class="input-field col s6 m6 l6">
-		              <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
-		          </div>          
-		        </div>
-		      </form>
-		    </div>
-            <span class="contactC">L</span><span class="contactO">O</span><span class="contactN">G</span><span class="contactT"></span><span class="contactA"></span><span class="contactCC"></span><span class="contactTT"></span><span class="contactM">I</span><span class="contactE">N</span>
-        </div>
-		</div>
-	</section>
+<!-- ==============================LOG IN PAGE================================ -->
 
 
+<!-- ==============================REGISTER PAGE================================ -->
 	<section id="register" class="pfix">
     	<div id="register_info">
-
-            <!-- Modal -->
-		    <div id="modal1" class="modal registration-modal">
-		        <div class="modal-content">
-		            <div class="row">
-		                <div class="col s12 m6 l12">
-		                    <div class="card-panel z-depth-5">
-		                        <h4 class="center black-text"><b>color</b>me Registration</h4>   
-		                    <div class="row">
-		                        <form class="col s12 m6 l12">
-		                            <div class="row">
-		                                <div class="input-field col s12 m12">
-		                                    <i class="mdi-action-account-circle prefix"></i>
-		                                    <input id="icon_prefix" type="text" class="validate">
-		                                    <label for="icon_prefix">Username</label>
-		                                </div>
-		                                <div class="input-field col s12 m12">
-		                                    <i class="mdi-communication-email prefix"></i>
-		                                    <input id="icon_email" type="email" class="validate">
-		                                    <label for="icon_email">Your Email</label>
-		                                </div>
-		                                <div class="input-field col s12 m12">
-		                                    <i class="fa fa-unlock-alt prefix"></i>
-		                                    <input id="icon_password" type="password" class="validate">
-		                                    <label for="icon_password">Password</label>
-		                                </div>
-		                                <div class="col s12 m12">
-		                                    <button id="registerBtn" class="btn waves-effect waves-light center teal accent-2 center" type="submit" name="action">Sign Up<i class="fa fa-sign-in right"></i></button>
-		                                </div>     
-		                            </div> <!-- row end -->
-		                        </form>
-		                    </div><!--row-->
-		                    </div><!--card-->
-		                </div><!--col end-->
-		            </div> <!-- row end -->
-		        </div> <!-- mondal content end -->
-		    </div> <!--  modal end -->
-            <span class="registerRR">R</span><span class="registerEE">E</span><span class="registerG">G</span><span class="registerII">I</span><span class="registerS"></span><span class="registerT"></span><span class="registerE3">E</span><span class="registerR3">R</span><span class="contactE">N</span>
-        </div>
-      	</div>
-	</section>
-
-<!--         <div id="form">
-            <form action="process." method="post" id="leform">
-                <div id="contactleft">
-
-                    <label class="legend1">Your name</label><input name="nom" id="nom" type="text" value="" placeholder="Name / Surname">
-                    <label class="legend2">Your email</label><input name="email" id="email" type="text" value="" placeholder="Your email">
-                    <label class="legend3">Subject</label><input name="sujet" id="sujet" type="text" value="" placeholder="Subject">
-                    <label class="legend4">Antispam : 10, 20, 30, 40, ?</label><input name="antispam" id="antispam" type="text" placeholder="Complete the numbers series">
-                </div>
-                <div id="contactright">
-                    <label class="legend5">Your message</label><textarea name="message" id="message" cols="20" rows="8"></textarea>
-                </div>
-                <div class="clear"></div>
-                <input name="" type="submit" class="envoyer" value="Send the message">
-            </form>
-            <div class="error"></div>
+			<div class="image"><img src="img/cityview.jpg" alt="fond contact" style="height: 360px; width: 845px; margin-left: 10%;">    		<span class="registerR2">C</span>
+            <span class="registerE2">O</span>
+            <span class="registerG2">L</span>
+            <span class="registerI3">O</span>
+            <span class="registerS">R</span>
+           <!--  <span class="registerT">R</span> -->
+            <span class="registerE3">M</span>
+            <span class="registerR3">E</span>
+    	</div>
+    		</div>
+    	<div class="container-login">
+			<div class="row">
+				<div class="col l12">
+					<div id="form">
+						<!-- Login -->
+						<br><br><br><br>
+					    <div id="login-form" class="col s6">
+					    	<h4 class="center-align white-text">LOG IN</h4>
+					      <br>
+					      <form class="login-form" onsubmit="return false">
+					        <div class="row margin">
+					          <div class="input-field col s12">
+					            <i class="material-icons prefix">person outline</i>
+					            <input class="validate" id="email" type="email">
+					            <label for="email" data-error="wrong" data-success="right" class="center-align">Email</label>
+					          </div>
+					        </div>
+					        <div class="row">
+					          <div class="input-field col s12">
+					            <i class="material-icons prefix">lock outline</i>
+					            <input id="password" type="password">
+					            <label for="password">Password</label>
+					          </div>
+					        </div>
+					        <div class="row">          
+					          <div class="input-field col s12 login-text">
+					              <input type="checkbox" id="remember-me" />
+					              <label for="remember-me">Remember me</label>
+					          </div>
+					        </div>
+					        <div class="row">
+					          <div class="input-field col s12 m6">
+					            <a type="submit" id="submitBtn" class="btn center waves-effect waves-light col s12 teal accent-2 center-align" href="#explore-display-top">Sign In</a>
+					          </div>
+					        </div>
+					        <div class="row">
+<!-- 					          <div class="input-field col s6 m6 l6">
+					            <p class="margin medium-small"><a href="#modal1" id="registration-modal" class="registration-modal"><small>Register Now!</small></a></p>
+					          </div> -->
+					          <div class="input-field col s6 m6 l6">
+					              <p class="margin right-align medium-small"><a href="#"><small>Forgot password?</small></a></p>
+					          </div>          
+					        </div>
+					      </form>
+					    </div>
+				   <!--  <div class="col s12 m6 l6"> -->
+			<div class="modal-content">
+				<div class="col s6">
+					<h4 class="center-align white-text" style="letter-spacing: 1px">REGISTER</h4>
+					<br>
+				<div class="card-panel left-align transparent" style="padding: 0;">
+					<div class="row">
+						<form class="col s12 m6 l12">
+							<div class="row">
+						    	<div class="input-field col s12 m12">
+						    	<i class="material-icons prefix">person_pin</i>
+					        		<!-- <i class="mdi-action-account-circle prefix"></i> -->
+					        		<input id="icon_prefix" type="text" class="validate">
+					        		<label for="icon_prefix">Username</label>
+						    	</div>
+				      			<div class="input-field col s12 m12">
+				        			<i class="material-icons prefix">person outline</i>
+					        		<input id="icon_email" type="email" class="validate">
+				        			<label for="icon_email">Email</label>
+				      			</div>
+						    	<div class="input-field col s12 m12">
+						      		 <i class="material-icons prefix">lock outline</i>
+						      		<input id="icon_password" type="password" class="validate">
+							    	<label for="icon_password">Password</label>
+						    	</div>
+						    	<br><br><br><br>
+						    	<div class="col s12 m12">
+						  			<button id="registerBtn" class="btn waves-effect waves-light center teal accent-2" type="submit" name="action">Sign Up<i class="fa fa-sign-in right"></i></button>
+						    	</div>     
+						  	</div> <!-- row end -->
+						</form>
+					</div><!--row-->
+					</div><!--card-->
+				</div><!--col end-->
+			</div> <!-- row end -->
+  		</div> <!-- mondal content end -->
+    </div>
+    </div>
 		</div>
-        <div id="social">
-         	<a href="http://www.linkedin.com/in/paulineosmont" class="linkedin"></a>
-            <a href="http://society6.com/gunelle" class="society6"></a>
-            <a href="https://www.behance.net/paulineosmont" class="behance"></a>
-            <a href="http://pinterest.com/paulineosmont/" class="pinterest"></a> -->
-    <!-- 	</div>
-    </section>
- -->
+	</section>
+		</div>
+</div>
+</div>
+<!-- =============================FOOTER==================================== -->
 <footer class="">
         <div class="content">
             <div id="footerleft">

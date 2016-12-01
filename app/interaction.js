@@ -442,36 +442,36 @@ $(document).ready(function(){
 	
 });
 
-	$(".menulogin").click(function(){
-		if (isOpening == false) {
-			isOpening = true;
-			closenav(); // mobile
-			if (projetouvert == true) { closeproject("profile"); }
-			if (section == "register") { 
-				$("#register").css('z-index', 9);
-				setTimeout(function() { closecontact(); }, 800); 
-			}
-			section = "login";
-			$("#login").css('z-index', 10);
-			$("body").addClass("login"); 
-			isScrolling = true;
-			if ($(window).width() >= 960) { $("nav").addClass("navtop"); };
-			$(".menu").removeClass("actif");
-			$(".menulogin").addClass("actif");
-			setTimeout(function() { 
-				$("html, body").animate( { scrollTop: 0 }, 0 ); 
-				$("#login").removeClass("pfix"); 
-				$("#grid, #grid_bg").addClass("enter");
-				}, 500);	
-			setTimeout(function() { 
-				if ($(window).width() >= 960) {  
-					$("nav").addClass("enter");
-				} 
-				$("#grid").addClass("fade"); 
-			}, 1000);	
-			setTimeout(function() { isScrolling = isOpening = false; }, 2000);	
-		}
-	});
+	// $(".menulogin").click(function(){
+	// 	if (isOpening == false) {
+	// 		isOpening = true;
+	// 		closenav(); // mobile
+	// 		if (projetouvert == true) { closeproject("profile"); }
+	// 		if (section == "register") { 
+	// 			$("#register").css('z-index', 9);
+	// 			setTimeout(function() { closecontact(); }, 800); 
+	// 		}
+	// 		section = "profile";
+	// 		$("#login").css('z-index', 10);
+	// 		$("body").addClass("login"); 
+	// 		isScrolling = true;
+	// 		if ($(window).width() >= 960) { $("nav").addClass("navtop"); };
+	// 		$(".menu").removeClass("actif");
+	// 		$(".menuprofile").addClass("actif");
+	// 		setTimeout(function() { 
+	// 			$("html, body").animate( { scrollTop: 0 }, 0 ); 
+	// 			$("#login").removeClass("pfix"); 
+	// 			$("#grid, #grid_bg").addClass("enter");
+	// 			}, 500);	
+	// 		setTimeout(function() { 
+	// 			if ($(window).width() >= 960) {  
+	// 				$("nav").addClass("enter");
+	// 			} 
+	// 			$("#grid").addClass("fade"); 
+	// 		}, 1000);	
+	// 		setTimeout(function() { isScrolling = isOpening = false; }, 2000);	
+	// 	}
+	// });
 
 $(window).load(
     function() {

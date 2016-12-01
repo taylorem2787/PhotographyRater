@@ -1,4 +1,4 @@
-//imported modules for extracting dominant color from an image
+//imported modules
 //============================================================
 //npm server package
 var express = require('express');

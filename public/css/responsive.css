@@ -9,7 +9,6 @@
 		-webkit-transition: opacity 0.6s 3s linear, background 0s 3s linear !important;
 	}
 	
-
 	#logo {
 		margin-left: -44%;
 		margin-top: -30%;
@@ -373,7 +372,7 @@
 		line-height:60px;
 	}
 	
-	.contactTT, .contactM, .contactE {
+	.registerS, .registerT, .registerE3, .registerR3 {
 		bottom:-28px;
 	}
 
@@ -532,11 +531,11 @@
 		margin: 110px auto 100px auto;
 	}*/
 	
-	.registerRR, .registerEE, .registerG {
+	.registerR2, .registerE2, .registerG2, .registerI2 {
 		left: 8%;
 	}
 	
-	.registerII, .registerS, .registerT {
+	.registerS, .registerT, .registerE3, .registerR3 {
 		right: 8%;
 	}
 
@@ -675,11 +674,11 @@
 		letter-spacing: 2px;
 	}
 	
-	.contactT, .contactA, .contactCC {
+	.loginI2, .loginN {
 		margin-top: -40px;
 	}
 	
-	.registerT, .registerA, .registerCC {
+	.registerS, .registerT2, .registerE3, .registerR3 {
 		margin-top: -40px;
 	}
 /*	#form {
