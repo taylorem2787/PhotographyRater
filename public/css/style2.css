@@ -1,0 +1,227 @@
+body {
+    width: 100%;
+    padding: 0px;
+    margin: 0 auto;
+    overflow: auto;
+    line-height: 25px;
+    background-color: black;
+}
+
+* {
+	position: relative;
+	box-sizing: border-box;
+}
+
+
+.parallax-img img {
+	position: absolute;
+	background-position: 50% 210px !important;
+	width: 100%;
+	height: auto !important;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+
+.parallax-container {
+	height: 380px;
+}
+
+
+.main-intro {
+	background-color: #fff;
+    background-color: rgba(255,255,255,0.7);
+	margin: 80px;
+	font-family: "Futura W01 Book", georgia, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+
+/* Main Intro Link */
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+    color: #382323;
+    margin-right: 20px;
+    transition: color .3s ease;
+    text-transform: uppercase;
+}
+
+.registration-modal {
+	border-radius: 3px;
+}
+
+.nav-wrapper {
+	border-bottom-color: 2px solid snow;
+	transition: background-color ease 0.2s;
+}
+
+nav, footer, .btn-large, .btn {
+	background-color: turquoise;
+    background-color: rgba(255,255,255,0.5);
+    font-family: "Futura W01 Book", georgia, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 4px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #FFF;
+    -webkit-font-smoothing: antialiased;
+}
+
+footer p {
+	text-transform: lowercase;
+}
+
+nav .brand-logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+nav img {
+	width: 100%;
+}
+
+#navbar {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	border-top: 0;
+	width: 100%;
+	height: 60px;
+}
+
+/*Window in navbar that displays the user's color profile*/
+.color-window {
+	background-color: turquoise;
+}
+
+.load-more {
+	width: 100%;
+}
+
+#explore-display {
+	padding-top: 30px;
+	column-count: 3;
+	line-height: 2;
+	width: 100%;
+	margin: 0px;
+    -moz-column-gap: 0;
+    -webkit-column-gap: 0;
+    column-gap: 0;
+}
+
+.explore-image {
+	display: inline-block;
+	vertical-align: top;
+	margin: 2px 2px 0;
+	width: 100%;
+	-webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    line-height: 0;
+}
+
+.explore-image img {
+	width: 100%;
+	margin: 0;
+}
+
+.explore-image__overlay {
+	opacity: 0;
+ 	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity ease 0.2s;
+}
+
+.explore-image:hover .explore-image__overlay {
+    opacity: 1;
+}
+
+.explore-image__overlay__upvote {
+	background-image: url("../img/upvote.svg"); 
+	background-size: 100% 100%;
+	position: absolute;
+	bottom: 2px;
+	right: 2px;
+	height: 15%;
+	width: 15%;
+	min-height: 20px;
+	min-width: 20px;
+	cursor: pointer;
+}
+
+.explore-image__overlay__downvote {
+	background-image: url("../img/downvote.svg"); 
+	background-size: 100% 100%;
+	position: absolute;
+	bottom: 2px;
+	left: 2px;
+	height: 15%;
+	width: 15%;
+	min-height: 20px;
+	min-width: 20px;
+	cursor: pointer;
+}
+
+
+footer.page-footer {
+    margin-top: 0px;
+    background: turquoise; !important;
+}
+
+.clickable-link {
+	cursor: pointer;
+}
+
+.logo{
+	width: 215px;
+	height: 75px;
+}
+
+.webui-popover {
+	background-color: #fff;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.hidden {
+	display: none;
+}
+
+/*==========================PROFILE.HTML=============================*/
+
+.tab a.active {
+	color: #fff !important;
+}
+.parallax-img {
+	background: rgba(105, 105, 105, .5) !important;
+	max-width: 33%;
+
+}
+
+.parallax-profile {
+	background: rgba(105, 105, 105, .5) !important;
+}
+
+.extended{
+	border-top-color: 2 solid #fff !important;
+}
+
+.nav-extended{
+	background-image: url(../img/nav.png) !important;
+	background-size: cover;
+	clear: both;
+}
+
+
+
+
+
